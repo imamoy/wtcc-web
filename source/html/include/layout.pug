@@ -1,0 +1,11 @@
+include ../include/mixin.pug
+
+doctype html
+html(lang='zh-TW')
+    head
+        include ../include/head.pug
+    body#web
+        include ../include/header.pug
+        block content           
+        include ../include/footer.pug
+        include ../include/footer-js.pug

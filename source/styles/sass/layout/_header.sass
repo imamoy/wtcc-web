@@ -1,0 +1,159 @@
+/* ==========================================================================
+		header
+ ==========================================================================*/
+header
+	position: fixed
+	z-index: 99
+	.logo
+		width: 85px
+		height: 80px
+		margin-right: 15px
+	a
+		color: $white
+		transition: opacity .25s
+		&:hover
+			opacity: .8
+	h1
+		font-size: 1.22rem
+	h2
+		font-size: 1rem
+		font-family: "Helvetica Neue", Helvetica, sans-serif
+		line-height: 1.5
+		letter-spacing: .5px
+		margin-bottom: 0
+	+max-notebook
+		h1
+			font-size: 1.1rem
+			margin-bottom: 2px
+		h2
+			font-size: .9rem
+		.logo
+			width: 78px
+	
+header.header
+	left: 8vw
+	top: 6vh
+	height: 100px
+	+max-notebook
+		top: 4vh
+		left: 6vw
+	+max-phone
+		width: calc(100% - 60px)
+		height: auto
+		top: 34px
+		left: 30px
+	+max-phonemini
+		left: 24px
+		width: calc(100% - 48px)
+		top: 24px
+
+
+/* ==========================================================================
+		admin-header
+ ==========================================================================*/
+
+.admin-header
+	background-color: $primary-dp-color
+	a
+		color: $white
+	h1
+		font-size: 18px
+	h2
+		font-size: 14px
+		font-weight: 400
+	.link
+		font-size: 16px
+		letter-spacing: 1px
+		i
+			font-size: 20px
+	.menu-toggle
+		position: fixed
+		right: 20px
+		top: 10px
+		font-size: 24px
+		color: $white
+		cursor: pointer
+	.logout-btn
+		background-color: transparent
+		border: none
+		font-size: 20px
+		color: $white
+	+min-notebook
+		width: 230px
+		height: 100vh
+		padding: 35px 20px
+		padding: 35px 20px
+		.logo
+			display: inline-block
+			margin-bottom: 10px
+			img
+				width: 80px
+				height: 80px
+	+max-padpro
+		width: 100%
+		padding: 5px 15px
+		.name
+			display: inline-block
+			br
+				display: none
+			h1
+				font-size: 16px
+			h2
+				font-size: 12px
+		.logo-box
+			display: block
+		.logo
+			width: auto
+			height: 50px
+			display: inline-flex
+			align-items: center
+			img
+				width: 40px
+				height: 40px
+		hr
+			display: none
+		.menu-list
+			display: none
+			padding: 20px 0
+			margin-bottom: 0
+		.admin-user
+			color: $white
+			span 
+				color: $white
+
+.top-bar
+	width: calc(100% - 230px)
+	height: 60px
+	margin-left: 230px
+	background-color: $white
+	color: $primary-dp-color
+	box-shadow: 0 0 20px rgba(0,0,0,.15)
+	font-size: 16px
+	font-weight: 500
+	padding: 4px 30px
+	position: relative
+	z-index: 99
+	.admin-user
+		background-color: transparent
+		font-size: 14px
+		border: none
+		cursor: pointer
+	.admin-user-menu
+		display: none
+		width: 140px
+		text-align: center
+		box-shadow: 0 10px 20px rgba(0,0,0,.15)
+		position: absolute
+		right: 20px
+		top: 60px
+		padding: 10px
+		background-color: $white
+		button
+			cursor: pointer
+			border: none
+			background-color: transparent
+			color: $primary-dp-color
+			transition: color .25s
+			&:hover
+				color: $four-color
+	

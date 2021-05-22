@@ -1,0 +1,40 @@
+// Custom Card Styling
+.card
+	position: relative
+	display: flex
+	flex-direction: column
+	min-width: 0
+	justify-content: center
+	word-wrap: break-word
+	background-color: $white
+	background-clip: border-box
+	border-radius: 10px
+	border: none
+	overflow: hidden
+	.card-header
+		padding: .75rem 1.25rem
+		margin-bottom: 0
+		background-color: #F5F6FA
+		border-bottom: 1px solid #e3e6f0
+	.card-body
+		padding: 0 20px
+	.val
+		font-size: 20px
+		font-weight: 500
+		font-family: 'Helvetica Neue', Helvetica, sans-serif
+		color: $dark
+	.icon
+		color: #DDDFEB
+		font-size: 40px
+		padding-bottom: 4px
+	.label
+		font-size: 16px
+	&.border
+		border: 1px solid rgba(#173459,.2)
+	&.height-100px
+		height: 100px
+
+	.progress
+		height: 20px
+		.progress-bar
+			font-size: 16px

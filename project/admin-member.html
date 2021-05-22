@@ -1,0 +1,849 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+  <head>
+    <meta charset="utf-8">
+    <title> </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="styles/images/web-icon.ico">
+    <link rel="stylesheet" type="text/css" href="styles/fonts/css/fontello.css">
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans+TC:300,400,500,700,900&amp;display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles/fonts/css/fontello.css">
+    <link rel="stylesheet" type="text/css" href="styles/plugins/bootstrap-reboot.min.css">
+    <link rel="stylesheet" type="text/css" href="styles/plugins/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="styles/plugins/jquery-ui.min.css">
+    <link rel="stylesheet" type="text/css" href="styles/common.css">
+    <link rel="stylesheet" type="text/css" href="styles/plugins/pagination.min.css">
+    <link rel="stylesheet" type="text/css" href="styles/admin.css">
+  </head>
+  <body id="admin">
+    <div class="tv"></div>
+    <header class="admin-header"><a class="logo-box" href="admin.html"><span class="logo"><img class="img-fluid" src="styles/images/logo.png" alt=""></span>
+        <div class="name">
+          <h1>世界台灣商會聯合總會</h1>
+          <h2>World Taiwanese <br>Chambers of Commerce</h2>
+        </div></a>
+      <div class="menu-toggle d-inline-block d-xl-none"><i class="icon-menu"></i></div>
+      <hr class="my-4">
+      <ul class="menu-list list-unstyled">
+        <li class="mb-3"><a class="link" href="admin-member.html"><i class="icon-user"></i><span class="ml-2">會員管理</span></a></li>
+        <li class="mb-3"><a class="link" href="admin-vote.html"><i class="icon-edit"></i><span class="ml-2">投票管理</span></a></li>
+        <li class="mb-3"><a class="link" href="admin-result.html"><i class="icon-vote"></i><span class="ml-2">最新開票結果</span></a></li>
+        <li class="mb-3"><a class="link" href="admin-meeting.html"><i class="icon-flag"></i><span class="ml-2">會議管理</span></a></li>
+        <li class="d-block d-xl-none">
+          <hr class="d-block d-xl-none my-4">
+          <div class="d-flex justify-content-between align-items-center">
+            <div class="admin-user d-inline-flex align-items-center">
+              <div class="pic"><img src="styles/images/user.png" alt="" width="40px"></div><span class="ml-2">admin</span>
+            </div>
+            <button class="logout-btn"><i class="icon-logout-1"></i></button>
+          </div>
+        </li>
+      </ul>
+    </header>
+    <div class="top-bar d-none justify-content-between align-items-center d-xl-flex"><span>促進海外台商企業發展，會員交流，提昇台商社會地位</span>
+      <div class="admin-user d-inline-flex align-items-center">
+        <div class="pic"><img src="styles/images/user.png" alt="" width="40px"></div><span class="ml-2">admin</span><i class="icon-angle-down"></i>
+      </div>
+      <div class="admin-user-menu">
+        <button class="logout-btn"><i class="icon-logout-1"></i><span class="ml-2">登出</span></button>
+      </div>
+    </div>
+    <main class="admin-wrapper pa-5">
+      <div class="container-fluid">
+        <div class="d-flex align-items-center justify-content-between mb-3 px-2">
+          <div class="admin-page-title d-flex align-items-center">
+            <div class="icon t-blue-dp"><i class="icon-user"></i></div>
+            <h2 class="t-blue-dp h5 mb-0">會員管理</h2>
+          </div>
+          <div class="mt-3 mt-lg-0">
+            <button class="btn btn-primary" type="button" data-toggle="modal" data-target="#addModalCenter" style="width: 140px;">新增會員</button>
+          </div>
+        </div>
+        <div class="card border mb-4">
+          <div class="card-body" style="min-height:80vh;">
+            <div class="dataTables_wrapper h-100 d-flex flex-column justify-content-between" id="dataTable_wrapper">
+              <div>
+                <div class="row my-3">
+                  <div class="col-sm-12 col-md-6 my-1 my-lg-0">
+                    <div class="dataTables_length" id="dataTable_length">
+                      <label class="d-inline-flex align-items-center mb-0">
+                        <div style="width:80px;">顯示 </div>
+                        <select class="custom-select custom-select-sm form-control form-control-sm mx-2" name="dataTable_length" aria-controls="dataTable">
+                          <option value="10">10</option>
+                          <option value="25">25</option>
+                          <option value="50">50</option>
+                          <option value="100">100</option>
+                        </select>筆 
+                      </label>
+                    </div>
+                  </div>
+                  <div class="col-sm-12 col-md-6 text-lg-right my-1 my-lg-0">
+                    <div class="dataTables_filter" id="dataTable_filter">
+                      <label class="d-inline-flex align-items-center mb-0">
+                        <div style="width:50px;">搜尋</div>
+                        <input class="form-control form-control-sm mx-2" type="search" placeholder="" aria-controls="dataTable">
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <div class="table-responsive">
+                  <div class="row">
+                    <div class="col-sm-12">
+                      <table class="table table-bordered dataTable" id="dataTable" width="100%" cellspacing="0" role="grid" aria-describedby="dataTable_info" style="width: 100%;">
+                        <thead>
+                          <tr>
+                            <th style="min-width:90px;">理監事碼</th>
+                            <th style="min-width:80px;">職稱</th>
+                            <th style="min-width:120px;">所屬商會</th>
+                            <th style="min-width:80px;">照片</th>
+                            <th style="min-width:80px;">姓名</th>
+                            <th style="min-width:80px;">英文姓</th>
+                            <th style="min-width:80px;">英文名</th>
+                            <th style="min-width:110px;">出生年月日</th>
+                            <th>身分證號</th>
+                            <th>護照號碼</th>
+                            <th style="min-width:120px;">Line ID</th>
+                            <th style="min-width:120px;">電話</th>
+                            <th style="min-width:140px;">行動電話1</th>
+                            <th style="min-width:150px;">行動電話2</th>
+                            <th style="min-width:80px;">洲別</th>
+                            <th>電子郵件1</th>
+                            <th>電子郵件2</th>
+                            <th style="min-width:300px;">國外地址</th>
+                            <th style="min-width:300px;">通訊地址</th>
+                            <th class="text-center" style="min-width:110px;">執行</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>F00559</td>
+                            <td>理事</td>
+                            <td>世總秘書會</td>
+                            <td class="pa-1">
+                              <div class="member-pic"><img src="styles/images/man.png" alt=""></div>
+                            </td>
+                            <td>王先生</td>
+                            <td>Wang</td>
+                            <td>Jerry</td>
+                            <td>1960/10/01</td>
+                            <td>B000000000</td>
+                            <td>012345678</td>
+                            <td>ACE329102</td>
+                            <td>02-22220000</td>
+                            <td>0900-123456</td>
+                            <td>+886-900-123456</td>
+                            <td>大洋洲</td>
+                            <td><a href="mailto:it@wtcc.org.tw">it@wtcc.org.tw</a></td>
+                            <td><a href="mailto:wtcc@wtcc.org.tw">wtcc@wtcc.org.tw</a></td>
+                            <td>13F.-3, No. 30, Beiping E. Rd., Zhongzheng Dist., Taipei City 100, Taiwan (R.O.C.)</td>
+                            <td>台北市中正區北平東路30號13樓之3</td>
+                            <td class="text-center">
+                              <button class="iconBtn" type="button" data-toggle="modal" data-target="#editModalCenter" data-tooltip="tooltip" data-placement="bottom" title="編輯"><i class="icon-pen"></i></button>
+                              <button class="iconBtn" type="button" data-toggle="modal" data-target="#deleteModalCenter" data-tooltip="tooltip" data-placement="bottom" title="刪除"><i class="icon-delete"></i></button>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>F00559</td>
+                            <td>理事</td>
+                            <td>世總秘書會</td>
+                            <td class="pa-1">
+                              <div class="member-pic"><img src="styles/images/woman.png" alt=""></div>
+                            </td>
+                            <td>陳小姐</td>
+                            <td>Chen</td>
+                            <td>Anny</td>
+                            <td>1960/10/01</td>
+                            <td>B000000000</td>
+                            <td>012345678</td>
+                            <td>ACE329102</td>
+                            <td>02-22220000</td>
+                            <td>0900-123456</td>
+                            <td>+886-900-123456</td>
+                            <td>大洋洲</td>
+                            <td><a href="mailto:it@wtcc.org.tw">it@wtcc.org.tw</a></td>
+                            <td><a href="mailto:wtcc@wtcc.org.tw">wtcc@wtcc.org.tw</a></td>
+                            <td>13F.-3, No. 30, Beiping E. Rd., Zhongzheng Dist., Taipei City 100, Taiwan (R.O.C.)</td>
+                            <td>台北市中正區北平東路30號13樓之3</td>
+                            <td class="text-center">
+                              <button class="iconBtn" type="button" data-toggle="modal" data-target="#editModalCenter" data-tooltip="tooltip" data-placement="bottom" title="編輯"><i class="icon-pen"></i></button>
+                              <button class="iconBtn" type="button" data-toggle="modal" data-target="#deleteModalCenter" data-tooltip="tooltip" data-placement="bottom" title="刪除"><i class="icon-delete"></i></button>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>F00559</td>
+                            <td>理事</td>
+                            <td>世總秘書會</td>
+                            <td class="pa-1">
+                              <div class="member-pic"><img src="styles/images/man.png" alt=""></div>
+                            </td>
+                            <td>王先生</td>
+                            <td>Wang</td>
+                            <td>Jerry</td>
+                            <td>1960/10/01</td>
+                            <td>B000000000</td>
+                            <td>012345678</td>
+                            <td>ACE329102</td>
+                            <td>02-22220000</td>
+                            <td>0900-123456</td>
+                            <td>+886-900-123456</td>
+                            <td>大洋洲</td>
+                            <td><a href="mailto:it@wtcc.org.tw">it@wtcc.org.tw</a></td>
+                            <td><a href="mailto:wtcc@wtcc.org.tw">wtcc@wtcc.org.tw</a></td>
+                            <td>13F.-3, No. 30, Beiping E. Rd., Zhongzheng Dist., Taipei City 100, Taiwan (R.O.C.)</td>
+                            <td>台北市中正區北平東路30號13樓之3</td>
+                            <td class="text-center">
+                              <button class="iconBtn" type="button" data-toggle="modal" data-target="#editModalCenter" data-tooltip="tooltip" data-placement="bottom" title="編輯"><i class="icon-pen"></i></button>
+                              <button class="iconBtn" type="button" data-toggle="modal" data-target="#deleteModalCenter" data-tooltip="tooltip" data-placement="bottom" title="刪除"><i class="icon-delete"></i></button>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>F00559</td>
+                            <td>理事</td>
+                            <td>世總秘書會</td>
+                            <td class="pa-1">
+                              <div class="member-pic"><img src="styles/images/woman.png" alt=""></div>
+                            </td>
+                            <td>陳小姐</td>
+                            <td>Chen</td>
+                            <td>Anny</td>
+                            <td>1960/10/01</td>
+                            <td>B000000000</td>
+                            <td>012345678</td>
+                            <td>ACE329102</td>
+                            <td>02-22220000</td>
+                            <td>0900-123456</td>
+                            <td>+886-900-123456</td>
+                            <td>大洋洲</td>
+                            <td><a href="mailto:it@wtcc.org.tw">it@wtcc.org.tw</a></td>
+                            <td><a href="mailto:wtcc@wtcc.org.tw">wtcc@wtcc.org.tw</a></td>
+                            <td>13F.-3, No. 30, Beiping E. Rd., Zhongzheng Dist., Taipei City 100, Taiwan (R.O.C.)</td>
+                            <td>台北市中正區北平東路30號13樓之3</td>
+                            <td class="text-center">
+                              <button class="iconBtn" type="button" data-toggle="modal" data-target="#editModalCenter" data-tooltip="tooltip" data-placement="bottom" title="編輯"><i class="icon-pen"></i></button>
+                              <button class="iconBtn" type="button" data-toggle="modal" data-target="#deleteModalCenter" data-tooltip="tooltip" data-placement="bottom" title="刪除"><i class="icon-delete"></i></button>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>F00559</td>
+                            <td>理事</td>
+                            <td>世總秘書會</td>
+                            <td class="pa-1">
+                              <div class="member-pic"><img src="styles/images/man.png" alt=""></div>
+                            </td>
+                            <td>王先生</td>
+                            <td>Wang</td>
+                            <td>Jerry</td>
+                            <td>1960/10/01</td>
+                            <td>B000000000</td>
+                            <td>012345678</td>
+                            <td>ACE329102</td>
+                            <td>02-22220000</td>
+                            <td>0900-123456</td>
+                            <td>+886-900-123456</td>
+                            <td>大洋洲</td>
+                            <td><a href="mailto:it@wtcc.org.tw">it@wtcc.org.tw</a></td>
+                            <td><a href="mailto:wtcc@wtcc.org.tw">wtcc@wtcc.org.tw</a></td>
+                            <td>13F.-3, No. 30, Beiping E. Rd., Zhongzheng Dist., Taipei City 100, Taiwan (R.O.C.)</td>
+                            <td>台北市中正區北平東路30號13樓之3</td>
+                            <td class="text-center">
+                              <button class="iconBtn" type="button" data-toggle="modal" data-target="#editModalCenter" data-tooltip="tooltip" data-placement="bottom" title="編輯"><i class="icon-pen"></i></button>
+                              <button class="iconBtn" type="button" data-toggle="modal" data-target="#deleteModalCenter" data-tooltip="tooltip" data-placement="bottom" title="刪除"><i class="icon-delete"></i></button>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>F00559</td>
+                            <td>理事</td>
+                            <td>世總秘書會</td>
+                            <td class="pa-1">
+                              <div class="member-pic"><img src="styles/images/woman.png" alt=""></div>
+                            </td>
+                            <td>陳小姐</td>
+                            <td>Chen</td>
+                            <td>Anny</td>
+                            <td>1960/10/01</td>
+                            <td>B000000000</td>
+                            <td>012345678</td>
+                            <td>ACE329102</td>
+                            <td>02-22220000</td>
+                            <td>0900-123456</td>
+                            <td>+886-900-123456</td>
+                            <td>大洋洲</td>
+                            <td><a href="mailto:it@wtcc.org.tw">it@wtcc.org.tw</a></td>
+                            <td><a href="mailto:wtcc@wtcc.org.tw">wtcc@wtcc.org.tw</a></td>
+                            <td>13F.-3, No. 30, Beiping E. Rd., Zhongzheng Dist., Taipei City 100, Taiwan (R.O.C.)</td>
+                            <td>台北市中正區北平東路30號13樓之3</td>
+                            <td class="text-center">
+                              <button class="iconBtn" type="button" data-toggle="modal" data-target="#editModalCenter" data-tooltip="tooltip" data-placement="bottom" title="編輯"><i class="icon-pen"></i></button>
+                              <button class="iconBtn" type="button" data-toggle="modal" data-target="#deleteModalCenter" data-tooltip="tooltip" data-placement="bottom" title="刪除"><i class="icon-delete"></i></button>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>F00559</td>
+                            <td>理事</td>
+                            <td>世總秘書會</td>
+                            <td class="pa-1">
+                              <div class="member-pic"><img src="styles/images/man.png" alt=""></div>
+                            </td>
+                            <td>王先生</td>
+                            <td>Wang</td>
+                            <td>Jerry</td>
+                            <td>1960/10/01</td>
+                            <td>B000000000</td>
+                            <td>012345678</td>
+                            <td>ACE329102</td>
+                            <td>02-22220000</td>
+                            <td>0900-123456</td>
+                            <td>+886-900-123456</td>
+                            <td>大洋洲</td>
+                            <td><a href="mailto:it@wtcc.org.tw">it@wtcc.org.tw</a></td>
+                            <td><a href="mailto:wtcc@wtcc.org.tw">wtcc@wtcc.org.tw</a></td>
+                            <td>13F.-3, No. 30, Beiping E. Rd., Zhongzheng Dist., Taipei City 100, Taiwan (R.O.C.)</td>
+                            <td>台北市中正區北平東路30號13樓之3</td>
+                            <td class="text-center">
+                              <button class="iconBtn" type="button" data-toggle="modal" data-target="#editModalCenter" data-tooltip="tooltip" data-placement="bottom" title="編輯"><i class="icon-pen"></i></button>
+                              <button class="iconBtn" type="button" data-toggle="modal" data-target="#deleteModalCenter" data-tooltip="tooltip" data-placement="bottom" title="刪除"><i class="icon-delete"></i></button>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>F00559</td>
+                            <td>理事</td>
+                            <td>世總秘書會</td>
+                            <td class="pa-1">
+                              <div class="member-pic"><img src="styles/images/woman.png" alt=""></div>
+                            </td>
+                            <td>陳小姐</td>
+                            <td>Chen</td>
+                            <td>Anny</td>
+                            <td>1960/10/01</td>
+                            <td>B000000000</td>
+                            <td>012345678</td>
+                            <td>ACE329102</td>
+                            <td>02-22220000</td>
+                            <td>0900-123456</td>
+                            <td>+886-900-123456</td>
+                            <td>大洋洲</td>
+                            <td><a href="mailto:it@wtcc.org.tw">it@wtcc.org.tw</a></td>
+                            <td><a href="mailto:wtcc@wtcc.org.tw">wtcc@wtcc.org.tw</a></td>
+                            <td>13F.-3, No. 30, Beiping E. Rd., Zhongzheng Dist., Taipei City 100, Taiwan (R.O.C.)</td>
+                            <td>台北市中正區北平東路30號13樓之3</td>
+                            <td class="text-center">
+                              <button class="iconBtn" type="button" data-toggle="modal" data-target="#editModalCenter" data-tooltip="tooltip" data-placement="bottom" title="編輯"><i class="icon-pen"></i></button>
+                              <button class="iconBtn" type="button" data-toggle="modal" data-target="#deleteModalCenter" data-tooltip="tooltip" data-placement="bottom" title="刪除"><i class="icon-delete"></i></button>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>F00559</td>
+                            <td>理事</td>
+                            <td>世總秘書會</td>
+                            <td class="pa-1">
+                              <div class="member-pic"><img src="styles/images/man.png" alt=""></div>
+                            </td>
+                            <td>王先生</td>
+                            <td>Wang</td>
+                            <td>Jerry</td>
+                            <td>1960/10/01</td>
+                            <td>B000000000</td>
+                            <td>012345678</td>
+                            <td>ACE329102</td>
+                            <td>02-22220000</td>
+                            <td>0900-123456</td>
+                            <td>+886-900-123456</td>
+                            <td>大洋洲</td>
+                            <td><a href="mailto:it@wtcc.org.tw">it@wtcc.org.tw</a></td>
+                            <td><a href="mailto:wtcc@wtcc.org.tw">wtcc@wtcc.org.tw</a></td>
+                            <td>13F.-3, No. 30, Beiping E. Rd., Zhongzheng Dist., Taipei City 100, Taiwan (R.O.C.)</td>
+                            <td>台北市中正區北平東路30號13樓之3</td>
+                            <td class="text-center">
+                              <button class="iconBtn" type="button" data-toggle="modal" data-target="#editModalCenter" data-tooltip="tooltip" data-placement="bottom" title="編輯"><i class="icon-pen"></i></button>
+                              <button class="iconBtn" type="button" data-toggle="modal" data-target="#deleteModalCenter" data-tooltip="tooltip" data-placement="bottom" title="刪除"><i class="icon-delete"></i></button>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row align-items-center">
+                <div class="col-sm-12 col-md-2 mb-3 mb-lg-0">
+                  <div class="dataTables_info" id="dataTable_info" role="status" aria-live="polite">顯示 1 到 12 筆   共 57筆</div>
+                </div>
+                <div class="col-sm-12 col-md-8">
+                  <div class="dataTables_paginate paging_simple_numbers" id="dataTable_paginate">
+                    <ul class="pagination" id="member-pagination"></ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal fade" id="editModalCenter" tabindex="-1" role="dialog" aria-labelledby="editModalCenterTitle" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <div class="admin-page-title d-flex align-items-center">
+                  <div class="icon t-blue-dp"><i class="icon-user"></i></div>
+                  <div class="t-blue-dp h5 mb-0">會員編輯</div>
+                </div>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+              </div>
+              <form>
+                <div class="modal-body">
+                  <div class="row no-gutters">
+                    <div class="col-12 col-md-3 mb-4 mb-md-0">
+                      <div class="row no-gutters">
+                        <div class="col-12 px-1 px-md-2">
+                          <div class="form-group__file">
+                            <div class="file-wrapper">
+                              <input class="file-input" id="add-imageUpload" type="file" name="imageUpload">
+                              <div class="file-preview-background">Upload Image</div><img class="file-preview" id="edit-imagePreview" style="opacity: 1;" src="styles/images/logo.png" width="200px">
+                              <div></div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-12 col-md-9">
+                      <div class="row no-gutters">
+                        <div class="col-6 col-md-4 px-1 px-md-2">
+                          <div class="form-group">
+                            <label for="edit-number">理監事碼</label>
+                            <input class="form-control" id="edit-number" type="text" value="F00559">
+                          </div>
+                        </div>
+                        <div class="col-6 col-md-4 px-1 px-md-2">
+                          <div class="form-group">
+                            <label for="edit-job">職稱</label>
+                            <select class="form-control" id="edit-job">
+                              <option value="1">名譽總會長</option>
+                              <option value="2">名譽監事長</option>
+                              <option value="3">諮詢委員</option>
+                              <option value="4">資深顧問</option>
+                              <option value="5">顧問</option>
+                              <option value="6">副總會長</option>
+                              <option value="7">秘書長</option>
+                              <option value="8">財務長</option>
+                              <option value="9" selected>理事</option>
+                              <option value="10">總會長</option>
+                              <option value="11">監事長</option>
+                              <option value="12">副監事長</option>
+                              <option value="13">監事</option>
+                            </select>
+                          </div>
+                        </div>
+                        <div class="col-12 col-md-4 px-1 px-md-2">
+                          <div class="form-group">
+                            <label for="edit-commerce">所屬商會</label>
+                            <input class="form-control" id="edit-commerce" type="text" value="世總秘書會">
+                          </div>
+                        </div>
+                        <div class="col-12 col-md-4 px-1 px-md-2">
+                          <div class="form-group">
+                            <label for="edit-name">姓名</label>
+                            <input class="form-control" id="edit-name" type="text" value="王先生">
+                          </div>
+                        </div>
+                        <div class="col-6 col-md-4 px-1 px-md-2">
+                          <div class="form-group">
+                            <label for="edit-eng_name">英文姓</label>
+                            <input class="form-control" id="edit-eng_name" type="text" value="Wang">
+                          </div>
+                        </div>
+                        <div class="col-6 col-md-4 px-1 px-md-2">
+                          <div class="form-group">
+                            <label for="edit-eng_name2">英文名</label>
+                            <input class="form-control" id="edit-eng_name2" type="text" value="Jerry">
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-12 mt-3">
+                      <div class="row no-gutters">
+                        <div class="col-6 col-md-3 px-1 px-md-2">
+                          <div class="form-group">
+                            <label for="edit-id">身分證號</label>
+                            <input class="form-control" id="edit-id" type="text" value="B000000000">
+                          </div>
+                        </div>
+                        <div class="col-6 col-md-3 px-1 px-md-2">
+                          <div class="form-group">
+                            <label for="edit-passport">護照號碼</label>
+                            <input class="form-control" id="edit-passport" type="text" value="012345678">
+                          </div>
+                        </div>
+                        <div class="col-6 col-md-3 px-1 px-md-2">
+                          <div class="form-group">
+                            <label for="edit-birthday">出生年月日</label>
+                            <input class="form-control date-input" id="edit-birthday" type="text" value="1960/10/01">
+                          </div>
+                        </div>
+                        <div class="col-6 col-md-3 px-1 px-md-2">
+                          <div class="form-group">
+                            <label for="edit-line">LINE ID</label>
+                            <input class="form-control" id="edit-line" type="text" value="ACE329102">
+                          </div>
+                        </div>
+                        <div class="col-12 col-md-6 px-1 px-md-2">
+                          <div class="form-group">
+                            <label for="edit-area">洲別</label>
+                            <select class="form-control" id="edit-area">
+                              <option value="a">北美洲</option>
+                              <option value="b">亞洲</option>
+                              <option value="c">歐洲</option>
+                              <option value="d">非洲</option>
+                              <option value="e">中南美洲</option>
+                              <option value="f" selected>大洋洲</option>
+                              <option value="g">世青</option>
+                            </select>
+                          </div>
+                        </div>
+                        <div class="col-12 col-md-6 px-1 px-md-2">
+                          <div class="form-group">
+                            <label for="edit-phone_code">電話</label>
+                            <div class="form-row">
+                              <div class="col-5">
+                                <select class="form-control" id="edit-phone_code">
+                                  <option value="02">02</option>
+                                </select>
+                              </div>
+                              <div class="col-7">
+                                <input class="form-control" id="edit-phone" type="text" value="22220000">
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-6 col-md-6 px-1 px-md-2">
+                          <div class="form-group">
+                            <div class="form-row">
+                              <div class="col-6 mb-1">
+                                <div>行動電話1</div>
+                              </div>
+                              <div class="col-6 mb-1 text-right">
+                                <div class="form-check phone-check">
+                                  <input class="form-check-input" id="edit-sendPhone1" type="checkbox" name="edit-sendPhone" value="option1" checked="">
+                                  <label class="form-check-label" for="edit-sendPhone1">設定接收簡訊</label>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="form-row">
+                              <div class="col-5">
+                                <select class="form-control" id="edit-phone-1_code">
+                                  <option value="886">+886</option>
+                                </select>
+                              </div>
+                              <div class="col-7">
+                                <input class="form-control" id="edit-phone-1" type="text" value="0900-123456">
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-6 col-md-6 px-1 px-md-2">
+                          <div class="form-group">
+                            <div class="form-row">
+                              <div class="col-6 mb-1">
+                                <div>行動電話2</div>
+                              </div>
+                              <div class="col-6 mb-1 text-right">
+                                <div class="form-check phone-check">
+                                  <input class="form-check-input" id="edit-sendPhone2" type="checkbox" name="edit-sendPhone" value="option2" checked="">
+                                  <label class="form-check-label" for="edit-sendPhone2">設定接收簡訊</label>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="form-row">
+                              <div class="col-5">
+                                <select class="form-control" id="edit-phone-2_code">
+                                  <option value="886">+886</option>
+                                </select>
+                              </div>
+                              <div class="col-7">
+                                <input class="form-control" id="edit-phone-2" type="text" value="0900-123456">
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-12 col-md-6 px-1 px-md-2">
+                          <div class="form-group">
+                            <label for="edit-mail1">電子郵件1</label>
+                            <input class="form-control" id="edit-mail1" type="email" value="it@wtcc.org.tw">
+                          </div>
+                        </div>
+                        <div class="col-12 col-md-6 px-1 pl-md-2">
+                          <div class="form-group">
+                            <label for="edit-mail2">電子郵件2</label>
+                            <input class="form-control" id="edit-mail2" type="email" value="wtcc@wtcc.org.tw">
+                          </div>
+                        </div>
+                        <div class="col-12 col-md-6 px-1 px-md-2">
+                          <div class="form-group">
+                            <label for="edit-address">國外地址</label>
+                            <input class="form-control" id="edit-address" type="text" value="13F.-3, No. 30, Beiping E. Rd., Zhongzheng Dist., Taipei City 100, Taiwan (R.O.C.)">
+                          </div>
+                        </div>
+                        <div class="col-12 col-md-6 px-1 px-md-2">
+                          <div class="form-group">
+                            <label for="edit-address-1">通訊地址</label>
+                            <input class="form-control" id="edit-address-1" type="text" value="台北市中正區北平東路30號13樓之3">
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <button class="btn btn-secondary w-100 mr-2" type="button" data-dismiss="modal">取消</button>
+                  <button class="btn btn-success w-100 ml-2" type="button">確認</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        <div class="modal fade" id="deleteModalCenter" tabindex="-1" role="dialog" aria-labelledby="deleteModalCenterTitle" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+              <div class="modal-body py-5 text-center">您確定要刪除此筆資料嗎?</div>
+              <div class="modal-footer">
+                <button class="btn btn-secondary w-100 mr-2" type="button" data-dismiss="modal">取消</button>
+                <button class="btn btn-success w-100 ml-2" type="button">確認</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal fade" id="addModalCenter" tabindex="-1" role="dialog" aria-labelledby="deleteModalCenterTitle" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <div class="admin-page-title d-flex align-items-center">
+                  <div class="icon t-blue-dp"><i class="icon-user"></i></div>
+                  <div class="t-blue-dp h5 mb-0">會員管理</div>
+                </div>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+              </div>
+              <form>
+                <div class="modal-body">
+                  <div class="row no-gutters">
+                    <div class="col-12 col-md-3 mb-4 mb-md-0">
+                      <div class="row no-gutters">
+                        <div class="col-12 px-1 px-md-2">
+                          <div class="form-group__file">
+                            <div class="file-wrapper">
+                              <input class="file-input" id="imageUpload" type="file" name="imageUpload">
+                              <div class="file-preview-background">Upload Image</div><img class="file-preview" id="imagePreview" src="" width="200px">
+                              <div></div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-12 col-md-9">
+                      <div class="row no-gutters">
+                        <div class="col-6 col-md-4 px-1 px-md-2">
+                          <div class="form-group">
+                            <label for="add-number"><span class="t-red">*</span>理監事碼</label>
+                            <input class="form-control" id="add-number" type="text" placeholder="請輸入理監事碼">
+                          </div>
+                        </div>
+                        <div class="col-6 col-md-4 px-1 px-md-2">
+                          <div class="form-group">
+                            <label for="add-job">職稱</label>
+                            <select class="form-control" id="add-job">
+                              <option value="1">名譽總會長</option>
+                              <option value="2">名譽監事長</option>
+                              <option value="3">諮詢委員</option>
+                              <option value="4">資深顧問</option>
+                              <option value="5">顧問</option>
+                              <option value="6">副總會長</option>
+                              <option value="7">秘書長</option>
+                              <option value="8">財務長</option>
+                              <option value="9">理事</option>
+                              <option value="10">總會長</option>
+                              <option value="11">監事長</option>
+                              <option value="12">副監事長</option>
+                              <option value="13">監事</option>
+                            </select>
+                          </div>
+                        </div>
+                        <div class="col-12 col-md-4 px-1 px-md-2">
+                          <div class="form-group">
+                            <label for="add-commerce"><span class="t-red">*</span>理監事碼所屬商會</label>
+                            <input class="form-control" id="add-commerce" type="text" placeholder="請輸入所屬商會">
+                          </div>
+                        </div>
+                        <div class="col-12 col-md-4 px-1 px-md-2">
+                          <div class="form-group">
+                            <label for="add-name"><span class="t-red">*</span>理監事碼姓名</label>
+                            <input class="form-control" id="add-name" type="text" placeholder="請輸入姓名">
+                          </div>
+                        </div>
+                        <div class="col-6 col-md-4 px-1 px-md-2">
+                          <div class="form-group">
+                            <label for="add-eng_name"><span class="t-red">*</span>理監事碼英文姓</label>
+                            <input class="form-control" id="add-eng_name" type="text" placeholder="請輸入英文姓">
+                          </div>
+                        </div>
+                        <div class="col-6 col-md-4 px-1 px-md-2">
+                          <div class="form-group">
+                            <label for="add-eng_name2"><span class="t-red">*</span>理監事碼英文名</label>
+                            <input class="form-control" id="add-eng_name2" type="text" placeholder="請輸入英文名">
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-12 mt-3">
+                      <div class="row no-gutters">
+                        <div class="col-6 col-md-3 px-1 px-md-2">
+                          <div class="form-group">
+                            <label for="add-id">身分證號</label>
+                            <input class="form-control" id="add-id" type="text" placeholder="請輸入身分證號">
+                          </div>
+                        </div>
+                        <div class="col-6 col-md-3 px-1 px-md-2">
+                          <div class="form-group">
+                            <label for="add-passport">護照號碼</label>
+                            <input class="form-control" id="add-passport" type="text" placeholder="請輸入護照號碼">
+                          </div>
+                        </div>
+                        <div class="col-6 col-md-3 px-1 px-md-2">
+                          <div class="form-group">
+                            <label for="add-birthday">出生年月日</label>
+                            <input class="form-control date-input" id="add-birthday" type="text" placeholder="請輸入出生年月日">
+                          </div>
+                        </div>
+                        <div class="col-6 col-md-3 px-1 px-md-2">
+                          <div class="form-group">
+                            <label for="add-line">LINE ID</label>
+                            <input class="form-control" id="add-line" type="text" placeholder="請輸入Line ID">
+                          </div>
+                        </div>
+                        <div class="col-12 col-md-6 px-1 px-md-2">
+                          <div class="form-group">
+                            <label for="add-area">洲別</label>
+                            <select class="form-control" id="add-area">
+                              <option value="a">北美洲</option>
+                              <option value="b">亞洲</option>
+                              <option value="c">歐洲</option>
+                              <option value="d">非洲</option>
+                              <option value="e">中南美洲</option>
+                              <option value="f">大洋洲</option>
+                              <option value="g">世青</option>
+                            </select>
+                          </div>
+                        </div>
+                        <div class="col-12 col-md-6 px-1 px-md-2">
+                          <div class="form-group">
+                            <label for="add-phone_code">電話</label>
+                            <div class="form-row">
+                              <div class="col-5">
+                                <select class="form-control" id="add-phone_code">
+                                  <option value="02">02</option>
+                                </select>
+                              </div>
+                              <div class="col-7">
+                                <input class="form-control" id="add-phone" type="text" placeholder="請輸入電話號碼">
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-6 col-md-6 px-1 px-md-2">
+                          <div class="form-group">
+                            <div class="form-row">
+                              <div class="col-6 mb-1">
+                                <div>行動電話1</div>
+                              </div>
+                              <div class="col-6 mb-1 text-right">
+                                <div class="form-check phone-check">
+                                  <input class="form-check-input" id="add-sendPhone1" type="checkbox" name="add-sendPhone" value="option1" checked="">
+                                  <label class="form-check-label" for="add-sendPhone1">設定接收簡訊</label>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="form-row">
+                              <div class="col-5">
+                                <select class="form-control" id="add-phone-1_code">
+                                  <option value="886">+886</option>
+                                </select>
+                              </div>
+                              <div class="col-7">
+                                <input class="form-control" id="add-phone-1" type="text" placeholder="請輸入電話號碼">
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-6 col-md-6 px-1 px-md-2">
+                          <div class="form-group">
+                            <div class="form-row">
+                              <div class="col-6 mb-1">
+                                <div>行動電話1</div>
+                              </div>
+                              <div class="col-6 mb-1 text-right">
+                                <div class="form-check phone-check">
+                                  <input class="form-check-input" id="add-sendPhone2" type="checkbox" name="add-sendPhone" value="option2" checked="">
+                                  <label class="form-check-label" for="add-sendPhone2">設定接收簡訊</label>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="form-row">
+                              <div class="col-5">
+                                <select class="form-control" id="add-phone-2_code">
+                                  <option value="886">+886</option>
+                                </select>
+                              </div>
+                              <div class="col-7">
+                                <input class="form-control" id="add-phone-2" type="text" placeholder="請輸入電話號碼">
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-12 col-md-6 px-1 px-md-2">
+                          <div class="form-group">
+                            <label for="add-mail1">電子郵件1</label>
+                            <input class="form-control" id="add-mail1" type="email" placeholder="請輸入電子郵件">
+                          </div>
+                        </div>
+                        <div class="col-12 col-md-6 px-1 pl-md-2">
+                          <div class="form-group">
+                            <label for="add-mail2">電子郵件2</label>
+                            <input class="form-control" id="add-mail2" type="email" placeholder="請輸入電子郵件">
+                          </div>
+                        </div>
+                        <div class="col-12 col-md-6 px-1 px-md-2">
+                          <div class="form-group">
+                            <label for="add-address">國外地址</label>
+                            <input class="form-control" id="add-address" type="text" placeholder="請輸入國外地址">
+                          </div>
+                        </div>
+                        <div class="col-12 col-md-6 px-1 px-md-2">
+                          <div class="form-group">
+                            <label for="add-address-1">通訊地址</label>
+                            <input class="form-control" id="add-address-1" type="text" placeholder="請輸入通訊地址">
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <button class="btn btn-secondary w-100 mr-2" type="button" data-dismiss="modal">取消</button>
+                  <button class="btn btn-success w-100 ml-2" type="button">確認</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+    <div class="cursor"></div>
+    <script src="scripts/default/jquery.min.js"></script>
+    <script src="scripts/default/bootstrap.min.js"></script>
+    <script src="scripts/default/bootstrap.bundle.min.js"></script>
+    <script src="scripts/plugins/pagination.min.js"></script>
+    <script src="scripts/plugins/jquery-ui.min.js"></script>
+    <script>
+      $('.date-input').datepicker({
+          "dateFormat": "yy/mm/dd"
+      });
+      
+    </script>
+    <script src="scripts/default/admin.js"></script>
+  </body>
+</html>

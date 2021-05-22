@@ -1,0 +1,254 @@
+@mixin bg($name,$bg)
+  background-image: url("images/#{$name}.#{$bg}")
+  
+@mixin bg-in($file,$name,$bg)
+  background-image: url("images/#{$file}/#{$name}.#{$bg}")
+
+@mixin circle($size, $color)
+    width: $size
+    height: $size
+    background: $color
+    border-radius: 50%
+
+@mixin fillet($width, $height)
+	width: $width
+	height: $height
+	border-radius: $height
+
+
+@mixin flexbox
+	display: flex
+	-webkit-display: flex
+	-ms-display: flex
+	-o-display: flex
+
+@mixin center
+    position: absolute
+    top: 50%
+    left: 50%
+    transform: translate(-50%,-50%)
+
+@mixin elipsis-single
+    /* 單行文字顯示省略符號 */
+    white-space: nowrap
+    overflow: hidden
+    text-overflow: ellipsis
+
+@mixin elipsis-multi($rows,$height)
+    display: -webkit-box
+    -webkit-box-orient: vertical
+    -webkit-line-clamp: $rows
+    overflow: hidden
+    max-height: $height
+
+@mixin clear
+	content: ''
+	display: block
+	clear: both
+
+@mixin transBgCr
+    -o-transition: color .25s ease-in-out,background .25s ease-in-out
+    -webkit-transition: color .25s ease-in-out,background .25s ease-in-out
+    -moz-transition: color .25s ease-in-out,background .25s ease-in-out
+    transition: color .25s ease-in-out,background .25s ease-in-out
+
+@mixin trans($trans)
+    -o-transition: $trans .25s ease-in-out
+    -webkit-transition: $trans .25s ease-in-out
+    -moz-transition: $trans .25s ease-in-out
+    transition: $trans .25s ease-in-out
+
+@mixin pageFill
+    height: 100vh
+
+// padding
+@mixin p($tb,$lr)
+    padding: $tb $lr
+    +max-pad
+        padding: ($tb * 0.85) ($lr * 0.5)
+    +max-phones
+        padding: ($tb * 0.66) ($lr * 0.5)
+    
+@mixin ptrbl($t,$r,$b,$l)
+    padding: $t $r $b $l
+    +max-pad
+        padding: ($t * 0.85) ($r * 0.5) ($b * 0.85) ($l * 0.5)
+    +max-phones
+        padding: ($t * 0.66) ($r * 0.5) ($b * 0.66) ($l * 0.5)
+
+@mixin ptb($tb)
+    padding: $tb 0
+    +max-pad
+        padding: ($tb * 0.85) 0
+    +max-phones
+        padding: ($tb * 0.66) 0
+
+@mixin pt($t)
+    padding-top: $t
+    +max-pad
+        padding-top: ($t * 0.85)
+    +max-phones
+        padding-top: ($t * 0.66)
+
+@mixin pb($b)
+    padding-bottom: $b
+    +max-pad
+        padding-bottom: ($b * 0.85)
+    +max-phones
+        padding-bottom: ($b * 0.66)
+
+// padding left and right
+@mixin plr($lr)
+    padding-left: $lr
+    padding-right: $lr
+    +max-pad
+        padding-left: ($lr * 0.5)
+        padding-right: ($lr * 0.5)
+@mixin pl($l)
+    padding-left: $l
+    +max-pad
+        padding-left: ($l * 0.5)
+@mixin pr($r)
+    padding-right: $r
+    +max-pad
+        padding-right: ($r * 0.5)
+
+
+// margin ===============================================
+@mixin m($tb,$lr)
+    margin: $tb $lr
+    +max-pad
+        margin: ($tb * 0.85) ($lr * 0.5)
+    +max-phones
+        margin: ($tb * 0.66) ($lr * 0.5)
+
+@mixin mtrbl($t,$r,$b,$l)
+    margin: $t $r $b $l
+    +max-pad
+        margin: ($t * 0.85) ($r * 0.5) ($b * 0.85) ($l * 0.5)
+    +max-phones
+        margin: ($t * 0.66) ($r * 0.5) ($b * 0.66) ($l * 0.5)
+
+@mixin mtb($tb)
+    margin: $tb 0
+    +max-pad
+        margin: ($tb * 0.85) 0
+    +max-phones
+        margin: ($tb * 0.66) 0
+
+@mixin mt($t)
+    margin-top: $t
+    +max-pad
+        margin-top: ($t * 0.85)
+    +max-phones
+        margin-top: ($t * 0.66)
+
+@mixin mb($b)
+    margin-bottom: $b
+    +max-pad
+        margin-bottom: ($b * 0.85)
+    +max-phones
+        margin-bottom: ($b * 0.66)
+
+// padding left and right
+@mixin mlr($lr)
+    margin-left: $lr
+    margin-right: $lr
+    +max-pad
+        margin-left: ($lr * 0.5)
+        margin-right: ($lr * 0.5)
+@mixin ml($l)
+    margin-left: $l
+    +max-pad
+        margin-left: ($l * 0.5)
+@mixin mr($r)
+    margin-right: $r
+    +max-pad
+        margin-right: ($r * 0.5)
+
+
+// flexbox
+
+// Flexbox display
+@mixin flexbox
+  display: flex
+
+@mixin inline-flex
+    display: inline-flex
+
+// The 'flex' shorthand
+// - applies to: flex items
+// <positive-number>, initial, auto, or none
+@mixin flex($values)
+  	flex: $values
+
+
+// Flex Flow Direction
+// - applies to: flex containers
+// row | row-reverse | column | column-reverse
+@mixin flex-direction($direction)
+    flex-direction: $direction
+
+
+// Flex Line Wrapping
+// - applies to: flex containers
+// nowrap | wrap | wrap-reverse
+@mixin flex-wrap($wrap)
+    flex-wrap: $wrap
+
+
+// Flex Direction and Wrap
+// - applies to: flex containers
+// <flex-direction> || <flex-wrap>
+@mixin flex-flow($flow)
+    flex-flow: $flow
+
+
+// Display Order
+// - applies to: flex items
+// <integer>
+@mixin order($val)
+    order: $val
+
+// Flex grow factor
+// - applies to: flex items
+// <number>
+@mixin flex-grow($grow)
+    flex-grow: $grow
+
+// Flex shrink
+// - applies to: flex item shrink factor
+// <number> 
+@mixin flex-shrink($shrink)
+    flex-shrink: $shrink
+
+// Flex basis
+// - the initial main size of the flex item
+// - applies to: flex itemsnitial main size of the flex item
+// <width> 
+@mixin flex-basis($width)
+    flex-basis: $width
+
+// Axis Alignment
+// - applies to: flex containers
+// flex-start | flex-end | center | space-between | space-around 
+@mixin justify-content($justify) 
+    justify-content: $justify
+
+// Packing Flex Lines
+// - applies to: multi-line flex containers
+// flex-start | flex-end | center | space-between | space-around | stretch 
+@mixin align-content($align)
+    align-content: $align
+
+// Cross-axis Alignment
+// - applies to: flex containers
+// flex-start | flex-end | center | baseline | stretch 
+@mixin align-items($align)
+    align-items: $align
+
+// Cross-axis Alignment
+// - applies to: flex items
+// auto | flex-start | flex-end | center | baseline | stretch 
+@mixin align-self($align)
+    align-self: $align

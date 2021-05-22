@@ -1,0 +1,24 @@
+//- index.pug
+extends ./include/layout.pug
+block plugins-css
+    link(rel='stylesheet' type='text/css' href='styles/plugins/slick.css')
+    link(rel='stylesheet' type='text/css' href='styles/plugins/slick-theme.css')
+block plugins-js
+    script(src='scripts/plugins/slick.js')
+    
+block content
+    main.wrapper.d-flex.align-items-center.justify-content-center
+        .inner.text-center
+            h4.main-subTitle.mb-1.mb-sm-3 世界台灣商會聯合總會 
+            h2.main-Title.t-yellow.mb-3.mb-sm-5 第二十七屆第二次理監事會議討論事項提付表決議案
+            form.mt-2(action="vote.html")
+                .row.mx-auto(style='max-width:780px;')
+                    .col-12.col-md-4.pr-md-0.after-line
+                        input#name.w-100.form-item.row-rounded.rounded-r-0.bg-white-8(type='text', name='name' placeholder='請輸入姓名')
+                    .col-12.col-md-4.pl-md-0
+                        input#code.w-100.form-item.row-rounded.rounded-l-0.bg-white-8(type='text', name='code' placeholder='請輸入投票代碼')
+                    .col-12.col-md-4
+                        input.w-100.btn.btn-danger.form-item.row-rounded.justify-content-center(type="submit", value="登入")
+    .vote-time.text-right
+        i.icon-calendar.mr-2
+        span.f-en 2021/01/20 08:00 - 2021/01/30 18:00

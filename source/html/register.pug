@@ -1,0 +1,46 @@
+//- index.pug
+extends ./include/login-layout.pug
+block page-css
+    link(rel='stylesheet' type='text/css' href='styles/admin.css')
+    
+block content
+    main.wrapper.d-flex.align-items-center.justify-content-center
+        .login-box
+            .d-flex.align-items-center.logo-row
+                span.logo
+                    img.img-fluid(src="styles/images/logo.png", alt="")
+                div
+                    h1 世界台灣商會聯合總會
+                    h2 World Taiwanes#[br]Chambers of Commerce
+            p.border-top.pt-3.text-center 建立帳戶，請填寫以下資訊
+            form.pb-2(action="login.html")
+                .input-group.mb-4
+                    .input-group-prepend
+                        span.input-group-text
+                            i.icon-user
+                    input.form-control(type="text" placeholder="請輸入姓名" aria-label="Username")
+                .input-group.mb-4
+                    .input-group-prepend
+                        span.input-group-text
+                            i.icon-user
+                    input.form-control(type="text" placeholder="請輸入帳號" aria-label="Username")
+                .input-group.mb-4
+                    .input-group-prepend
+                        span.input-group-text
+                            i.icon-lock
+                    input.form-control(type="text" placeholder="請輸入密碼" aria-label="Username")
+                .input-group.mb-4
+                    .input-group-prepend
+                        span.input-group-text
+                            i.icon-lock
+                    input.form-control(type="text" placeholder="請再次輸入密碼" aria-label="Username")
+                .input-group.mb-4
+                    .input-group-prepend
+                        span.input-group-text
+                            i.icon-mail
+                    input.form-control(type="mail" placeholder="請輸入Email" aria-label="Username")
+                input.btn.btn-warning.w-100(type="submit", value="註冊")
+            .error.t-red
+                ul
+                    li 密碼和確認密碼不匹配
+                    li 必須同意條款和條件

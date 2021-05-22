@@ -1,0 +1,97 @@
+//- index.pug
+extends ./include/admin-layout.pug
+block page-css
+    link(rel='stylesheet' type='text/css' href='styles/admin.css')
+    
+block content
+    .top-bar.d-none.justify-content-between.align-items-center.d-xl-flex
+        span 促進海外台商企業發展，會員交流，提昇台商社會地位
+        .admin-user.d-inline-flex.align-items-center
+            .pic
+                img(src="styles/images/user.png", alt="" width='40px')
+            span.ml-2 admin
+            i.icon-angle-down
+        .admin-user-menu
+            button.logout-btn
+                i.icon-logout-1
+                span.ml-2 登出
+    main.admin-wrapper.pa-5
+        .container-fluid
+            .d-lg-flex.align-items-center.justify-content-between.mb-4.mb-lg-5.px-2
+                .admin-page-title.d-flex.align-items-center
+                    .icon.t-blue-dp
+                        i.icon-vote
+                    h2.t-blue-dp.h5.mb-0 最新開票結果
+                div.mt-3.mt-lg-0
+                    span.t-blue-dp 應投票人數
+                    span.val.t-blue.ml-2 1,000  
+                    span.mx-3(style='color: #dedede;') |   
+                    span.t-blue-dp 實際投票人數
+                    span.val.t-blue.ml-2 1,000
+            .row.pt-lg-3
+                .col-12.px-4
+                    h3.h5.label.t-blue-dp.mb-1 世界台商總會第二十九屆   目前開票結果
+                .col-12.col-lg-6.px-4.my-3
+                    .result-table
+                        .result-table_Title.bg-blue 總會長職務 總票數#[span.t-yellow.val 1,000]張
+                        table
+                            thead
+                                tr
+                                    th 候選人姓名
+                                    th 得票率
+                                    th 得票數
+                            tbody
+                                tr
+                                    td.t-red 同意
+                                    td.t-red 68%
+                                    td.t-red 680
+                                tr
+                                    td 沒意見
+                                    td 2%
+                                    td 20
+                                tr
+                                    td 不同意
+                                    td 30%
+                                    td 300
+                .col-12.col-lg-6.px-4.my-3
+                    .result-table
+                        .result-table_Title.bg-red 總會長職務 總票數#[span.t-yellow.val 1,000]張
+                        table
+                            thead
+                                tr
+                                    th 候選人姓名
+                                    th 得票率
+                                    th 得票數
+                            tbody
+                                tr
+                                    td.t-red 同意
+                                    td.t-red 50%
+                                    td.t-red 500
+                                tr
+                                    td 沒意見
+                                    td 2%
+                                    td 20
+                                tr
+                                    td 不同意
+                                    td 48%
+                                    td 480
+            hr.my-3.my-lg-5
+            .row
+                .col-12.px-4
+                    h3.h5.label.t-blue-dp.mb-1 世界台商總會第二十七屆   投票率
+                .col-12.col-lg-6.px-4.my-3
+                    .card.border.h-100.py-4
+                        .card-body
+                            .d-flex.align-items-center.justify-content-between.w-100
+                                h6.m-0.h6.t-blue-dp 第二十九屆總會長暨第二十八屆監事長選舉 
+                                .val.t-blue 66%
+                            .progress.mt-3
+                                .progress-bar(role="progressbar" style="width: 25%;background-color:#1967D8;" aria-valuenow="66" aria-valuemin="0" aria-valuemax="100")
+                .col-12.col-lg-6.px-4.my-3
+                    .card.border.h-100.py-4
+                        .card-body
+                            .d-flex.align-items-center.justify-content-between
+                                h6.m-0.h6.t-blue-dp 第二十七屆第二次理監事會議討論事項提付表決議案
+                                .val.t-orange 80%
+                            .progress.mt-3
+                                .progress-bar(role="progressbar" style="width: 80%;background-color:#FFA700;" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100")

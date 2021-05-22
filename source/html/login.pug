@@ -1,0 +1,29 @@
+//- index.pug
+extends ./include/login-layout.pug
+block page-css
+    link(rel='stylesheet' type='text/css' href='styles/admin.css')
+    
+block content
+    main.wrapper.d-flex.align-items-center.justify-content-center
+        .login-box
+            .d-flex.align-items-center.logo-row
+                span.logo
+                    img.img-fluid(src="styles/images/logo.png", alt="")
+                div
+                    h1 世界台灣商會聯合總會
+                    h2 World Taiwanes#[br]Chambers of Commerce
+            form(action="admin.html")
+                .input-group.mb-4
+                    .input-group-prepend
+                        span.input-group-text
+                            i.icon-user
+                    input.form-control(type="text" placeholder="請輸入帳號" aria-label="Username")
+                .input-group.mb-4
+                    .input-group-prepend
+                        span.input-group-text
+                            i.icon-lock
+                    input.form-control(type="text" placeholder="請輸入密碼" aria-label="Username")
+                input.btn.btn-warning.w-100(type="submit", value="登入")
+            .d-flex.align-items-center.justify-content-between.pt-3
+                a.t-white.link(href="register.html") 建立帳號
+                a.t-white.link(href="forgetpassword.html") 忘記密碼？ 

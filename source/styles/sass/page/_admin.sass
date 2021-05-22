@@ -1,0 +1,408 @@
+#login
+    .logo
+        width: 85px
+        height: 80px
+        margin-right: 15px
+    .logo-row
+        margin-bottom: 24px
+        h1
+            font-size: 1.2rem
+            margin-bottom: 0
+        h2
+            font-size: 1rem
+            font-family: "Helvetica Neue", Helvetica, sans-serif
+            margin-bottom: 0
+    +max-phone
+        .wrapper
+            margin-top: 17vh
+input
+    &:focus
+        border: none
+        outline: none
+    &::placeholder
+        color: $white !important
+
+.form-control
+    font-size: .9rem
+
+.input-group
+    background-color: rgba($white,.2)
+    border-radius: 4px
+    overflow: hidden
+    .form-control
+        padding-left: 0
+
+.input-group-prepend,.input-group-text,.form-control
+    background-color: transparent !important
+    color: $white
+    border: none
+
+.admin-wrapper
+    +min-notebook
+        margin-left: 230px
+        padding: 20px 10px
+        max-height: calc(100% - 60px)
+        overflow-y: auto
+        &::-webkit-scrollbar
+            width: 5px
+        &::-webkit-scrollbar-track
+            -webkit-box-shadow: 0 0 0 0
+            -webkit-border-radius: 5px
+            border-radius: 5px
+        &::-webkit-scrollbar-thumb
+            -webkit-border-radius: 5px
+            border-radius: 5px
+            background: $line-color
+            -webkit-box-shadow: 0 0 0 0
+            &:window-inactive
+                background: $line-color
+    +min-pc
+        padding: 30px 20px
+    +max-padpro
+        margin-top: 61px
+        padding: 30px 0
+
+.table
+    font-size: 14px
+    th
+        font-weight: 500
+        border-color: rgba($line-color,.8) !important
+    td
+        color: $dark
+        vertical-align: middle
+        border-color: rgba($line-color,.8) !important
+    tbody
+        tr
+            transition: background .25s
+            &:hover
+                background-color: rgba($primary-color,.1)
+    +max-phone
+        font-size: 14px
+
+.admin-page-title
+    .icon
+        font-size: 30px
+        margin-right: 5px
+
+.dataTables_wrapper
+    .table-responsive
+        margin-bottom: 20px
+        &::-webkit-scrollbar
+            height: 5px
+        &::-webkit-scrollbar-track
+            -webkit-box-shadow: 0 0 0 0
+            -webkit-border-radius: 5px
+            background: rgba($line-color,.8)
+            border-radius: 5px
+        &::-webkit-scrollbar-thumb
+            width: 50%  
+            -webkit-border-radius: 5px
+            border-radius: 5px
+            background: rgba($primary-color,.2)
+            -webkit-box-shadow: 0 0 0 0
+            &:window-inactive
+                background: rgba($primary-color,.2)
+        .table
+            margin-bottom: 0
+
+#addModalCenter.meeting-dialog,#detailModalCenter.meeting-dialog
+    .modal-dialog
+        max-width: 90vw !important
+
+#detailModalCenter.meeting-dialog
+    form
+        height: calc(100% - 85px)
+
+    .model-body
+        height: calc(100% - 80px)
+        overflow-y: auto
+
+#addModalCenter .modal-dialog,
+#editModalCenter .modal-dialog,
+#peopleModalCenter .modal-dialog
+    max-width: 900px
+    max-height: 90vh
+
+.vote-dialog .modal-dialog
+    max-width: 1200px !important
+    
+#addModalCenter.vote-dialog
+    .modal-content
+        height: 90vh
+    form
+        height: calc(100% - 85px)
+    .model-body
+        height: calc(100% - 80px)
+        overflow-y: auto
+.modal-dialog
+    .modal-body
+        max-height: 70vh
+        overflow-y: auto
+        &::-webkit-scrollbar
+            width: 5px
+        &::-webkit-scrollbar-track
+            -webkit-box-shadow: 0 0 0 0
+            -webkit-border-radius: 5px
+            background: rgba($line-color,.8)
+            border-radius: 5px
+        &::-webkit-scrollbar-thumb
+            width: 50%  
+            -webkit-border-radius: 5px
+            border-radius: 5px
+            background: rgba($primary-color,.2)
+            -webkit-box-shadow: 0 0 0 0
+            &:window-inactive
+                background: rgba($primary-color,.2)
+
+.has-addInput-group,.has-lessInput-group
+    .add-inputBtn,.less-inputBtn
+        width: 50px
+        height: 42px
+        font-size: 24px
+        display: flex
+        align-items: center
+        justify-content: center
+        cursor: pointer
+        transition: color .25s
+        &:hover
+            color: $four-color
+        &.disabled
+            opacity: .2
+            pointer-events: none;
+
+.member-pic
+    width: 60px
+    height: 60px
+    overflow: hidden
+    background-color: $line-color
+    img
+        width: 100%
+        height: 100%
+        object-fit: cover
+
+.form-group__file
+  display: flex
+  flex-direction: column
+  position: relative
+  width: 100%
+  min-width: 130px
+  height: 180px
+
+.file-input
+  opacity: 0
+  position: absolute
+  top: 0
+  left: 0
+  right: 0
+  bottom: 0
+  width: 100%
+  height: 100%
+  cursor: pointer
+  z-index: 100
+
+.file-preview-background
+  position: absolute
+  bottom: 0
+  left: 0
+  width: 100%
+  height: 100%
+  background-color: #f7f7f7
+  border: 2px dashed #dfdfdf
+  border-radius: 10px
+  text-transform: uppercase
+  font-size: 14px
+  letter-spacing: 3px
+  text-align: center
+  color: #bbb
+  display: flex
+  justify-content: center
+  align-items: center
+  z-inde: 1
+
+.file-preview
+  width: 90%
+  height: 90%
+  position: absolute
+  top: 5%
+  left: 5%
+  border-radius: 65px
+  z-index: 10
+  object-fit: cover
+  opacity: 0
+  transition: opacity 0.4s ease-in
+
+.form-control
+    font-size: 15px
+    padding: .35rem .5rem
+    min-height: 42.5px
+    +max-phone-mid
+        font-size: .9rem
+        padding: .35rem !important
+
+#admin-vote
+    tr
+        background-color: transparent !important
+    tbody
+        transition: background .25s
+        &:hover
+            background-color: rgba($primary-color,.1)
+
+#admin-vote .voting-table
+    tbody tr
+        background-color: #fff !important
+    thead tr
+        background-color: rgba($primary-color,.1)
+    th,td
+        padding: 5px 10px
+.collapse-toggle
+    cursor: pointer
+    i
+        display: inline-block
+        font-size: 20px
+        transition: transform .25s
+.collapse-body
+    &.active
+        .collapse-body-item
+            td
+                background-color: $line-color
+            button
+                color: rgba($primary-dp-color,.8)
+        .collapse-toggle
+            i
+                transform: rotate(180deg)
+        .collapse-body-inner
+            table
+                td,th
+                    border: none
+                    border-bottom: 1px solid $line-color
+                    border-left: 1px solid $line-color
+                    min-height: 40px
+                    &:first-child
+                        border-left: none
+.collapse-body-inner
+    display: none
+    background-color: $line-color
+    padding: 10px
+    &.voting-table-inner
+        max-height: 40vh
+        overflow-y: auto
+        +min-notebook
+            &::-webkit-scrollbar
+                width: 5px
+            &::-webkit-scrollbar-track
+                -webkit-box-shadow: 0 0 0 0
+                -webkit-border-radius: 5px
+                border-radius: 5px
+            &::-webkit-scrollbar-thumb
+                -webkit-border-radius: 5px
+                border-radius: 5px
+                background: $line-color
+                -webkit-box-shadow: 0 0 0 0
+                &:window-inactive
+                    background: $line-color
+
+.collapse-body-item + tr
+    > td 
+        border: none!important
+        padding: 0!important
+
+.ui-tooltip
+    font-size: 15px !important
+
+#sendModalCenter
+    .sendBtn
+        width: 100%
+        display: block
+        background-color: rgba($primary-dp-color,.1)
+        color: $primary-dp-color
+        padding: 7px 10px
+        border-radius: 5px
+        span
+            margin-left: 0
+        &:hover
+            background-color: rgba($primary-dp-color,.6)
+            color: $white
+
+.phone-check
+    .form-check-label
+        font-size: 15px
+    .form-check-input
+        bottom: 5px
+        margin-left: -1.25rem
+ul.pagination
+    margin: 20px auto;
+ul.pagination>li>a
+    border-color: $line-color
+    color: $primary-dp-color !important
+    &:hover
+        border-color: $primary-dp-color
+
+ul.pagination>li.active a
+    border-color: $primary-dp-color !important
+    background-color: $primary-dp-color !important
+    color: $white !important
+
+.page-link
+    width: 38px
+    height: 38px
+    padding: 0
+    display: inline-flex
+    align-items: center
+    justify-content: center
+
+.custom-file-label::after
+    content: '\f15c'
+    font-family: "fontello"
+
+.cutover
+    margin: 0
+
+.cutover-in
+    height: 0
+    opacity: 0
+    visibility: hidden
+    overflow: hidden
+    -webkit-transition: opacity 0.5s 0.1s
+    transition: opacity 0.5s 0.1s
+
+    &.show
+        height: auto
+        opacity: 1
+        visibility: visible
+        -webkit-transition: opacity 0.5s 0.1s
+        transition: opacity 0.5s 0.1s
+
+.meeting-detail-nav
+    a
+        margin: 0 20px
+        color: #404040
+        position: relative
+    .nav-item
+        position: relative
+        &::after
+            content: ''
+            display: block
+            width: 36px
+            height: 5px
+            position: absolute
+            left: 20px
+            bottom: -28px
+        &:hover 
+            a
+                opacity: .6
+        &.active
+            a
+                opacity: 1
+            &::after
+                background-color: #1967D8
+
+.input-link
+    display: none
+
+.travel-body
+    td
+        border: none
+    tr
+        &:last-child
+            td
+                padding-top: 0

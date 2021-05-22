@@ -1,0 +1,26 @@
+//- index.pug
+extends ./include/layout.pug
+block plugins-css
+    link(rel='stylesheet' type='text/css' href='styles/plugins/slick.css')
+    link(rel='stylesheet' type='text/css' href='styles/plugins/slick-theme.css')
+block plugins-js
+    script(src='scripts/plugins/slick.js')
+    
+block content
+    main.wrapper.d-flex.justify-content-center.align-items-center
+        .inner.text-center.pb-5
+            h2.main-Title 感謝您參與#[br]總會第二十七屆 #[span.t-yellow 第二次理監事聯席會議案] 投票結果
+            a.btn.btn-danger.form-item.row-rounded.justify-content-center.px-0.mx-auto.mt-5(style='max-width:300px;' href="result.html" )
+                i.icon-vote(style='font-size: 20px;')
+                span.ml-2 觀看投票結果
+            //- .mt-3.mt-md-4
+            //-     h3.main-secondTitle.mb-4 第二十九屆總會長暨第二十八屆監事長選舉 
+            //-     .progress
+            //-         .progress-bar(role="progressbar" style="width: 66%;" aria-valuenow="66" aria-valuemin="0" aria-valuemax="100") 66%
+            //-     hr.my-5
+            //-     h3.main-secondTitle.mb-4 第二十七屆第二次理監事會議討論事項提付表決議案
+            //-     .progress
+            //-         .progress-bar(role="progressbar" style="width: 80%;" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100") 80%
+    .vote-time.text-right
+        i.icon-calendar.mr-2
+        span.f-en 2021/01/20 08:00 - 2021/01/30 18:00

@@ -1,0 +1,655 @@
+//- index.pug
+extends ./include/admin-layout.pug
+block page-css
+    link(rel='stylesheet' type='text/css' href='styles/plugins/pagination.min.css')
+    link(rel='stylesheet' type='text/css' href='styles/admin.css')
+block plugins-css
+    link(rel='stylesheet' type='text/css' href='styles/plugins/jquery-ui.min.css')
+block plugins-js
+    script(src='scripts/plugins/jquery-ui.min.js')
+    script.
+        $('.date-input').datepicker({
+            "dateFormat": "yy/mm/dd"
+        });
+
+block content
+    .top-bar.d-none.justify-content-between.align-items-center.d-xl-flex
+        span 促進海外台商企業發展，會員交流，提昇台商社會地位
+        .admin-user.d-inline-flex.align-items-center
+            .pic
+                img(src="styles/images/user.png", alt="" width='40px')
+            span.ml-2 admin
+            i.icon-angle-down
+        .admin-user-menu
+            button.logout-btn
+                i.icon-logout-1
+                span.ml-2 登出
+    main.admin-wrapper.pa-5
+        .container-fluid
+            .d-flex.align-items-center.justify-content-between.mb-3.px-2
+                .admin-page-title.d-flex.align-items-center
+                    .icon.t-blue-dp
+                        i.icon-user
+                    h2.t-blue-dp.h5.mb-0 會員管理
+                div.mt-3.mt-lg-0
+                    button.btn.btn-primary(type="button" data-toggle="modal" data-target="#addModalCenter" style='width: 140px;') 新增會員
+            .card.border.mb-4
+                .card-body(style='min-height:80vh;')
+                    #dataTable_wrapper.dataTables_wrapper.h-100.d-flex.flex-column.justify-content-between
+                        div
+                            .row.my-3
+                                .col-sm-12.col-md-6.my-1.my-lg-0
+                                    #dataTable_length.dataTables_length
+                                        label.d-inline-flex.align-items-center.mb-0
+                                            div(style='width:80px;') 顯示 
+                                            select.custom-select.custom-select-sm.form-control.form-control-sm.mx-2(name="dataTable_length" aria-controls="dataTable")
+                                                option(value="10") 10
+                                                option(value="25") 25
+                                                option(value="50") 50
+                                                option(value="100") 100
+                                            | 筆 
+                                .col-sm-12.col-md-6.text-lg-right.my-1.my-lg-0
+                                    #dataTable_filter.dataTables_filter
+                                        label.d-inline-flex.align-items-center.mb-0
+                                            div(style='width:50px;') 搜尋
+                                            input.form-control.form-control-sm.mx-2(type="search" placeholder="" aria-controls="dataTable")
+                            .table-responsive
+                                .row
+                                    .col-sm-12
+                                        table#dataTable.table.table-bordered.dataTable(width="100%" cellspacing="0" role="grid" aria-describedby="dataTable_info" style="width: 100%;")
+                                            thead
+                                                tr
+                                                    th(style='min-width:90px;') 理監事碼
+                                                    th(style='min-width:80px;') 職稱
+                                                    th(style='min-width:120px;') 所屬商會
+                                                    th(style='min-width:80px;') 照片
+                                                    th(style='min-width:80px;') 姓名
+                                                    th(style='min-width:80px;') 英文姓
+                                                    th(style='min-width:80px;') 英文名
+                                                    th(style='min-width:110px;') 出生年月日
+                                                    th 身分證號
+                                                    th 護照號碼
+                                                    th(style='min-width:120px;') Line ID
+                                                    th(style='min-width:120px;') 電話
+                                                    th(style='min-width:140px;') 行動電話1
+                                                    th(style='min-width:150px;') 行動電話2
+                                                    th(style='min-width:80px;') 洲別
+                                                    th 電子郵件1
+                                                    th 電子郵件2
+                                                    th(style='min-width:300px;') 國外地址
+                                                    th(style='min-width:300px;') 通訊地址
+                                                    th.text-center(style='min-width:110px;') 執行
+                                            tbody
+                                                tr
+                                                    td F00559
+                                                    td 理事
+                                                    td 世總秘書會
+                                                    td.pa-1
+                                                        .member-pic
+                                                            img(src="styles/images/man.png", alt="")
+                                                    td 王先生
+                                                    td Wang
+                                                    td Jerry
+                                                    td 1960/10/01
+                                                    td B000000000
+                                                    td 012345678
+                                                    td ACE329102
+                                                    td 02-22220000
+                                                    td 0900-123456
+                                                    td +886-900-123456
+                                                    td 大洋洲
+                                                    td
+                                                        a(href="mailto:it@wtcc.org.tw") it@wtcc.org.tw
+                                                    td
+                                                        a(href="mailto:wtcc@wtcc.org.tw") wtcc@wtcc.org.tw
+                                                    td 13F.-3, No. 30, Beiping E. Rd., Zhongzheng Dist., Taipei City 100, Taiwan (R.O.C.)
+                                                    td 台北市中正區北平東路30號13樓之3
+                                                    td.text-center
+                                                        button.iconBtn(type="button" data-toggle="modal" data-target="#editModalCenter" data-tooltip="tooltip" data-placement="bottom" title="編輯")
+                                                            i.icon-pen
+                                                        button.iconBtn(type="button" data-toggle="modal" data-target="#deleteModalCenter" data-tooltip="tooltip" data-placement="bottom" title="刪除")
+                                                            i.icon-delete
+                                                tr
+                                                    td F00559
+                                                    td 理事
+                                                    td 世總秘書會
+                                                    td.pa-1
+                                                        .member-pic
+                                                            img(src="styles/images/woman.png", alt="")
+                                                    td 陳小姐
+                                                    td Chen
+                                                    td Anny
+                                                    td 1960/10/01
+                                                    td B000000000
+                                                    td 012345678
+                                                    td ACE329102
+                                                    td 02-22220000
+                                                    td 0900-123456
+                                                    td +886-900-123456
+                                                    td 大洋洲
+                                                    td
+                                                        a(href="mailto:it@wtcc.org.tw") it@wtcc.org.tw
+                                                    td
+                                                        a(href="mailto:wtcc@wtcc.org.tw") wtcc@wtcc.org.tw
+                                                    td 13F.-3, No. 30, Beiping E. Rd., Zhongzheng Dist., Taipei City 100, Taiwan (R.O.C.)
+                                                    td 台北市中正區北平東路30號13樓之3
+                                                    td.text-center
+                                                        button.iconBtn(type="button" data-toggle="modal" data-target="#editModalCenter" data-tooltip="tooltip" data-placement="bottom" title="編輯")
+                                                            i.icon-pen
+                                                        button.iconBtn(type="button" data-toggle="modal" data-target="#deleteModalCenter" data-tooltip="tooltip" data-placement="bottom" title="刪除")
+                                                            i.icon-delete
+                                                tr
+                                                    td F00559
+                                                    td 理事
+                                                    td 世總秘書會
+                                                    td.pa-1
+                                                        .member-pic
+                                                            img(src="styles/images/man.png", alt="")
+                                                    td 王先生
+                                                    td Wang
+                                                    td Jerry
+                                                    td 1960/10/01
+                                                    td B000000000
+                                                    td 012345678
+                                                    td ACE329102
+                                                    td 02-22220000
+                                                    td 0900-123456
+                                                    td +886-900-123456
+                                                    td 大洋洲
+                                                    td
+                                                        a(href="mailto:it@wtcc.org.tw") it@wtcc.org.tw
+                                                    td
+                                                        a(href="mailto:wtcc@wtcc.org.tw") wtcc@wtcc.org.tw
+                                                    td 13F.-3, No. 30, Beiping E. Rd., Zhongzheng Dist., Taipei City 100, Taiwan (R.O.C.)
+                                                    td 台北市中正區北平東路30號13樓之3
+                                                    td.text-center
+                                                        button.iconBtn(type="button" data-toggle="modal" data-target="#editModalCenter" data-tooltip="tooltip" data-placement="bottom" title="編輯")
+                                                            i.icon-pen
+                                                        button.iconBtn(type="button" data-toggle="modal" data-target="#deleteModalCenter" data-tooltip="tooltip" data-placement="bottom" title="刪除")
+                                                            i.icon-delete
+                                                tr
+                                                    td F00559
+                                                    td 理事
+                                                    td 世總秘書會
+                                                    td.pa-1
+                                                        .member-pic
+                                                            img(src="styles/images/woman.png", alt="")
+                                                    td 陳小姐
+                                                    td Chen
+                                                    td Anny
+                                                    td 1960/10/01
+                                                    td B000000000
+                                                    td 012345678
+                                                    td ACE329102
+                                                    td 02-22220000
+                                                    td 0900-123456
+                                                    td +886-900-123456
+                                                    td 大洋洲
+                                                    td
+                                                        a(href="mailto:it@wtcc.org.tw") it@wtcc.org.tw
+                                                    td
+                                                        a(href="mailto:wtcc@wtcc.org.tw") wtcc@wtcc.org.tw
+                                                    td 13F.-3, No. 30, Beiping E. Rd., Zhongzheng Dist., Taipei City 100, Taiwan (R.O.C.)
+                                                    td 台北市中正區北平東路30號13樓之3
+                                                    td.text-center
+                                                        button.iconBtn(type="button" data-toggle="modal" data-target="#editModalCenter" data-tooltip="tooltip" data-placement="bottom" title="編輯")
+                                                            i.icon-pen
+                                                        button.iconBtn(type="button" data-toggle="modal" data-target="#deleteModalCenter" data-tooltip="tooltip" data-placement="bottom" title="刪除")
+                                                            i.icon-delete
+                                                tr
+                                                    td F00559
+                                                    td 理事
+                                                    td 世總秘書會
+                                                    td.pa-1
+                                                        .member-pic
+                                                            img(src="styles/images/man.png", alt="")
+                                                    td 王先生
+                                                    td Wang
+                                                    td Jerry
+                                                    td 1960/10/01
+                                                    td B000000000
+                                                    td 012345678
+                                                    td ACE329102
+                                                    td 02-22220000
+                                                    td 0900-123456
+                                                    td +886-900-123456
+                                                    td 大洋洲
+                                                    td
+                                                        a(href="mailto:it@wtcc.org.tw") it@wtcc.org.tw
+                                                    td
+                                                        a(href="mailto:wtcc@wtcc.org.tw") wtcc@wtcc.org.tw
+                                                    td 13F.-3, No. 30, Beiping E. Rd., Zhongzheng Dist., Taipei City 100, Taiwan (R.O.C.)
+                                                    td 台北市中正區北平東路30號13樓之3
+                                                    td.text-center
+                                                        button.iconBtn(type="button" data-toggle="modal" data-target="#editModalCenter" data-tooltip="tooltip" data-placement="bottom" title="編輯")
+                                                            i.icon-pen
+                                                        button.iconBtn(type="button" data-toggle="modal" data-target="#deleteModalCenter" data-tooltip="tooltip" data-placement="bottom" title="刪除")
+                                                            i.icon-delete
+                                                tr
+                                                    td F00559
+                                                    td 理事
+                                                    td 世總秘書會
+                                                    td.pa-1
+                                                        .member-pic
+                                                            img(src="styles/images/woman.png", alt="")
+                                                    td 陳小姐
+                                                    td Chen
+                                                    td Anny
+                                                    td 1960/10/01
+                                                    td B000000000
+                                                    td 012345678
+                                                    td ACE329102
+                                                    td 02-22220000
+                                                    td 0900-123456
+                                                    td +886-900-123456
+                                                    td 大洋洲
+                                                    td
+                                                        a(href="mailto:it@wtcc.org.tw") it@wtcc.org.tw
+                                                    td
+                                                        a(href="mailto:wtcc@wtcc.org.tw") wtcc@wtcc.org.tw
+                                                    td 13F.-3, No. 30, Beiping E. Rd., Zhongzheng Dist., Taipei City 100, Taiwan (R.O.C.)
+                                                    td 台北市中正區北平東路30號13樓之3
+                                                    td.text-center
+                                                        button.iconBtn(type="button" data-toggle="modal" data-target="#editModalCenter" data-tooltip="tooltip" data-placement="bottom" title="編輯")
+                                                            i.icon-pen
+                                                        button.iconBtn(type="button" data-toggle="modal" data-target="#deleteModalCenter" data-tooltip="tooltip" data-placement="bottom" title="刪除")
+                                                            i.icon-delete
+                                                tr
+                                                    td F00559
+                                                    td 理事
+                                                    td 世總秘書會
+                                                    td.pa-1
+                                                        .member-pic
+                                                            img(src="styles/images/man.png", alt="")
+                                                    td 王先生
+                                                    td Wang
+                                                    td Jerry
+                                                    td 1960/10/01
+                                                    td B000000000
+                                                    td 012345678
+                                                    td ACE329102
+                                                    td 02-22220000
+                                                    td 0900-123456
+                                                    td +886-900-123456
+                                                    td 大洋洲
+                                                    td
+                                                        a(href="mailto:it@wtcc.org.tw") it@wtcc.org.tw
+                                                    td
+                                                        a(href="mailto:wtcc@wtcc.org.tw") wtcc@wtcc.org.tw
+                                                    td 13F.-3, No. 30, Beiping E. Rd., Zhongzheng Dist., Taipei City 100, Taiwan (R.O.C.)
+                                                    td 台北市中正區北平東路30號13樓之3
+                                                    td.text-center
+                                                        button.iconBtn(type="button" data-toggle="modal" data-target="#editModalCenter" data-tooltip="tooltip" data-placement="bottom" title="編輯")
+                                                            i.icon-pen
+                                                        button.iconBtn(type="button" data-toggle="modal" data-target="#deleteModalCenter" data-tooltip="tooltip" data-placement="bottom" title="刪除")
+                                                            i.icon-delete
+                                                tr
+                                                    td F00559
+                                                    td 理事
+                                                    td 世總秘書會
+                                                    td.pa-1
+                                                        .member-pic
+                                                            img(src="styles/images/woman.png", alt="")
+                                                    td 陳小姐
+                                                    td Chen
+                                                    td Anny
+                                                    td 1960/10/01
+                                                    td B000000000
+                                                    td 012345678
+                                                    td ACE329102
+                                                    td 02-22220000
+                                                    td 0900-123456
+                                                    td +886-900-123456
+                                                    td 大洋洲
+                                                    td
+                                                        a(href="mailto:it@wtcc.org.tw") it@wtcc.org.tw
+                                                    td
+                                                        a(href="mailto:wtcc@wtcc.org.tw") wtcc@wtcc.org.tw
+                                                    td 13F.-3, No. 30, Beiping E. Rd., Zhongzheng Dist., Taipei City 100, Taiwan (R.O.C.)
+                                                    td 台北市中正區北平東路30號13樓之3
+                                                    td.text-center
+                                                        button.iconBtn(type="button" data-toggle="modal" data-target="#editModalCenter" data-tooltip="tooltip" data-placement="bottom" title="編輯")
+                                                            i.icon-pen
+                                                        button.iconBtn(type="button" data-toggle="modal" data-target="#deleteModalCenter" data-tooltip="tooltip" data-placement="bottom" title="刪除")
+                                                            i.icon-delete
+                                                tr
+                                                    td F00559
+                                                    td 理事
+                                                    td 世總秘書會
+                                                    td.pa-1
+                                                        .member-pic
+                                                            img(src="styles/images/man.png", alt="")
+                                                    td 王先生
+                                                    td Wang
+                                                    td Jerry
+                                                    td 1960/10/01
+                                                    td B000000000
+                                                    td 012345678
+                                                    td ACE329102
+                                                    td 02-22220000
+                                                    td 0900-123456
+                                                    td +886-900-123456
+                                                    td 大洋洲
+                                                    td
+                                                        a(href="mailto:it@wtcc.org.tw") it@wtcc.org.tw
+                                                    td
+                                                        a(href="mailto:wtcc@wtcc.org.tw") wtcc@wtcc.org.tw
+                                                    td 13F.-3, No. 30, Beiping E. Rd., Zhongzheng Dist., Taipei City 100, Taiwan (R.O.C.)
+                                                    td 台北市中正區北平東路30號13樓之3
+                                                    td.text-center
+                                                        button.iconBtn(type="button" data-toggle="modal" data-target="#editModalCenter" data-tooltip="tooltip" data-placement="bottom" title="編輯")
+                                                            i.icon-pen
+                                                        button.iconBtn(type="button" data-toggle="modal" data-target="#deleteModalCenter" data-tooltip="tooltip" data-placement="bottom" title="刪除")
+                                                            i.icon-delete
+                        .row.align-items-center
+                            .col-sm-12.col-md-2.mb-3.mb-lg-0
+                                #dataTable_info.dataTables_info(role="status" aria-live="polite") 顯示 1 到 12 筆   共 57筆
+                            .col-sm-12.col-md-8
+                                #dataTable_paginate.dataTables_paginate.paging_simple_numbers
+                                    ul#member-pagination.pagination
+            
+            #editModalCenter.modal.fade(tabindex="-1" role="dialog" aria-labelledby="editModalCenterTitle" aria-hidden="true")
+                .modal-dialog.modal-dialog-centered(role="document")
+                    .modal-content
+                        .modal-header
+                            .admin-page-title.d-flex.align-items-center
+                                .icon.t-blue-dp
+                                    i.icon-user
+                                .t-blue-dp.h5.mb-0 會員編輯
+                            button.close(type="button" data-dismiss="modal" aria-label="Close")
+                                span(aria-hidden="true") ×
+                        form
+                            .modal-body
+                                .row.no-gutters
+                                    .col-12.col-md-3.mb-4.mb-md-0
+                                        .row.no-gutters
+                                            .col-12.px-1.px-md-2
+                                                .form-group__file
+                                                    .file-wrapper
+                                                        input#add-imageUpload.file-input(type="file" name="imageUpload")
+                                                        .file-preview-background Upload Image
+                                                        img#edit-imagePreview.file-preview(style='opacity: 1;' src="styles/images/logo.png" width="200px")
+                                                        div
+                                    .col-12.col-md-9
+                                        .row.no-gutters
+                                            .col-6.col-md-4.px-1.px-md-2
+                                                .form-group
+                                                    label(for="edit-number") 理監事碼
+                                                    input#edit-number.form-control(type="text" value="F00559")
+                                            .col-6.col-md-4.px-1.px-md-2
+                                                .form-group
+                                                    label(for="edit-job") 職稱
+                                                    select#edit-job.form-control
+                                                        option(value="1") 名譽總會長
+                                                        option(value="2") 名譽監事長
+                                                        option(value="3") 諮詢委員
+                                                        option(value="4") 資深顧問
+                                                        option(value="5") 顧問
+                                                        option(value="6") 副總會長
+                                                        option(value="7") 秘書長
+                                                        option(value="8") 財務長
+                                                        option(value="9" selected) 理事
+                                                        option(value="10") 總會長
+                                                        option(value="11") 監事長
+                                                        option(value="12") 副監事長
+                                                        option(value="13") 監事
+                                            .col-12.col-md-4.px-1.px-md-2
+                                                .form-group
+                                                    label(for="edit-commerce") 所屬商會
+                                                    input#edit-commerce.form-control(type="text" value="世總秘書會")
+                                            .col-12.col-md-4.px-1.px-md-2
+                                                .form-group
+                                                    label(for="edit-name") 姓名
+                                                    input#edit-name.form-control(type="text" value="王先生")
+                                            .col-6.col-md-4.px-1.px-md-2
+                                                .form-group
+                                                    label(for="edit-eng_name") 英文姓
+                                                    input#edit-eng_name.form-control(type="text" value="Wang")
+                                            .col-6.col-md-4.px-1.px-md-2
+                                                .form-group
+                                                    label(for="edit-eng_name2") 英文名
+                                                    input#edit-eng_name2.form-control(type="text" value="Jerry")
+                                    .col-12.mt-3
+                                        .row.no-gutters
+                                            .col-6.col-md-3.px-1.px-md-2
+                                                .form-group
+                                                    label(for="edit-id") 身分證號
+                                                    input#edit-id.form-control(type="text" value="B000000000")
+                                            .col-6.col-md-3.px-1.px-md-2
+                                                .form-group
+                                                    label(for="edit-passport") 護照號碼
+                                                    input#edit-passport.form-control(type="text" value="012345678")
+                                            .col-6.col-md-3.px-1.px-md-2
+                                                .form-group
+                                                    label(for="edit-birthday") 出生年月日
+                                                    input#edit-birthday.form-control.date-input(type="text" value="1960/10/01")
+                                            .col-6.col-md-3.px-1.px-md-2
+                                                .form-group
+                                                    label(for="edit-line") LINE ID
+                                                    input#edit-line.form-control(type="text" value="ACE329102")
+                                            .col-12.col-md-6.px-1.px-md-2
+                                                .form-group
+                                                    label(for="edit-area") 洲別
+                                                    select#edit-area.form-control
+                                                        option(value="a") 北美洲
+                                                        option(value="b") 亞洲
+                                                        option(value="c") 歐洲
+                                                        option(value="d") 非洲
+                                                        option(value="e") 中南美洲
+                                                        option(value="f" selected) 大洋洲
+                                                        option(value="g") 世青
+                                            .col-12.col-md-6.px-1.px-md-2
+                                                .form-group
+                                                    label(for="edit-phone_code") 電話
+                                                    .form-row
+                                                        .col-5
+                                                            select#edit-phone_code.form-control
+                                                                option(value="02") 02
+                                                        .col-7
+                                                            input#edit-phone.form-control(type="text" value="22220000")
+                                            .col-6.col-md-6.px-1.px-md-2
+                                                .form-group
+                                                    .form-row
+                                                        .col-6.mb-1
+                                                            div 行動電話1
+                                                        .col-6.mb-1.text-right
+                                                            .form-check.phone-check
+                                                                input#edit-sendPhone1.form-check-input(type="checkbox" name="edit-sendPhone" value="option1" checked="")
+                                                                label.form-check-label(for="edit-sendPhone1") 設定接收簡訊
+                                                    .form-row
+                                                        .col-5
+                                                            select#edit-phone-1_code.form-control
+                                                                option(value="886") +886
+                                                        .col-7
+                                                            input#edit-phone-1.form-control(type="text" value="0900-123456")
+                                            .col-6.col-md-6.px-1.px-md-2
+                                                .form-group
+                                                    .form-row
+                                                        .col-6.mb-1
+                                                            div 行動電話2
+                                                        .col-6.mb-1.text-right
+                                                            .form-check.phone-check
+                                                                input#edit-sendPhone2.form-check-input(type="checkbox" name="edit-sendPhone" value="option2" checked="")
+                                                                label.form-check-label(for="edit-sendPhone2") 設定接收簡訊
+                                                    .form-row
+                                                        .col-5
+                                                            select#edit-phone-2_code.form-control
+                                                                option(value="886") +886
+                                                        .col-7
+                                                            input#edit-phone-2.form-control(type="text" value="0900-123456")
+                                            .col-12.col-md-6.px-1.px-md-2
+                                                .form-group
+                                                    label(for="edit-mail1") 電子郵件1
+                                                    input#edit-mail1.form-control(type="email" value="it@wtcc.org.tw")
+                                            .col-12.col-md-6.px-1.pl-md-2
+                                                .form-group
+                                                    label(for="edit-mail2") 電子郵件2
+                                                    input#edit-mail2.form-control(type="email" value="wtcc@wtcc.org.tw")
+                                            .col-12.col-md-6.px-1.px-md-2
+                                                .form-group
+                                                    label(for="edit-address") 國外地址
+                                                    input#edit-address.form-control(type="text" value="13F.-3, No. 30, Beiping E. Rd., Zhongzheng Dist., Taipei City 100, Taiwan (R.O.C.)")
+                                            .col-12.col-md-6.px-1.px-md-2
+                                                .form-group
+                                                    label(for="edit-address-1") 通訊地址
+                                                    input#edit-address-1.form-control(type="text" value="台北市中正區北平東路30號13樓之3")
+                            .modal-footer
+                                button.btn.btn-secondary.w-100.mr-2(type="button" data-dismiss="modal") 取消
+                                button.btn.btn-success.w-100.ml-2(type="button") 確認
+
+            #deleteModalCenter.modal.fade(tabindex="-1" role="dialog" aria-labelledby="deleteModalCenterTitle" aria-hidden="true")
+                .modal-dialog.modal-dialog-centered(role="document")
+                    .modal-content
+                        .modal-body.py-5.text-center 您確定要刪除此筆資料嗎?
+                        .modal-footer
+                            button.btn.btn-secondary.w-100.mr-2(type="button" data-dismiss="modal") 取消
+                            button.btn.btn-success.w-100.ml-2(type="button") 確認
+
+            #addModalCenter.modal.fade(tabindex="-1" role="dialog" aria-labelledby="deleteModalCenterTitle" aria-hidden="true")
+                .modal-dialog.modal-dialog-centered(role="document")
+                    .modal-content
+                        .modal-header
+                            .admin-page-title.d-flex.align-items-center
+                                .icon.t-blue-dp
+                                    i.icon-user
+                                .t-blue-dp.h5.mb-0 會員管理
+                            button.close(type="button" data-dismiss="modal" aria-label="Close")
+                                span(aria-hidden="true") ×
+                        form
+                            .modal-body
+                                .row.no-gutters
+                                    .col-12.col-md-3.mb-4.mb-md-0
+                                        .row.no-gutters
+                                            .col-12.px-1.px-md-2
+                                                .form-group__file
+                                                    .file-wrapper
+                                                        input#imageUpload.file-input(type="file" name="imageUpload")
+                                                        .file-preview-background Upload Image
+                                                        img#imagePreview.file-preview(src="" width="200px")
+                                                        div
+                                    .col-12.col-md-9
+                                        .row.no-gutters
+                                            .col-6.col-md-4.px-1.px-md-2
+                                                .form-group
+                                                    label(for="add-number") #[span.t-red *]理監事碼
+                                                    input#add-number.form-control(type="text" placeholder="請輸入理監事碼")
+                                            .col-6.col-md-4.px-1.px-md-2
+                                                .form-group
+                                                    label(for="add-job") 職稱
+                                                    select#add-job.form-control
+                                                        option(value="1") 名譽總會長
+                                                        option(value="2") 名譽監事長
+                                                        option(value="3") 諮詢委員
+                                                        option(value="4") 資深顧問
+                                                        option(value="5") 顧問
+                                                        option(value="6") 副總會長
+                                                        option(value="7") 秘書長
+                                                        option(value="8") 財務長
+                                                        option(value="9") 理事
+                                                        option(value="10") 總會長
+                                                        option(value="11") 監事長
+                                                        option(value="12") 副監事長
+                                                        option(value="13") 監事
+                                            .col-12.col-md-4.px-1.px-md-2
+                                                .form-group
+                                                    label(for="add-commerce") #[span.t-red *]理監事碼所屬商會
+                                                    input#add-commerce.form-control(type="text" placeholder="請輸入所屬商會")
+                                            .col-12.col-md-4.px-1.px-md-2
+                                                .form-group
+                                                    label(for="add-name") #[span.t-red *]理監事碼姓名
+                                                    input#add-name.form-control(type="text" placeholder="請輸入姓名")
+                                            .col-6.col-md-4.px-1.px-md-2
+                                                .form-group
+                                                    label(for="add-eng_name") #[span.t-red *]理監事碼英文姓
+                                                    input#add-eng_name.form-control(type="text" placeholder="請輸入英文姓")
+                                            .col-6.col-md-4.px-1.px-md-2
+                                                .form-group
+                                                    label(for="add-eng_name2") #[span.t-red *]理監事碼英文名
+                                                    input#add-eng_name2.form-control(type="text" placeholder="請輸入英文名")
+                                    .col-12.mt-3
+                                        .row.no-gutters
+                                            .col-6.col-md-3.px-1.px-md-2
+                                                .form-group
+                                                    label(for="add-id") 身分證號
+                                                    input#add-id.form-control(type="text" placeholder="請輸入身分證號")
+                                            .col-6.col-md-3.px-1.px-md-2
+                                                .form-group
+                                                    label(for="add-passport") 護照號碼
+                                                    input#add-passport.form-control(type="text" placeholder="請輸入護照號碼")
+                                            .col-6.col-md-3.px-1.px-md-2
+                                                .form-group
+                                                    label(for="add-birthday") 出生年月日
+                                                    input#add-birthday.form-control.date-input(type="text" placeholder="請輸入出生年月日")
+                                            .col-6.col-md-3.px-1.px-md-2
+                                                .form-group
+                                                    label(for="add-line") LINE ID
+                                                    input#add-line.form-control(type="text" placeholder="請輸入Line ID")
+                                            .col-12.col-md-6.px-1.px-md-2
+                                                .form-group
+                                                    label(for="add-area") 洲別
+                                                    select#add-area.form-control
+                                                        option(value="a") 北美洲
+                                                        option(value="b") 亞洲
+                                                        option(value="c") 歐洲
+                                                        option(value="d") 非洲
+                                                        option(value="e") 中南美洲
+                                                        option(value="f") 大洋洲
+                                                        option(value="g") 世青
+                                            .col-12.col-md-6.px-1.px-md-2
+                                                .form-group
+                                                    label(for="add-phone_code") 電話
+                                                    .form-row
+                                                        .col-5
+                                                            select#add-phone_code.form-control
+                                                                option(value="02") 02
+                                                        .col-7
+                                                            input#add-phone.form-control(type="text" placeholder="請輸入電話號碼")
+                                            .col-6.col-md-6.px-1.px-md-2
+                                                .form-group
+                                                    .form-row
+                                                        .col-6.mb-1
+                                                            div 行動電話1
+                                                        .col-6.mb-1.text-right
+                                                            .form-check.phone-check
+                                                                input#add-sendPhone1.form-check-input(type="checkbox" name="add-sendPhone" value="option1" checked="")
+                                                                label.form-check-label(for="add-sendPhone1") 設定接收簡訊
+                                                    .form-row
+                                                        .col-5
+                                                            select#add-phone-1_code.form-control
+                                                                option(value="886") +886
+                                                        .col-7
+                                                            input#add-phone-1.form-control(type="text" placeholder="請輸入電話號碼")
+                                            .col-6.col-md-6.px-1.px-md-2
+                                                .form-group
+                                                    .form-row
+                                                        .col-6.mb-1
+                                                            div 行動電話1
+                                                        .col-6.mb-1.text-right
+                                                            .form-check.phone-check
+                                                                input#add-sendPhone2.form-check-input(type="checkbox" name="add-sendPhone" value="option2" checked="")
+                                                                label.form-check-label(for="add-sendPhone2") 設定接收簡訊
+                                                    .form-row
+                                                        .col-5
+                                                            select#add-phone-2_code.form-control
+                                                                option(value="886") +886
+                                                        .col-7
+                                                            input#add-phone-2.form-control(type="text" placeholder="請輸入電話號碼")
+                                            .col-12.col-md-6.px-1.px-md-2
+                                                .form-group
+                                                    label(for="add-mail1") 電子郵件1
+                                                    input#add-mail1.form-control(type="email" placeholder='請輸入電子郵件')
+                                            .col-12.col-md-6.px-1.pl-md-2
+                                                .form-group
+                                                    label(for="add-mail2") 電子郵件2
+                                                    input#add-mail2.form-control(type="email" placeholder='請輸入電子郵件')
+                                            .col-12.col-md-6.px-1.px-md-2
+                                                .form-group
+                                                    label(for="add-address") 國外地址
+                                                    input#add-address.form-control(type="text" placeholder="請輸入國外地址")
+                                            .col-12.col-md-6.px-1.px-md-2
+                                                .form-group
+                                                    label(for="add-address-1") 通訊地址
+                                                    input#add-address-1.form-control(type="text" placeholder="請輸入通訊地址")
+                            .modal-footer
+                                button.btn.btn-secondary.w-100.mr-2(type="button" data-dismiss="modal") 取消
+                                button.btn.btn-success.w-100.ml-2(type="button") 確認

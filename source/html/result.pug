@@ -1,0 +1,61 @@
+//- index.pug
+extends ./include/layout.pug
+block plugins-css
+    link(rel='stylesheet' type='text/css' href='styles/plugins/slick.css')
+    link(rel='stylesheet' type='text/css' href='styles/plugins/slick-theme.css')
+block plugins-js
+    script(src='scripts/plugins/slick.js')
+    
+block content
+    main.wrapper.d-flex.justify-content-center
+        .inner.text-center.pt-md-4.pt-lg-5
+            h2.result-title.main-subTitle 總會第二十七屆 #[span.t-yellow 第二次理監事聯席會議案] 投票結果
+            .mt-3.mt-md-4
+                .row.align-items-end
+                    .col-12.col-md-6.my-3
+                        .result-table
+                            .result-table_Title.bg-blue 明年第27屆第2次理監事聯席會議開會時間及地點，原則上擬訂於3月份在墨西哥Leon舉辦，但也要視疫情發展狀況，有關會議報名事宜將於今(2020)年12月份通知理監事以上人員。
+                            table
+                                thead
+                                    tr
+                                        th 項目
+                                        th 得票率
+                                        th 得票數
+                                tbody
+                                    tr
+                                        td.t-red 同意
+                                        td.t-red 68%
+                                        td.t-red 680
+                                    tr
+                                        td 沒意見
+                                        td 2%
+                                        td 20
+                                    tr
+                                        td 不同意
+                                        td 30%
+                                        td 300
+                    .col-12.col-md-6.my-3
+                        .result-table
+                            .result-table_Title.bg-red 原定第27屆第2次理監事聯席會議開會於3月份在墨西哥Leon舉辦，因疫情持續惡化，更改與 台北圓山飯店舉行。
+                            table
+                                thead
+                                    tr
+                                        th 項目
+                                        th 得票率
+                                        th 得票數
+                                tbody
+                                    tr
+                                        td.t-red 同意
+                                        td.t-red 50%
+                                        td.t-red 500
+                                    tr
+                                        td 沒意見
+                                        td 2%
+                                        td 20
+                                    tr
+                                        td 不同意
+                                        td 48%
+                                        td 480
+    .vote-time.text-right
+        i.icon-calendar.mr-2
+        span.f-en 2021/01/20 08:00 - 2021/01/30 18:00

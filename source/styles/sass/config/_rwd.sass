@@ -1,0 +1,115 @@
+@charset "UTF-8"
+
+// 針對media queries的 width 設定變數   
+$pc-bg-min: 1681px
+$pc-s-max: 1680px
+$pc-s-min: 1441px
+
+$notebook-max: 1440px
+$notebook-min: 1200px
+
+$pad-lg-max: 1199px
+$pad-lg-min: 992px
+$pad-s-max: 991px
+$pad-s-min: 768px
+
+$phone-lg-max: 767px
+$phone-lg-mid: 600px
+$phone-lg-min: 480px
+$phone-s-max: 479px
+$phone-s-mid: 360px
+$phone-s-min: 320px 
+
+
+	
+//---- phone 小尺寸區間 -----
+@mixin max-phonemini
+	@media screen and (max-width: $phone-s-min)
+		@content
+
+@mixin phones
+	@media screen and (min-width: $phone-s-min) and (max-width: $phone-s-max)
+		@content
+
+@mixin max-phones
+	@media screen and (max-width: $phone-s-max)
+		@content
+
+
+//---- phone 區間 ----
+@mixin min-phone
+	@media screen and (min-width: $phone-lg-min)
+		@content
+	
+@mixin phone
+	@media (min-width: $phone-lg-min) and (max-width: $phone-lg-max)
+		@content
+	
+@mixin max-phone
+	@media screen and (max-width: $phone-lg-max)
+		@content
+	
+@mixin max-phone-mid
+	@media screen and (max-width: $phone-lg-mid)
+		@content
+
+//---- pad 區間 ----
+@mixin min-pad
+	@media screen and (min-width: $pad-s-min)
+		@content
+	
+@mixin pad
+	@media screen and (min-width: $pad-s-min) and (max-width: $pad-s-max)
+		@content
+	
+@mixin max-pad
+	@media screen and (max-width: $pad-s-max)
+		@content
+	
+
+//---- pad pro區間 ----
+@mixin min-padpro
+	@media screen and (min-width: $pad-lg-min)
+		@content
+		
+@mixin padpro
+	@media screen and (min-width: $pad-lg-min) and (max-width: $pad-lg-max)
+		@content
+	
+@mixin max-padpro
+	@media screen and (max-width: $pad-lg-max)
+		@content
+	
+
+//---- notebook 區間 ----
+@mixin min-notebook
+	@media screen and (min-width: $notebook-min)
+		@content
+	
+@mixin notebook
+	@media screen and (min-width: $notebook-min) and (max-width: $notebook-max)
+		@content
+	
+@mixin max-notebook
+	@media screen and (max-width: $notebook-max)
+		@content
+
+
+//---- pc 區間 ----
+@mixin min-pc
+	@media screen and (min-width: $pc-s-min)
+		@content
+	
+@mixin pc
+	@media screen and (min-width: $pc-s-min) and (max-width: $pc-s-max)
+		@content
+	
+@mixin max-pc
+	@media screen and (max-width: $pc-s-max)
+		@content
+
+
+//---- pc-big 區間 ----
+@mixin min-pc-big
+	@media screen and (min-width: $pc-bg-min)
+		@content

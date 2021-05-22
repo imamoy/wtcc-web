@@ -1,0 +1,36 @@
+header.admin-header
+    a.logo-box(href="admin.html")
+        span.logo
+            img.img-fluid(src="styles/images/logo.png", alt="")
+        div.name
+            h1 世界台灣商會聯合總會
+            h2 World Taiwanese #[br]Chambers of Commerce
+    .menu-toggle.d-inline-block.d-xl-none
+        i.icon-menu
+    hr.my-4
+    ul.menu-list.list-unstyled
+        li.mb-3
+            a.link(href="admin-member.html")
+                i.icon-user
+                span.ml-2 會員管理
+        li.mb-3
+            a.link(href="admin-vote.html")
+                i.icon-edit
+                span.ml-2 投票管理
+        li.mb-3
+            a.link(href="admin-result.html")
+                i.icon-vote
+                span.ml-2 最新開票結果
+        li.mb-3
+            a.link(href='admin-meeting.html')
+                i.icon-flag
+                span.ml-2 會議管理
+        li.d-block.d-xl-none
+            hr.d-block.d-xl-none.my-4
+            .d-flex.justify-content-between.align-items-center
+                .admin-user.d-inline-flex.align-items-center
+                    .pic
+                        img(src="styles/images/user.png", alt="" width='40px')
+                    span.ml-2 admin
+                button.logout-btn
+                    i.icon-logout-1

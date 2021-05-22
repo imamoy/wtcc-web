@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+  <head>
+    <meta charset="utf-8">
+    <title> </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="styles/images/web-icon.ico">
+    <link rel="stylesheet" type="text/css" href="styles/fonts/css/fontello.css">
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans+TC:300,400,500,700,900&amp;display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles/fonts/css/fontello.css">
+    <link rel="stylesheet" type="text/css" href="styles/plugins/bootstrap-reboot.min.css">
+    <link rel="stylesheet" type="text/css" href="styles/plugins/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="styles/plugins/jquery-ui.min.css">
+    <link rel="stylesheet" type="text/css" href="styles/plugins/jquery-ui-timepicker-addon.css">
+    <link rel="stylesheet" type="text/css" href="styles/common.css">
+    <link rel="stylesheet" type="text/css" href="styles/admin.css">
+  </head>
+  <body id="admin">
+    <div class="tv"></div>
+    <header class="admin-header"><a class="logo-box" href="admin.html"><span class="logo"><img class="img-fluid" src="styles/images/logo.png" alt=""></span>
+        <div class="name">
+          <h1>世界台灣商會聯合總會</h1>
+          <h2>World Taiwanes <br>Chambers of Commerce</h2>
+        </div></a>
+      <div class="menu-toggle d-inline-block d-xl-none"><i class="icon-menu"></i></div>
+      <hr class="my-4">
+      <ul class="menu-list list-unstyled">
+        <li class="mb-3"><a class="link" href="admin-member.html"><i class="icon-user"></i><span class="ml-2">會員管理</span></a></li>
+        <li class="mb-3"><a class="link" href="admin-result.html"><i class="icon-vote"></i><span class="ml-2">開票結果</span></a></li>
+        <li><a class="link" href="admin-vote.html"><i class="icon-edit"></i><span class="ml-2">投票管理</span></a></li>
+        <li class="d-block d-xl-none">
+          <hr class="d-block d-xl-none my-4">
+          <div class="d-flex justify-content-between align-items-center">
+            <div class="admin-user d-inline-flex align-items-center">
+              <div class="pic"><img src="styles/images/user.png" alt="" width="40px"></div><span class="ml-2">admin</span>
+            </div>
+            <button class="logout-btn"><i class="icon-logout-1"></i></button>
+          </div>
+        </li>
+      </ul>
+    </header>
+    <div class="top-bar d-none justify-content-between align-items-center d-xl-flex"><span>促進海外台商企業發展，會員交流，提昇台商社會地位</span>
+      <div class="admin-user d-inline-flex align-items-center">
+        <div class="pic"><img src="styles/images/user.png" alt="" width="40px"></div><span class="ml-2">admin</span><i class="icon-angle-down"></i>
+      </div>
+      <div class="admin-user-menu">
+        <button class="logout-btn"><i class="icon-logout-1"></i><span class="ml-2">登出</span></button>
+      </div>
+    </div>
+    <main class="admin-wrapper pa-5">
+      <div class="container-fluid">
+        <div class="d-flex align-items-center justify-content-between mb-3 px-2">
+          <div class="admin-page-title d-flex align-items-center">
+            <div class="icon t-blue-dp"><i class="icon-edit"></i></div>
+            <h2 class="t-blue-dp h5 mb-0">投票管理</h2>
+          </div>
+          <div class="mt-3 mt-lg-0">
+            <button class="btn btn-primary" type="button" data-toggle="modal" data-target="#addModalCenter" style="width: 140px;">建立投票</button>
+          </div>
+        </div>
+        <div class="card border mb-4">
+          <div class="card-body" style="min-height:80vh;">
+            <div class="dataTables_wrapper h-100 d-flex flex-column justify-content-between" id="dataTable_wrapper">
+              <div>
+                <div class="row my-3">
+                  <div class="col-sm-12 col-md-6 my-1 my-lg-0">
+                    <div class="dataTables_length" id="dataTable_length">
+                      <label class="d-inline-flex align-items-center mb-0">
+                        <div style="width:80px;">顯示 </div>
+                        <select class="custom-select custom-select-sm form-control form-control-sm mx-2" name="dataTable_length" aria-controls="dataTable">
+                          <option value="10">10</option>
+                          <option value="25">25</option>
+                          <option value="50">50</option>
+                          <option value="100">100</option>
+                        </select>筆 
+                      </label>
+                    </div>
+                  </div>
+                  <div class="col-sm-12 col-md-6 text-lg-right my-1 my-lg-0">
+                    <div class="dataTables_filter" id="dataTable_filter">
+                      <label class="d-inline-flex align-items-center mb-0">
+                        <div style="width:50px;">搜尋</div>
+                        <input class="form-control form-control-sm mx-2" type="search" placeholder="" aria-controls="dataTable">
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <div class="table-responsive">
+                  <div class="row">
+                    <div class="col-sm-12">
+                      <table class="table table-bordered dataTable" id="dataTable" width="100%" cellspacing="0" role="grid" aria-describedby="dataTable_info" style="width: 100%;">
+                        <thead>
+                          <tr>
+                            <th style="min-width:120px;">會期</th>
+                            <th style="min-width:120px;">投票事項</th>
+                            <th style="min-width:200px;">投票選項</th>
+                            <th style="min-width:120px;">投票起 / 迄</th>
+                            <th style="min-width:140px;">狀態</th>
+                            <th style="min-width:140px;">建立日期</th>
+                            <th class="text-center" style="min-width:200px;width:340px;">執行</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>聯合總會第二十九屆</td>
+                            <td>總會長職務</td>
+                            <td>同意 · 不同意</td>
+                            <td>2020/02/01 12:00  ~  02/01 18:00</td>
+                            <td> <span class="t-green">投票中</span></td>
+                            <td>2020/02/01 12:00</td>
+                            <td class="text-center">
+                              <button class="iconBtn" type="button" data-toggle="modal" data-target="#editModalCenter" data-tooltip="tooltip" data-placement="bottom" title="編輯"><i class="icon-pen"></i></button>
+                              <button class="iconBtn" type="button" data-toggle="modal" data-target="#sendModalCenter" data-tooltip="tooltip" data-placement="bottom" title="發送"><i class="icon-send"></i></button>
+                              <button class="iconBtn" type="button" data-toggle="modal" data-target="#sendModalCenter" data-tooltip="tooltip" data-placement="bottom" title="投票情形"><i class="icon-vote"></i></button>
+                              <button class="iconBtn" type="button" data-toggle="modal" data-target="#deleteModalCenter" data-tooltip="tooltip" data-placement="bottom" title="刪除"><i class="icon-delete"></i></button>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-sm-12 col-md-5 mb-3 mb-lg-0">
+                  <div class="dataTables_info" id="dataTable_info" role="status" aria-live="polite">顯示 1 到 12 筆   共 57筆</div>
+                </div>
+                <div class="col-sm-12 col-md-7">
+                  <div class="dataTables_paginate paging_simple_numbers" id="dataTable_paginate">
+                    <ul class="pagination">
+                      <li class="paginate_button page-item previous disabled" id="dataTable_previous"><a class="page-link" href="#" aria-controls="dataTable" data-dt-idx="0" tabindex="0"><i class="icon-angle-left"></i></a></li>
+                      <li class="paginate_button page-item active"><a class="page-link" href="#" aria-controls="dataTable" data-dt-idx="1" tabindex="0">1</a></li>
+                      <li class="paginate_button page-item"><a class="page-link" href="#" aria-controls="dataTable" data-dt-idx="2" tabindex="0">2</a></li>
+                      <li class="paginate_button page-item"><a class="page-link" href="#" aria-controls="dataTable" data-dt-idx="3" tabindex="0">3</a></li>
+                      <li class="paginate_button page-item"><a class="page-link" href="#" aria-controls="dataTable" data-dt-idx="4" tabindex="0">4</a></li>
+                      <li class="paginate_button page-item"><a class="page-link" href="#" aria-controls="dataTable" data-dt-idx="5" tabindex="0">5</a></li>
+                      <li class="paginate_button page-item"><a class="page-link" href="#" aria-controls="dataTable" data-dt-idx="6" tabindex="0">6</a></li>
+                      <li class="paginate_button page-item next" id="dataTable_next"><a class="page-link" href="#" aria-controls="dataTable" data-dt-idx="7" tabindex="0"><i class="icon-angle-right"></i></a></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal fade" id="editModalCenter" tabindex="-1" role="dialog" aria-labelledby="editModalCenterTitle" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <div class="admin-page-title d-flex align-items-center">
+                  <div class="icon t-blue-dp"><i class="icon-user"></i></div>
+                  <div class="t-blue-dp h5 mb-0">投票編輯</div>
+                </div>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+              </div>
+              <form>
+                <div class="modal-body">
+                  <div class="form-group">
+                    <label for="name">會期</label>
+                    <input class="form-control" id="name" type="name" value="世界台商總會第二十九屆" disabled>
+                  </div>
+                  <div class="form-group">
+                    <label for="vote">投票事項</label>
+                    <input class="form-control" id="vote" type="text" value="總會長職務">
+                  </div>
+                  <div class="form-group">
+                    <label for="option">投票選項</label>
+                    <input class="form-control" id="option" type="option" value="同意">
+                  </div>
+                  <div class="form-group">
+                    <label for="date">投票起 / 迄</label>
+                    <div class="form-row">
+                      <div class="col">
+                        <input class="form-control datetime-input" type="text" placeholder="請選取投票起始時間">
+                      </div>
+                      <div class="col">
+                        <input class="form-control datetime-input" type="text" placeholder="請選取投票結束時間">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <button class="btn btn-secondary w-100 mr-2" type="button" data-dismiss="modal">取消</button>
+                  <button class="btn btn-success w-100 ml-2" type="button">確認</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        <div class="modal fade" id="deleteModalCenter" tabindex="-1" role="dialog" aria-labelledby="deleteModalCenterTitle" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+              <div class="modal-body py-5 text-center">您確定要刪除此筆資料嗎?</div>
+              <div class="modal-footer">
+                <button class="btn btn-secondary w-100 mr-2" type="button" data-dismiss="modal">取消</button>
+                <button class="btn btn-success w-100 ml-2" type="button">確認</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal fade" id="voteModalCenter" tabindex="-1" role="dialog" aria-labelledby="voteModalCenterTitle" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <div class="admin-page-title d-flex align-items-center">
+                  <div class="icon t-blue-dp"><i class="icon-user"></i></div>
+                  <div class="t-blue-dp h5 mb-0">目前開票</div>
+                </div>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+              </div>
+              <div class="modal-body text-center">
+                <div class="result-table">
+                  <div class="result-table_Title bg-blue">總會長職務 總票數<span class="t-yellow val">1,000</span>張</div>
+                  <table>
+                    <thead>
+                      <tr>
+                        <th>候選人姓名</th>
+                        <th>得票率</th>
+                        <th>得票數</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td class="t-red">同意</td>
+                        <td class="t-red">68%</td>
+                        <td class="t-red">680</td>
+                      </tr>
+                      <tr>
+                        <td>沒意見</td>
+                        <td>2%</td>
+                        <td>20</td>
+                      </tr>
+                      <tr>
+                        <td>不同意</td>
+                        <td>30%</td>
+                        <td>300</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button class="btn btn-secondary w-100 mr-2" type="button" data-dismiss="modal">取消</button>
+                <button class="btn btn-success w-100 ml-2" type="button">確認</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal fade" id="addModalCenter" tabindex="-1" role="dialog" aria-labelledby="addModalCenterTitle" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <div class="admin-page-title d-flex align-items-center">
+                  <div class="icon t-blue-dp"><i class="icon-user"></i></div>
+                  <div class="t-blue-dp h5 mb-0">新建投票</div>
+                </div>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+              </div>
+              <form>
+                <div class="modal-body">
+                  <div class="form-group">
+                    <label for="name">會期</label>
+                    <input class="form-control" id="name" type="name" placeholder="請輸入會期">
+                  </div>
+                  <div class="form-group">
+                    <label for="vote">投票事項</label>
+                    <input class="form-control" id="vote" type="text" placeholder="請輸入投票事項">
+                  </div>
+                  <div class="form-group">
+                    <label for="option">投票選項</label>
+                    <input class="form-control" id="option" type="text" placeholder="請輸入投票選項">
+                  </div>
+                  <div class="form-group">
+                    <label for="date">投票起 / 迄</label>
+                    <div class="form-row">
+                      <div class="col">
+                        <input class="form-control datetime-input" type="text" placeholder="請選取投票起始時間">
+                      </div>
+                      <div class="col">
+                        <input class="form-control datetime-input" type="text" placeholder="請選取投票結束時間">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <button class="btn btn-secondary w-100 mr-2" type="button" data-dismiss="modal">取消</button>
+                  <button class="btn btn-success w-100 ml-2" type="button">確認</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        <div class="modal fade" id="sendModalCenter" tabindex="-1" role="dialog" aria-labelledby="sendModalCenterTitle" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <div class="admin-page-title d-flex align-items-center">
+                  <div class="icon t-blue-dp"><i class="icon-send"></i></div>
+                  <div class="t-blue-dp h5 mb-0">發送投票</div>
+                </div>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+              </div>
+              <div class="modal-body">
+                <div class="form-row align-items-center">
+                  <div class="col-4 text-left">
+                    <button class="iconBtn px-0" type="button" data-toggle="modal" data-target="#peopleModalCenter"><span>收件人</span></button>
+                  </div>
+                  <div class="col col-8">
+                    <input class="form-control" id="people" type="text" name="">
+                  </div>
+                </div>
+                <div class="form-group mt-3">
+                  <label for="content">簡訊內容</label>
+                  <textarea class="form-control" id="content" name="" cols="30" rows="3"></textarea>
+                </div>
+                <div class="form-group">
+                  <label>發送類型</label>
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" id="sendType1" type="checkbox" value="sendType1" name="sendType">
+                    <label class="form-check-label" for="inlineCheckbox1">投票網址</label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" id="sendType2" type="checkbox" value="sendType2" name="sendType">
+                    <label class="form-check-label" for="inlineCheckbox2">QRcode</label>
+                  </div>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button class="btn btn-secondary w-100 mr-2" type="button" data-dismiss="modal">取消</button>
+                <button class="btn btn-success w-100 ml-2" type="button">確認</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal fade" id="peopleModalCenter" tabindex="-1" role="dialog" aria-labelledby="peopleModalCenterTitle" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <div class="admin-page-title d-flex align-items-center">
+                  <div class="icon t-blue-dp"><i class="icon-send"></i></div>
+                  <div class="t-blue-dp h5 mb-0">添加收件人</div>
+                </div>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+              </div>
+              <div class="modal-body">
+                <div class="row mb-4">
+                  <div class="col-6">
+                    <div class="form-check form-check-inline px-0 py-0 mx-0">
+                      <input class="form-check-input" id="all-checked" type="checkbox" name="sendPeopleAll" value="all-select">
+                      <label class="form-check-label" for="all-select">全選</label>
+                    </div>
+                  </div>
+                  <div class="col-6">
+                    <div class="dataTables_filter" id="dataTable_filter">
+                      <label class="d-inline-flex align-items-center mb-0">
+                        <div style="width:50px;">搜尋</div>
+                        <input class="form-control form-control-sm mx-2" type="search" placeholder="" aria-controls="dataTable">
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <table class="table table-bordered dataTable" id="dataTable" width="100%" height="80vh" cellspacing="0" role="grid" aria-describedby="dataTable_info" style="width: 100%;max-height:60vh">
+                  <tbody>
+                    <tr>
+                      <td class="text-center pa-0">
+                        <div class="form-check form-check-inline px-0 py-0 mx-0">
+                          <input class="form-check-input mr-0" type="checkbox" name="sendPeople[]" value="sendPeople[]">
+                        </div>
+                      </td>
+                      <td>王大明</td>
+                      <td> <a href="mailto:Jacky@wtcc.com.tw">Jacky@wtcc.com.tw</a></td>
+                    </tr>
+                    <tr>
+                      <td class="text-center pa-0">
+                        <div class="form-check form-check-inline px-0 py-0 mx-0">
+                          <input class="form-check-input mr-0" type="checkbox" name="sendPeople[]" value="sendPeople[]">
+                        </div>
+                      </td>
+                      <td>劉仕昌</td>
+                      <td> <a href="mailto:Andy@wtcc.com.tw">Andy@wtcc.com.tw</a></td>
+                    </tr>
+                    <tr>
+                      <td class="text-center pa-0">
+                        <div class="form-check form-check-inline px-0 py-0 mx-0">
+                          <input class="form-check-input mr-0" type="checkbox" name="sendPeople[]" value="sendPeople[]">
+                        </div>
+                      </td>
+                      <td>王大明</td>
+                      <td> <a href="mailto:Jacky@wtcc.com.tw">Jacky@wtcc.com.tw</a></td>
+                    </tr>
+                    <tr>
+                      <td class="text-center pa-0">
+                        <div class="form-check form-check-inline px-0 py-0 mx-0">
+                          <input class="form-check-input mr-0" type="checkbox" name="sendPeople[]" value="sendPeople[]">
+                        </div>
+                      </td>
+                      <td>劉仕昌</td>
+                      <td> <a href="mailto:Andy@wtcc.com.tw">Andy@wtcc.com.tw</a></td>
+                    </tr>
+                    <tr>
+                      <td class="text-center pa-0">
+                        <div class="form-check form-check-inline px-0 py-0 mx-0">
+                          <input class="form-check-input mr-0" type="checkbox" name="sendPeople[]" value="sendPeople[]">
+                        </div>
+                      </td>
+                      <td>王大明</td>
+                      <td> <a href="mailto:Jacky@wtcc.com.tw">Jacky@wtcc.com.tw</a></td>
+                    </tr>
+                    <tr>
+                      <td class="text-center pa-0">
+                        <div class="form-check form-check-inline px-0 py-0 mx-0">
+                          <input class="form-check-input mr-0" type="checkbox" name="sendPeople[]" value="sendPeople[]">
+                        </div>
+                      </td>
+                      <td>劉仕昌</td>
+                      <td> <a href="mailto:Andy@wtcc.com.tw">Andy@wtcc.com.tw</a></td>
+                    </tr>
+                    <tr>
+                      <td class="text-center pa-0">
+                        <div class="form-check form-check-inline px-0 py-0 mx-0">
+                          <input class="form-check-input mr-0" type="checkbox" name="sendPeople[]" value="sendPeople[]">
+                        </div>
+                      </td>
+                      <td>王大明</td>
+                      <td> <a href="mailto:Jacky@wtcc.com.tw">Jacky@wtcc.com.tw</a></td>
+                    </tr>
+                    <tr>
+                      <td class="text-center pa-0">
+                        <div class="form-check form-check-inline px-0 py-0 mx-0">
+                          <input class="form-check-input mr-0" type="checkbox" name="sendPeople[]" value="sendPeople[]">
+                        </div>
+                      </td>
+                      <td>劉仕昌</td>
+                      <td> <a href="mailto:Andy@wtcc.com.tw">Andy@wtcc.com.tw</a></td>
+                    </tr>
+                    <tr>
+                      <td class="text-center pa-0">
+                        <div class="form-check form-check-inline px-0 py-0 mx-0">
+                          <input class="form-check-input mr-0" type="checkbox" name="sendPeople[]" value="sendPeople[]">
+                        </div>
+                      </td>
+                      <td>王大明</td>
+                      <td> <a href="mailto:Jacky@wtcc.com.tw">Jacky@wtcc.com.tw</a></td>
+                    </tr>
+                    <tr>
+                      <td class="text-center pa-0">
+                        <div class="form-check form-check-inline px-0 py-0 mx-0">
+                          <input class="form-check-input mr-0" type="checkbox" name="sendPeople[]" value="sendPeople[]">
+                        </div>
+                      </td>
+                      <td>王大明</td>
+                      <td> <a href="mailto:Jacky@wtcc.com.tw">Jacky@wtcc.com.tw</a></td>
+                    </tr>
+                  </tbody>
+                </table>
+                <div class="dataTables_paginate paging_simple_numbers justify-content-center" id="dataTable_paginate">
+                  <ul class="pagination">
+                    <li class="paginate_button page-item previous disabled" id="dataTable_previous"><a class="page-link" href="#" aria-controls="dataTable" data-dt-idx="0" tabindex="0"><i class="icon-angle-left"></i></a></li>
+                    <li class="paginate_button page-item active"><a class="page-link" href="#" aria-controls="dataTable" data-dt-idx="1" tabindex="0">1</a></li>
+                    <li class="paginate_button page-item"><a class="page-link" href="#" aria-controls="dataTable" data-dt-idx="2" tabindex="0">2</a></li>
+                    <li class="paginate_button page-item"><a class="page-link" href="#" aria-controls="dataTable" data-dt-idx="3" tabindex="0">3</a></li>
+                    <li class="paginate_button page-item"><a class="page-link" href="#" aria-controls="dataTable" data-dt-idx="4" tabindex="0">4</a></li>
+                    <li class="paginate_button page-item"><a class="page-link" href="#" aria-controls="dataTable" data-dt-idx="5" tabindex="0">5</a></li>
+                    <li class="paginate_button page-item"><a class="page-link" href="#" aria-controls="dataTable" data-dt-idx="6" tabindex="0">6</a></li>
+                    <li class="paginate_button page-item next" id="dataTable_next"><a class="page-link" href="#" aria-controls="dataTable" data-dt-idx="7" tabindex="0"><i class="icon-angle-right"></i></a></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button class="btn btn-secondary w-100 mr-2" type="button" data-dismiss="modal">取消</button>
+                <button class="btn btn-success w-100 ml-2" type="button">確認</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+    <div class="cursor"></div>
+    <script src="scripts/default/jquery.min.js"></script>
+    <script src="scripts/default/bootstrap.min.js"></script>
+    <script src="scripts/default/bootstrap.bundle.min.js"></script>
+    <script src="scripts/plugins/jquery-ui.min.js"></script>
+    <script src="scripts/plugins/jquery-ui-timepicker-addon.js"></script>
+    <script>
+      $('.datetime-input').datetimepicker({
+          "dateFormat": "yy-mm-dd",
+          "timeFormat": "HH:mm"
+      });
+      
+      $("#all-checked").click(function() {
+          if($("#all-checked").prop("checked")) {
+              $("input[name='sendPeople[]']").each(function() {
+                  $(this).prop("checked", true);
+              });
+          } else {
+              $("input[name='sendPeople[]']").each(function() {
+                  $(this).prop("checked", false);
+              });           
+          }
+      });
+      
+      
+      
+    </script>
+    <script src="scripts/default/admin.js"></script>
+  </body>
+</html>

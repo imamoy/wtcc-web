@@ -1,0 +1,13 @@
+include ../include/mixin.pug
+
+doctype html
+html(lang='zh-TW')
+    head
+        include ../include/head.pug
+    body#admin
+        .tv
+        include ../include/admin-header.pug
+        block content           
+        include ../include/footer.pug
+        .cursor
+        include ../include/admin-footer-js.pug

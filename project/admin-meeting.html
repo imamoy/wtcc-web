@@ -1,0 +1,850 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+  <head>
+    <meta charset="utf-8">
+    <title> </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="styles/images/web-icon.ico">
+    <link rel="stylesheet" type="text/css" href="styles/fonts/css/fontello.css">
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans+TC:300,400,500,700,900&amp;display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles/fonts/css/fontello.css">
+    <link rel="stylesheet" type="text/css" href="styles/plugins/bootstrap-reboot.min.css">
+    <link rel="stylesheet" type="text/css" href="styles/plugins/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="styles/plugins/jquery-ui.min.css">
+    <link rel="stylesheet" type="text/css" href="styles/plugins/jquery-ui-timepicker-addon.css">
+    <link rel="stylesheet" type="text/css" href="styles/common.css">
+    <link rel="stylesheet" type="text/css" href="styles/plugins/pagination.min.css">
+    <link rel="stylesheet" type="text/css" href="styles/admin.css">
+  </head>
+  <body id="admin">
+    <div class="tv"></div>
+    <header class="admin-header"><a class="logo-box" href="admin.html"><span class="logo"><img class="img-fluid" src="styles/images/logo.png" alt=""></span>
+        <div class="name">
+          <h1>世界台灣商會聯合總會</h1>
+          <h2>World Taiwanese <br>Chambers of Commerce</h2>
+        </div></a>
+      <div class="menu-toggle d-inline-block d-xl-none"><i class="icon-menu"></i></div>
+      <hr class="my-4">
+      <ul class="menu-list list-unstyled">
+        <li class="mb-3"><a class="link" href="admin-member.html"><i class="icon-user"></i><span class="ml-2">會員管理</span></a></li>
+        <li class="mb-3"><a class="link" href="admin-vote.html"><i class="icon-edit"></i><span class="ml-2">投票管理</span></a></li>
+        <li class="mb-3"><a class="link" href="admin-result.html"><i class="icon-vote"></i><span class="ml-2">最新開票結果</span></a></li>
+        <li class="mb-3"><a class="link" href="admin-meeting.html"><i class="icon-flag"></i><span class="ml-2">會議管理</span></a></li>
+        <li class="d-block d-xl-none">
+          <hr class="d-block d-xl-none my-4">
+          <div class="d-flex justify-content-between align-items-center">
+            <div class="admin-user d-inline-flex align-items-center">
+              <div class="pic"><img src="styles/images/user.png" alt="" width="40px"></div><span class="ml-2">admin</span>
+            </div>
+            <button class="logout-btn"><i class="icon-logout-1"></i></button>
+          </div>
+        </li>
+      </ul>
+    </header>
+    <div class="top-bar d-none justify-content-between align-items-center d-xl-flex"><span>促進海外台商企業發展，會員交流，提昇台商社會地位</span>
+      <div class="admin-user d-inline-flex align-items-center">
+        <div class="pic"><img src="styles/images/user.png" alt="" width="40px"></div><span class="ml-2">admin</span><i class="icon-angle-down"></i>
+      </div>
+      <div class="admin-user-menu">
+        <button class="logout-btn"><i class="icon-logout-1"></i><span class="ml-2">登出</span></button>
+      </div>
+    </div>
+    <main class="admin-wrapper pa-5" id="admin-vote">
+      <div class="container-fluid">
+        <div class="d-flex align-items-center justify-content-between mb-3 px-2">
+          <div class="admin-page-title d-flex align-items-center">
+            <div class="icon t-blue-dp"><i class="icon-flag"></i></div>
+            <h2 class="t-blue-dp h5 mb-0">會議管理</h2>
+          </div>
+          <div class="d-flex align-items-center mt-3 mt-lg-0">
+            <button class="btn btn-primary" type="button" data-toggle="modal" data-target="#addModalCenter" style="width: 140px;">建立會議</button>
+          </div>
+        </div>
+        <div class="card border mb-4">
+          <div class="card-body" style="min-height:80vh;">
+            <div class="dataTables_wrapper h-100 d-flex flex-column justify-content-between" id="dataTable_wrapper">
+              <div>
+                <div class="row my-3">
+                  <div class="col-sm-12 col-md-6 my-1 my-lg-0">
+                    <div class="dataTables_length" id="dataTable_length">
+                      <label class="d-inline-flex align-items-center mb-0">
+                        <div style="width:80px;">顯示 </div>
+                        <select class="custom-select custom-select-sm form-control form-control-sm mx-2" name="dataTable_length" aria-controls="dataTable">
+                          <option value="10">10</option>
+                          <option value="25">25</option>
+                          <option value="50">50</option>
+                          <option value="100">100</option>
+                        </select>筆
+                      </label>
+                    </div>
+                  </div>
+                  <div class="col-sm-12 col-md-6 text-lg-right my-1 my-lg-0">
+                    <div class="dataTables_filter" id="dataTable_filter">
+                      <label class="d-inline-flex align-items-center mb-0">
+                        <div style="width:50px;">搜尋</div>
+                        <input class="form-control form-control-sm mx-2" type="search" placeholder="" aria-controls="dataTable">
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <div class="table-responsive">
+                  <div class="row">
+                    <div class="col-sm-12">
+                      <table class="table table-bordered dataTable" id="dataTable" width="100%" cellspacing="0" role="grid" aria-describedby="dataTable_info" style="width: 100%;">
+                        <thead>
+                          <tr>
+                            <th style="min-width:84px;">會議編號</th>
+                            <th style="width:40%;min-width:280px;">會議名稱</th>
+                            <th style="min-width:84px;">會議年度</th>
+                            <th style="min-width:200px;">會議期間</th>
+                            <th style="min-width:200px;">主辦單位</th>
+                            <th style="min-width:100px;">建立日期</th>
+                            <th class="text-center" style="min-width:90px;">開放報名</th>
+                            <th class="text-center" style="min-width:120px;">執行</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>0272</td>
+                            <td>第二十七屆第二次理事聯席會議</td>
+                            <td>110</td>
+                            <td>2020/02/01 - 02/01</td>
+                            <td>世界台灣商會聯合總會</td>
+                            <td>2020/02/01</td>
+                            <td class="text-center">
+                              <div class="form-check form-check-inline px-0 py-0 mx-0">
+                                <input class="form-check-input mr-0" type="checkbox" name="open">
+                              </div>
+                            </td>
+                            <td class="text-center">
+                              <button class="iconBtn" type="button" data-toggle="modal" data-target="#detailModalCenter" data-tooltip="tooltip" data-placement="bottom" title="細節"><i class="icon-doc-text-inv"></i></button>
+                              <button class="iconBtn" type="button" data-toggle="modal" data-target="#deleteModalCenter" data-tooltip="tooltip" data-placement="bottom" title="刪除"><i class="icon-delete"></i></button>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row align-items-center">
+                <div class="col-sm-12 col-md-2 mb-3 mb-lg-0">
+                  <div class="dataTables_info" id="dataTable_info" role="status" aria-live="polite">顯示 1 到 12 筆   共 57筆</div>
+                </div>
+                <div class="col-sm-12 col-md-8">
+                  <div class="dataTables_paginate paging_simple_numbers" id="dataTable_paginate">
+                    <ul class="pagination" id="vote-pagination"></ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+    <div class="meeting-dialog modal fade" id="detailModalCenter" tabindex="-1" role="dialog" aria-labelledby="addModalCenterTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <div class="row align-items-center w-100">
+              <div class="col-3">
+                <div class="admin-page-title d-flex align-items-center">
+                  <div class="icon t-blue-dp"><i class="icon-doc-text-inv"></i></div>
+                  <div class="t-blue-dp h5 mb-0">會議細節</div>
+                </div>
+              </div>
+              <div class="col-7 d-flex align-items-center justify-content-center">
+                <ul class="meeting-detail-nav cutover nav">
+                  <li class="nav-item active"><a href="#info">資訊</a></li>
+                  <li class="nav-item"><a href="#price">費用</a></li>
+                  <li class="nav-item"><a href="#air">班機</a></li>
+                  <li class="nav-item"><a href="#booking">訂房</a></li>
+                  <li class="nav-item"><a href="#food">餐宴</a></li>
+                  <li class="nav-item"><a href="#travel">行程</a></li>
+                  <li class="nav-item"><a href="#self">自費</a></li>
+                  <li class="nav-item"><a href="#note">備註</a></li>
+                </ul>
+              </div>
+              <div class="col-2 d-flex align-items-center justify-content-end">
+                <button class="close ml-1" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+              </div>
+            </div>
+          </div>
+          <form id="edit-detail">
+            <div class="modal-body px-4 py-0">
+              <div class="cutover-in show" id="info">
+                <div class="row align-items-center my-3">
+                  <div class="col-sm-12 col-md-3">
+                    <label class="d-flex align-items-center mb-0">
+                      <div style="flex:0 0 80px;">會議編號</div>
+                      <input class="form-control w-100" type="text" inputmode="numeric">
+                    </label>
+                  </div>
+                  <div class="col-sm-12 col-md-3">
+                    <label class="d-flex align-items-center mb-0">
+                      <div style="flex:0 0 80px;">類別</div>
+                      <select class="custom-select custom-select-sm form-control form-control-sm" name="" aria-controls="">
+                        <option value="0"> </option>
+                      </select>
+                    </label>
+                  </div>
+                  <div class="col-sm-12 col-md-4">
+                    <label class="d-flex align-items-center mb-0">
+                      <div style="flex:0 0 80px;">會議年度</div>
+                      <input class="form-control w-100" type="text" inputmode="numeric">
+                    </label>
+                  </div>
+                  <div class="col-sm-12 col-md-2">
+                    <label class="d-flex align-items-center mb-0">
+                      <div style="flex:0 0 80px;">屆別</div>
+                      <input class="form-control w-100" type="text" inputmode="numeric">
+                    </label>
+                  </div>
+                </div>
+                <div class="row align-items-center my-3">
+                  <div class="col-sm-12 col-md-6">
+                    <label class="d-flex align-items-center mb-0">
+                      <div style="flex:0 0 80px;">會議名稱</div>
+                      <input class="form-control w-100" type="text" inputmode="search">
+                    </label>
+                  </div>
+                  <div class="col-sm-12 col-md-4">
+                    <label class="d-flex align-items-center mb-0">
+                      <div style="flex:0 0 80px;">期間</div>
+                      <div class="form-row align-items-center">
+                        <div class="col">
+                          <input class="form-control date-input" type="text">
+                        </div><span class="mx-1">至</span>
+                        <div class="col">
+                          <input class="form-control date-input" type="text">
+                        </div>
+                      </div>
+                    </label>
+                  </div>
+                  <div class="col-sm-12 col-md-2">
+                    <label class="d-flex align-items-center mb-0">
+                      <div style="flex:0 0 80px;">總人數</div>
+                      <input class="form-control w-100" type="text" inputmode="numeric">
+                    </label>
+                  </div>
+                </div>
+                <div class="row align-items-center my-3">
+                  <div class="col-sm-12 col-md-3">
+                    <label class="d-flex align-items-center mb-0">
+                      <div style="flex:0 0 80px;">會議地點</div>
+                      <input class="form-control w-100" type="text" inputmode="search">
+                    </label>
+                  </div>
+                  <div class="col-sm-12 col-md-5">
+                    <label class="d-flex align-items-center mb-0">
+                      <div style="flex:0 0 80px;">會議地址</div>
+                      <input class="form-control w-100" type="text" inputmode="search">
+                    </label>
+                  </div>
+                  <div class="col-sm-12 col-md-3">
+                    <label class="d-flex align-items-center mb-0">
+                      <div style="flex:0 0 80px;">建檔日期</div>
+                      <input class="form-control w-100" type="text" inputmode="numeric">
+                    </label>
+                  </div>
+                </div>
+                <div class="row my-3">
+                  <div class="col-sm-12">
+                    <label class="d-flex mb-0">
+                      <div style="flex:0 0 80px;">會議內容</div>
+                      <textarea class="form-control w-100" style="height:100px;"></textarea>
+                    </label>
+                  </div>
+                </div>
+                <div class="row align-items-center my-3">
+                  <div class="col-sm-12 col-md-6">
+                    <label class="d-flex align-items-center mb-0">
+                      <div style="flex:0 0 80px;">主辦單位</div>
+                      <input class="form-control w-100" type="text" inputmode="search">
+                    </label>
+                  </div>
+                  <div class="col-sm-12 col-md-6">
+                    <label class="d-flex align-items-center mb-0">
+                      <div style="flex:0 0 80px;">協辦單位</div>
+                      <input class="form-control w-100" type="text" inputmode="search">
+                    </label>
+                  </div>
+                </div>
+                <div class="row align-items-center my-3">
+                  <div class="col-sm-12 col-md-3">
+                    <label class="d-flex align-items-center mb-0">
+                      <div style="flex:0 0 100px;">會議聯絡人</div>
+                      <input class="form-control w-100" type="text" inputmode="search">
+                    </label>
+                  </div>
+                  <div class="col-sm-12 col-md-3">
+                    <label class="d-flex align-items-center mb-0">
+                      <div style="flex:0 0 80px;">電話</div>
+                      <input class="form-control w-100" type="tel" inputmode="tel">
+                    </label>
+                  </div>
+                  <div class="col-sm-12 col-md-3">
+                    <label class="d-flex align-items-center mb-0">
+                      <div style="flex:0 0 80px;">傳真</div>
+                      <input class="form-control w-100" type="tel" inputmode="tel">
+                    </label>
+                  </div>
+                  <div class="col-sm-12 col-md-3">
+                    <label class="d-flex align-items-center mb-0">
+                      <div style="flex:0 0 80px;">電子郵件</div>
+                      <input class="form-control w-100" type="email" inputmode="email">
+                    </label>
+                  </div>
+                </div>
+              </div>
+              <div class="cutover-in" id="price">
+                <table class="table table-bordered dataTable mt-3" width="100%" cellspacing="0" role="grid" aria-describedby="dataTable_info" style="width: 100%;">
+                  <thead>
+                    <tr>
+                      <th style="width:80px;">項次</th>
+                      <th style="width:120px">科目代號</th>
+                      <th style="width:180px">科目名稱</th>
+                      <th style="width:120px">會員類別</th>
+                      <th style="width:120px">本人金額</th>
+                      <th style="width:120px">直系眷屬</th>
+                      <th style="width:120px">非直系眷屬</th>
+                      <th style="width:60px;">序</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <input class="form-control w-100" type="text" inputmode="numeric" value="1.0">
+                      </td>
+                      <td>
+                        <input class="form-control w-100" type="text" value="01">
+                      </td>
+                      <td>
+                        <input class="form-control w-100" type="text" value="個人出席費">
+                      </td>
+                      <td>
+                        <select class="custom-select custom-select-sm form-control form-control-sm" name="" aria-controls="">
+                          <option value="0" selected="selected">名譽總會長</option>
+                          <option value="1">名譽監事長</option>
+                          <option value="2">總會長</option>
+                          <option value="3">監事長</option>
+                          <option value="4">副總會長</option>
+                          <option value="5">副監事長</option>
+                          <option value="6">諮詢委員</option>
+                          <option value="7">資深顧問</option>
+                          <option value="8">顧問</option>
+                          <option value="9">理監事</option>
+                          <option value="10">會員</option>
+                        </select>
+                      </td>
+                      <td>
+                        <input class="form-control w-100" type="text" value="1,000">
+                      </td>
+                      <td>
+                        <input class="form-control w-100" type="text" value="0">
+                      </td>
+                      <td>
+                        <input class="form-control w-100" type="text" value="0">
+                      </td>
+                      <td>
+                        <input class="form-control w-100" type="text" value="2">
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+                <div class="row my-3">
+                  <div class="col-sm-12">
+                    <label class="d-flex mb-0">
+                      <div style="flex:0 0 80px;">費用說明</div>
+                      <textarea class="form-control w-100" style="min-height:100px;"></textarea>
+                    </label>
+                  </div>
+                </div>
+              </div>
+              <div class="cutover-in" id="air">
+                <div class="row my-3">
+                  <div class="col-sm-12">
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input" id="air-car" type="checkbox" value="air" name="air">
+                      <label class="form-check-label" for="air-car">無需接送班機</label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="cutover-in" id="booking">
+                <table class="table table-bordered dataTable mt-3" width="100%" cellspacing="0" role="grid" aria-describedby="dataTable_info" style="width: 100%;">
+                  <thead>
+                    <tr>
+                      <th style="width:80px;">項次</th>
+                      <th style="width:240px">飯店名稱</th>
+                      <th style="width:240px">房型</th>
+                      <th style="width:180px">價格</th>
+                      <th>備註</th>
+                      <th style="width:120px">飯店連結</th>
+                      <th style="width:60px;">序</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <input class="form-control w-100" type="text" inputmode="numeric" value="1.0">
+                      </td>
+                      <td>
+                        <input class="form-control w-100" type="text" value="台北圓山飯店">
+                      </td>
+                      <td>
+                        <input class="form-control w-100" type="text" value="個人出席費">
+                      </td>
+                      <td>
+                        <select class="custom-select custom-select-sm form-control form-control-sm" name="" aria-controls="">
+                          <option value="0" selected="selected">名譽總會長</option>
+                          <option value="1">名譽監事長</option>
+                          <option value="2">總會長</option>
+                          <option value="3">監事長</option>
+                          <option value="4">副總會長</option>
+                          <option value="5">副監事長</option>
+                          <option value="6">諮詢委員</option>
+                          <option value="7">資深顧問</option>
+                          <option value="8">顧問</option>
+                          <option value="9">理監事</option>
+                          <option value="10">會員</option>
+                        </select>
+                      </td>
+                      <td>
+                        <input class="form-control w-100" type="text" value="1,000">
+                      </td>
+                      <td class="text-center">
+                        <input class="form-control w-100" type="text" value="0">
+                      </td>
+                      <td>
+                        <input class="form-control w-100" type="text" value="0">
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+                <div class="row my-3">
+                  <div class="col-sm-12">
+                    <label class="d-flex mb-0">
+                      <div style="flex:0 0 80px;">訂房備註</div>
+                      <textarea class="form-control w-100" style="min-height:100px;"></textarea>
+                    </label>
+                  </div>
+                </div>
+              </div>
+              <div class="cutover-in" id="food">
+                <table class="table table-bordered dataTable mt-3" width="100%" cellspacing="0" role="grid" aria-describedby="dataTable_info" style="width: 100%;">
+                  <thead>
+                    <tr>
+                      <th style="width:80px;">項次</th>
+                      <th style="width:140px">日期</th>
+                      <th style="width:140px">餐別</th>
+                      <th>餐宴備註</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <input class="form-control w-100" type="text" inputmode="numeric" value="1.0">
+                      </td>
+                      <td>
+                        <input class="date-input form-control w-100" type="text" value="2021-03-23">
+                      </td>
+                      <td>
+                        <select class="custom-select custom-select-sm form-control form-control-sm" name="" aria-controls="">
+                          <option value="0" selected="selected">晚宴</option>
+                          <option value="1">午宴</option>
+                        </select>
+                      </td>
+                      <td>
+                        <input class="form-control w-100" type="text" value="">
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+                <div class="row my-3">
+                  <div class="col-sm-12">
+                    <label class="d-flex mb-0">
+                      <div style="flex:0 0 80px;">餐宴備註</div>
+                      <textarea class="form-control w-100" style="min-height:100px;"></textarea>
+                    </label>
+                  </div>
+                </div>
+              </div>
+              <div class="cutover-in" id="travel">
+                <table class="table table-bordered dataTable mt-3" width="100%" cellspacing="0" role="grid" aria-describedby="dataTable_info" style="width: 100%;">
+                  <thead>
+                    <tr>
+                      <th style="width:80px;">項次</th>
+                      <th style="width:140px">日期</th>
+                      <th>行程說明</th>
+                      <th class="text-center" style="width:120px">行程類型</th>
+                      <th class="text-center" style="width:60px">線上</th>
+                      <th style="width:160px">活動連結</th>
+                    </tr>
+                  </thead>
+                  <tbody class="travel-body">
+                    <tr>
+                      <td>
+                        <input class="form-control w-100" type="text" inputmode="numeric" value="1.0">
+                      </td>
+                      <td>
+                        <input class="date-input form-control w-100" type="text" value="2021-03-23">
+                      </td>
+                      <td>
+                        <input class="form-control w-100" type="text" value="理監事聯席會議(限理監事以上人員勾選)">
+                      </td>
+                      <td class="text-center">
+                        <select class="custom-select custom-select-sm form-control form-control-sm" name="" aria-controls="">
+                          <option value="0" selected="selected">會議</option>
+                          <option value="1">高爾夫</option>
+                        </select>
+                      </td>
+                      <td class="text-center">
+                        <div class="form-check form-check-inline px-0 py-0 mx-0">
+                          <input class="form-check-input mr-0" type="checkbox" name="online">
+                        </div>
+                      </td>
+                      <td>
+                        <input class="form-control w-100" type="text" value="">
+                      </td>
+                    </tr>
+                    <tr>
+                      <td colspan="6">
+                        <div class="row">
+                          <div class="col-sm-12 col-md-4">
+                            <label class="d-flex align-items-center mb-0">
+                              <div style="flex:0 0 80px;">備註一</div>
+                              <input class="form-control w-100" type="text">
+                            </label>
+                          </div>
+                          <div class="col-sm-12 col-md-4">
+                            <label class="d-flex align-items-center mb-0">
+                              <div style="flex:0 0 80px;">備註二</div>
+                              <input class="form-control w-100" type="text">
+                            </label>
+                          </div>
+                          <div class="col-sm-12 col-md-4">
+                            <label class="d-flex align-items-center mb-0">
+                              <div style="flex:0 0 80px;">選項</div>
+                              <input class="form-control w-100" type="text">
+                            </label>
+                          </div>
+                        </div>
+                      </td>
+                    </tr>
+                  </tbody>
+                  <tbody class="travel-body">
+                    <tr>
+                      <td>
+                        <input class="form-control w-100" type="text" inputmode="numeric" value="1.0">
+                      </td>
+                      <td>
+                        <input class="date-input form-control w-100" type="text" value="2021-03-23">
+                      </td>
+                      <td>
+                        <input class="form-control w-100" type="text" value="理監事聯席會議(限理監事以上人員勾選)">
+                      </td>
+                      <td class="text-center">
+                        <select class="custom-select custom-select-sm form-control form-control-sm" name="" aria-controls="">
+                          <option value="0" selected="selected">會議</option>
+                          <option value="1">高爾夫</option>
+                        </select>
+                      </td>
+                      <td class="text-center">
+                        <div class="form-check form-check-inline px-0 py-0 mx-0">
+                          <input class="form-check-input mr-0" type="checkbox" name="online">
+                        </div>
+                      </td>
+                      <td>
+                        <input class="form-control w-100" type="text" value="">
+                      </td>
+                    </tr>
+                    <tr>
+                      <td colspan="6">
+                        <div class="row">
+                          <div class="col-sm-12 col-md-4">
+                            <label class="d-flex align-items-center mb-0">
+                              <div style="flex:0 0 80px;">備註一</div>
+                              <input class="form-control w-100" type="text">
+                            </label>
+                          </div>
+                          <div class="col-sm-12 col-md-4">
+                            <label class="d-flex align-items-center mb-0">
+                              <div style="flex:0 0 80px;">備註二</div>
+                              <input class="form-control w-100" type="text">
+                            </label>
+                          </div>
+                          <div class="col-sm-12 col-md-4">
+                            <label class="d-flex align-items-center mb-0">
+                              <div style="flex:0 0 80px;">選項</div>
+                              <input class="form-control w-100" type="text">
+                            </label>
+                          </div>
+                        </div>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+                <div class="row my-3">
+                  <div class="col-sm-12">
+                    <label class="d-flex mb-0">
+                      <div style="flex:0 0 80px;">行程備註</div>
+                      <textarea class="form-control w-100" style="min-height:100px;"></textarea>
+                    </label>
+                  </div>
+                </div>
+              </div>
+              <div class="cutover-in" id="self">
+                <table class="table table-bordered dataTable mt-3" width="100%" cellspacing="0" role="grid" aria-describedby="dataTable_info" style="width: 100%;">
+                  <thead>
+                    <tr>
+                      <th style="width:80px;">項次</th>
+                      <th style="width:140px">類別</th>
+                      <th style="width:160px">團名</th>
+                      <th>行程說明</th>
+                      <th>備註</th>
+                      <th style="width:120px">活動表單</th>
+                      <th style="width:60px;">序</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <input class="form-control w-100" type="text" inputmode="numeric" value="1.0">
+                      </td>
+                      <td>
+                        <select class="custom-select custom-select-sm form-control form-control-sm" name="" aria-controls="">
+                          <option value="0" selected="selected">會後旅遊</option>
+                        </select>
+                      </td>
+                      <td>
+                        <input class="form-control w-100" type="text" value="海外台商旅行社">
+                      </td>
+                      <td>
+                        <input class="form-control w-100" type="text" value="A.樂活台東雙島蘭嶼+綠島四日遊">
+                      </td>
+                      <td>
+                        <input class="form-control w-100" type="text" value="0">
+                      </td>
+                      <td class="text-center">
+                        <input class="form-control w-100" type="text" value="0">
+                      </td>
+                      <td>
+                        <input class="form-control w-100" type="text" value="0">
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+                <div class="row my-3">
+                  <div class="col-sm-12">
+                    <label class="d-flex mb-0">
+                      <div style="flex:0 0 80px;">自費備註</div>
+                      <textarea class="form-control w-100" style="min-height:100px;"></textarea>
+                    </label>
+                  </div>
+                </div>
+              </div>
+              <div class="cutover-in" id="note">
+                <div class="row my-3">
+                  <div class="col-sm-12 col-md-8">
+                    <label class="d-flex mb-0">
+                      <div style="flex:0 0 80px;">自費備註</div>
+                      <textarea class="form-control w-100" style="min-height:200px;"></textarea>
+                    </label>
+                  </div>
+                  <div class="col-sm-12 col-md-4">
+                    <label class="d-flex align-items-center mb-3">
+                      <div style="flex:0 0 140px;">屆別註記-1</div>
+                      <input class="form-control w-100" type="text" value="27">
+                    </label>
+                    <label class="d-flex align-items-center mb-3">
+                      <div style="flex:0 0 140px;">屆別註記-2</div>
+                      <input class="form-control w-100" type="text" value="27">
+                    </label>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </form>
+          <div class="modal-footer">
+            <button class="btn btn-secondary w-100 mr-2" type="button" data-dismiss="modal">取消</button>
+            <button class="btn btn-success w-100 ml-2" type="button" disabled="">確認</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal fade" id="deleteModalCenter" tabindex="-1" role="dialog" aria-labelledby="deleteModalCenterTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-body py-5 text-center">您確定要刪除此筆資料嗎?</div>
+          <div class="modal-footer">
+            <button class="btn btn-secondary w-100 mr-2" type="button" data-dismiss="modal">取消</button>
+            <button class="btn btn-success w-100 ml-2" type="button">確認</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="meeting-dialog modal fade" id="addModalCenter" tabindex="-1" role="dialog" aria-labelledby="addModalCenterTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <div class="admin-page-title d-flex align-items-center">
+              <div class="icon t-blue-dp"><i class="icon-flag"></i></div>
+              <div class="t-blue-dp h5 mb-0">建立會議</div>
+            </div>
+            <button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+          </div>
+          <form>
+            <div class="model-body px-4 py-0">
+              <div class="row align-items-center my-3">
+                <div class="col-sm-12 col-md-3">
+                  <label class="d-flex align-items-center mb-0">
+                    <div style="flex:0 0 80px;">會議編號</div>
+                    <input class="form-control w-100" type="text" inputmode="numeric">
+                  </label>
+                </div>
+                <div class="col-sm-12 col-md-3">
+                  <label class="d-flex align-items-center mb-0">
+                    <div style="flex:0 0 80px;">類別</div>
+                    <select class="custom-select custom-select-sm form-control form-control-sm" name="" aria-controls="">
+                      <option value="0"> </option>
+                    </select>
+                  </label>
+                </div>
+                <div class="col-sm-12 col-md-4">
+                  <label class="d-flex align-items-center mb-0">
+                    <div style="flex:0 0 80px;">會議年度</div>
+                    <input class="form-control w-100" type="text" inputmode="numeric">
+                  </label>
+                </div>
+                <div class="col-sm-12 col-md-2">
+                  <label class="d-flex align-items-center mb-0">
+                    <div style="flex:0 0 80px;">屆別</div>
+                    <input class="form-control w-100" type="text" inputmode="numeric">
+                  </label>
+                </div>
+              </div>
+              <div class="row align-items-center my-3">
+                <div class="col-sm-12 col-md-6">
+                  <label class="d-flex align-items-center mb-0">
+                    <div style="flex:0 0 80px;">會議名稱</div>
+                    <input class="form-control w-100" type="text" inputmode="search">
+                  </label>
+                </div>
+                <div class="col-sm-12 col-md-4">
+                  <label class="d-flex align-items-center mb-0">
+                    <div style="flex:0 0 80px;">期間</div>
+                    <div class="form-row align-items-center">
+                      <div class="col">
+                        <input class="form-control date-input" type="text">
+                      </div><span class="mx-1">至</span>
+                      <div class="col">
+                        <input class="form-control date-input" type="text">
+                      </div>
+                    </div>
+                  </label>
+                </div>
+                <div class="col-sm-12 col-md-2">
+                  <label class="d-flex align-items-center mb-0">
+                    <div style="flex:0 0 80px;">總人數</div>
+                    <input class="form-control w-100" type="text" inputmode="numeric">
+                  </label>
+                </div>
+              </div>
+              <div class="row align-items-center my-3">
+                <div class="col-sm-12 col-md-3">
+                  <label class="d-flex align-items-center mb-0">
+                    <div style="flex:0 0 80px;">會議地點</div>
+                    <input class="form-control w-100" type="text" inputmode="search">
+                  </label>
+                </div>
+                <div class="col-sm-12 col-md-5">
+                  <label class="d-flex align-items-center mb-0">
+                    <div style="flex:0 0 80px;">會議地址</div>
+                    <input class="form-control w-100" type="text" inputmode="search">
+                  </label>
+                </div>
+                <div class="col-sm-12 col-md-3">
+                  <label class="d-flex align-items-center mb-0">
+                    <div style="flex:0 0 80px;">建檔日期</div>
+                    <input class="form-control w-100" type="text" inputmode="numeric">
+                  </label>
+                </div>
+              </div>
+              <div class="row my-3">
+                <div class="col-sm-12">
+                  <label class="d-flex mb-0">
+                    <div style="flex:0 0 80px;">會議內容</div>
+                    <textarea class="form-control w-100" style="height:100px;"></textarea>
+                  </label>
+                </div>
+              </div>
+              <div class="row align-items-center my-3">
+                <div class="col-sm-12 col-md-6">
+                  <label class="d-flex align-items-center mb-0">
+                    <div style="flex:0 0 80px;">主辦單位</div>
+                    <input class="form-control w-100" type="text" inputmode="search">
+                  </label>
+                </div>
+                <div class="col-sm-12 col-md-6">
+                  <label class="d-flex align-items-center mb-0">
+                    <div style="flex:0 0 80px;">協辦單位</div>
+                    <input class="form-control w-100" type="text" inputmode="search">
+                  </label>
+                </div>
+              </div>
+              <div class="row align-items-center my-3">
+                <div class="col-sm-12 col-md-3">
+                  <label class="d-flex align-items-center mb-0">
+                    <div style="flex:0 0 100px;">會議聯絡人</div>
+                    <input class="form-control w-100" type="text" inputmode="search">
+                  </label>
+                </div>
+                <div class="col-sm-12 col-md-3">
+                  <label class="d-flex align-items-center mb-0">
+                    <div style="flex:0 0 80px;">電話</div>
+                    <input class="form-control w-100" type="tel" inputmode="tel">
+                  </label>
+                </div>
+                <div class="col-sm-12 col-md-3">
+                  <label class="d-flex align-items-center mb-0">
+                    <div style="flex:0 0 80px;">傳真</div>
+                    <input class="form-control w-100" type="tel" inputmode="tel">
+                  </label>
+                </div>
+                <div class="col-sm-12 col-md-3">
+                  <label class="d-flex align-items-center mb-0">
+                    <div style="flex:0 0 80px;">電子郵件</div>
+                    <input class="form-control w-100" type="email" inputmode="email">
+                  </label>
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button class="btn btn-secondary w-100 mr-2" type="button" data-dismiss="modal">取消</button>
+              <button class="btn btn-success w-100 ml-2" type="button">確認</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="cursor"></div>
+    <script src="scripts/default/jquery.min.js"></script>
+    <script src="scripts/default/bootstrap.min.js"></script>
+    <script src="scripts/default/bootstrap.bundle.min.js"></script>
+    <script src="scripts/plugins/pagination.min.js"></script>
+    <script src="scripts/plugins/jquery-ui.min.js"></script>
+    <script src="scripts/plugins/jquery-ui-timepicker-addon.js"></script>
+    <script>
+      $('.datetime-input').datetimepicker({
+          "dateFormat": "yy-mm-dd",
+          "timeFormat": "HH:mm"
+      });
+      $('.date-input').datepicker({
+          "dateFormat": "yy-mm-dd"
+      });
+      
+    </script>
+    <script src="scripts/default/admin.js"></script>
+  </body>
+</html>

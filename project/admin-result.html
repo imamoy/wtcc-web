@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+  <head>
+    <meta charset="utf-8">
+    <title> </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="styles/images/web-icon.ico">
+    <link rel="stylesheet" type="text/css" href="styles/fonts/css/fontello.css">
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans+TC:300,400,500,700,900&amp;display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles/fonts/css/fontello.css">
+    <link rel="stylesheet" type="text/css" href="styles/plugins/bootstrap-reboot.min.css">
+    <link rel="stylesheet" type="text/css" href="styles/plugins/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="styles/common.css">
+    <link rel="stylesheet" type="text/css" href="styles/admin.css">
+  </head>
+  <body id="admin">
+    <div class="tv"></div>
+    <header class="admin-header"><a class="logo-box" href="admin.html"><span class="logo"><img class="img-fluid" src="styles/images/logo.png" alt=""></span>
+        <div class="name">
+          <h1>世界台灣商會聯合總會</h1>
+          <h2>World Taiwanese <br>Chambers of Commerce</h2>
+        </div></a>
+      <div class="menu-toggle d-inline-block d-xl-none"><i class="icon-menu"></i></div>
+      <hr class="my-4">
+      <ul class="menu-list list-unstyled">
+        <li class="mb-3"><a class="link" href="admin-member.html"><i class="icon-user"></i><span class="ml-2">會員管理</span></a></li>
+        <li class="mb-3"><a class="link" href="admin-vote.html"><i class="icon-edit"></i><span class="ml-2">投票管理</span></a></li>
+        <li class="mb-3"><a class="link" href="admin-result.html"><i class="icon-vote"></i><span class="ml-2">最新開票結果</span></a></li>
+        <li class="mb-3"><a class="link" href="admin-meeting.html"><i class="icon-flag"></i><span class="ml-2">會議管理</span></a></li>
+        <li class="d-block d-xl-none">
+          <hr class="d-block d-xl-none my-4">
+          <div class="d-flex justify-content-between align-items-center">
+            <div class="admin-user d-inline-flex align-items-center">
+              <div class="pic"><img src="styles/images/user.png" alt="" width="40px"></div><span class="ml-2">admin</span>
+            </div>
+            <button class="logout-btn"><i class="icon-logout-1"></i></button>
+          </div>
+        </li>
+      </ul>
+    </header>
+    <div class="top-bar d-none justify-content-between align-items-center d-xl-flex"><span>促進海外台商企業發展，會員交流，提昇台商社會地位</span>
+      <div class="admin-user d-inline-flex align-items-center">
+        <div class="pic"><img src="styles/images/user.png" alt="" width="40px"></div><span class="ml-2">admin</span><i class="icon-angle-down"></i>
+      </div>
+      <div class="admin-user-menu">
+        <button class="logout-btn"><i class="icon-logout-1"></i><span class="ml-2">登出</span></button>
+      </div>
+    </div>
+    <main class="admin-wrapper pa-5">
+      <div class="container-fluid">
+        <div class="d-lg-flex align-items-center justify-content-between mb-4 mb-lg-5 px-2">
+          <div class="admin-page-title d-flex align-items-center">
+            <div class="icon t-blue-dp"><i class="icon-vote"></i></div>
+            <h2 class="t-blue-dp h5 mb-0">最新開票結果</h2>
+          </div>
+          <div class="mt-3 mt-lg-0"><span class="t-blue-dp">應投票人數</span><span class="val t-blue ml-2">1,000  </span><span class="mx-3" style="color: #dedede;">|   </span><span class="t-blue-dp">實際投票人數</span><span class="val t-blue ml-2">1,000</span></div>
+        </div>
+        <div class="row pt-lg-3">
+          <div class="col-12 px-4">
+            <h3 class="h5 label t-blue-dp mb-1">世界台商總會第二十九屆   目前開票結果</h3>
+          </div>
+          <div class="col-12 col-lg-6 px-4 my-3">
+            <div class="result-table">
+              <div class="result-table_Title bg-blue">總會長職務 總票數<span class="t-yellow val">1,000</span>張</div>
+              <table>
+                <thead>
+                  <tr>
+                    <th>候選人姓名</th>
+                    <th>得票率</th>
+                    <th>得票數</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="t-red">同意</td>
+                    <td class="t-red">68%</td>
+                    <td class="t-red">680</td>
+                  </tr>
+                  <tr>
+                    <td>沒意見</td>
+                    <td>2%</td>
+                    <td>20</td>
+                  </tr>
+                  <tr>
+                    <td>不同意</td>
+                    <td>30%</td>
+                    <td>300</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div class="col-12 col-lg-6 px-4 my-3">
+            <div class="result-table">
+              <div class="result-table_Title bg-red">總會長職務 總票數<span class="t-yellow val">1,000</span>張</div>
+              <table>
+                <thead>
+                  <tr>
+                    <th>候選人姓名</th>
+                    <th>得票率</th>
+                    <th>得票數</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="t-red">同意</td>
+                    <td class="t-red">50%</td>
+                    <td class="t-red">500</td>
+                  </tr>
+                  <tr>
+                    <td>沒意見</td>
+                    <td>2%</td>
+                    <td>20</td>
+                  </tr>
+                  <tr>
+                    <td>不同意</td>
+                    <td>48%</td>
+                    <td>480</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <hr class="my-3 my-lg-5">
+        <div class="row">
+          <div class="col-12 px-4">
+            <h3 class="h5 label t-blue-dp mb-1">世界台商總會第二十七屆   投票率</h3>
+          </div>
+          <div class="col-12 col-lg-6 px-4 my-3">
+            <div class="card border h-100 py-4">
+              <div class="card-body">
+                <div class="d-flex align-items-center justify-content-between w-100">
+                  <h6 class="m-0 h6 t-blue-dp">第二十九屆總會長暨第二十八屆監事長選舉 </h6>
+                  <div class="val t-blue">66%</div>
+                </div>
+                <div class="progress mt-3">
+                  <div class="progress-bar" role="progressbar" style="width: 25%;background-color:#1967D8;" aria-valuenow="66" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-lg-6 px-4 my-3">
+            <div class="card border h-100 py-4">
+              <div class="card-body">
+                <div class="d-flex align-items-center justify-content-between">
+                  <h6 class="m-0 h6 t-blue-dp">第二十七屆第二次理監事會議討論事項提付表決議案</h6>
+                  <div class="val t-orange">80%</div>
+                </div>
+                <div class="progress mt-3">
+                  <div class="progress-bar" role="progressbar" style="width: 80%;background-color:#FFA700;" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+    <div class="cursor"></div>
+    <script src="scripts/default/jquery.min.js"></script>
+    <script src="scripts/default/bootstrap.min.js"></script>
+    <script src="scripts/default/bootstrap.bundle.min.js"></script>
+    <script src="scripts/plugins/pagination.min.js"></script>
+    <script src="scripts/default/admin.js"></script>
+  </body>
+</html>
