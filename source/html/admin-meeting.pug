@@ -16,8 +16,54 @@ block plugins-js
         });
         $('.date-input').datepicker({
             "dateFormat": "yy-mm-dd"
+        });        
+
+        $('.copy-btn').on('click',function(){
+            var copyInnerRow = $(this).parents('tr').html();
+            var copyRow = '<tr>'+ copyInnerRow +'</tr>';
+            console.log(copyRow);
+            $(this).parents('tr').after(copyRow);
         });
-        
+
+        $('.copy-travel-btn').on('click',function(){
+            var copyTravelInnerRow = $(this).parents('tbody').html();
+            var copyTravelRow = '<tbody class="travel-body">'+ copyTravelInnerRow +'</tbody>';
+            console.log(copyTravelRow);
+            $(this).parents('tbody').after(copyTravelRow);
+        });
+
+        $('#price').each(function(){
+            var priceRow = '<tr><td><input class="form-control w-100" type="text" inputmode="numeric" value=""/></td><td><input class="form-control w-100" type="text" value=""/></td><td><input class="form-control w-100" type="text" value=""/></td><td><select class="custom-select custom-select-sm form-control form-control-sm" name="" aria-controls=""><option value="">請選擇</option><option value="0">名譽總會長</option><option value="1">名譽監事長</option><option value="2">總會長</option><option value="3">監事長</option><option value="4">副總會長</option><option value="5">副監事長</option><option value="6">諮詢委員</option><option value="7">資深顧問</option><option value="8">顧問</option><option value="9">理監事</option><option value="10">會員</option></select></td><td><input class="form-control w-100" type="text" value=""/></td><td><input class="form-control w-100" type="text" value=""/></td><td><input class="form-control w-100" type="text" value=""/></td><td><input class="form-control w-100" type="text" value=""/></td><td class="text-center"><button class="iconBtn copy-btn" type="button" data-tooltip="tooltip" data-placement="bottom" title="複製"><i class="icon-copy"></i></button><button class="iconBtn detele-btn" type="button" data-toggle="modal" data-target="#deleteModalCenter" data-tooltip="tooltip" data-placement="bottom" title="刪除"><i class="icon-delete"></i></button></td></tr>';
+            $('.add-price-row').on('click', function(){
+                $(this).next('table').find('tbody').append(priceRow);
+            }); 
+            
+        });
+        $('#booking').each(function(){
+            var bookingRow = '<tr><td><input class="form-control w-100" type="text" inputmode="numeric" value=""/></td><td><input class="form-control w-100" type="text" value=""/></td><td><input class="form-control w-100" type="text" value=""/></td><td><input class="form-control w-100" type="text" value=""/></td><td><textarea class="form-control w-100" name="" cols="30" rows="1" value="單人NT3,400(含1早＋網路);雙人NT3,400(含1早＋網路)"></textarea></td><td class="text-center"><input class="form-control w-100" type="text" value=""/></td><td><input class="form-control w-100" type="text" value="1"/></td><td class="text-center"><button class="iconBtn copy-btn" type="button" data-tooltip="tooltip" data-placement="bottom" title="複製"><i class="icon-copy"></i></button><button class="iconBtn detele-btn" type="button" data-toggle="modal" data-target="#deleteModalCenter" data-tooltip="tooltip" data-placement="bottom" title="刪除"><i class="icon-delete"></i></button></td></tr>';
+            $('.add-booking-row').on('click', function(){
+                $(this).next('table').find('tbody').append(bookingRow);
+            }); 
+        });
+        $('#food').each(function(){
+            var foodRow = '<tr><td><input class="form-control w-100" type="text" inputmode="numeric" value=""/></td><td><input class="date-input form-control w-100" type="text" value=""/></td><td><select class="custom-select custom-select-sm form-control form-control-sm" name="" aria-controls=""><option value="0">請選擇</option><option value="1">早宴</option><option value="2">午宴</option><option value="3" selected="selected">晚宴   </option></select></td><td><input class="form-control w-100" type="text" value=""/></td><td class="text-center"><button class="iconBtn copy-btn" type="button" data-tooltip="tooltip" data-placement="bottom" title="複製"><i class="icon-copy"></i></button><button class="iconBtn detele-btn" type="button" data-toggle="modal" data-target="#deleteModalCenter" data-tooltip="tooltip" data-placement="bottom" title="刪除"><i class="icon-delete"></i></button></td></tr>';
+            $('.add-food-row').on('click', function(){
+                $(this).next('table').find('tbody').append(foodRow);
+            }); 
+        });
+        $('#travel').each(function(){
+            var travelRow = '<tbody class="travel-body"><tr><td><input class="form-control w-100" type="text" inputmode="numeric" value=""/></td><td><input class="date-input form-control w-100" type="text" value=""/></td><td> <input class="form-control w-100" type="text" value=""/></td><td class="text-center"><select class="custom-select custom-select-sm form-control form-control-sm" name="" aria-controls=""><option valud="">請選擇</option><option value="0">會議</option><option value="1">高爾夫</option></select></td><td class="text-center"><div class="form-check form-check-inline px-0 py-0 mx-0"><input class="form-check-input mr-0" type="checkbox" name="online"/></div></td><td><input class="form-control w-100" type="text" value=""/></td><td class="text-center"><button class="iconBtn copy-btn" type="button" data-tooltip="tooltip" data-placement="bottom" title="複製"><i class="icon-copy"></i></button><button class="iconBtn detele-btn" type="button" data-toggle="modal" data-target="#deleteModalCenter" data-tooltip="tooltip" data-placement="bottom" title="刪除"><i class="icon-delete"></i></button></td></tr><tr><td colspan="6"><div class="row"><div class="col-sm-12 col-md-4"><label class="d-flex align-items-center mb-0"><div style="flex:0 0 80px;">備註一</div><input class="form-control w-100" type="text"/></label></div><div class="col-sm-12 col-md-4"><label class="d-flex align-items-center mb-0"><div style="flex:0 0 80px;">備註二</div><input class="form-control w-100" type="text"/></label></div><div class="col-sm-12 col-md-4"><label class="d-flex align-items-center mb-0"><div style="flex:0 0 80px;">選項</div><input class="form-control w-100" type="text"/></label></div></div></td></tr></tbody>';
+            $('.add-travel-row').on('click', function(){
+                $(this).next('table').append(travelRow);
+            }); 
+        });
+        $('#self').each(function(){
+            var selfRow = '<tr><td><input class="form-control w-100" type="text" inputmode="numeric" value=""/></td><td><select class="custom-select custom-select-sm form-control form-control-sm" name="" aria-controls=""><option value="">請選擇</option><option value="0">會後旅遊</option></select></td><td><input class="form-control w-100" type="text" value=""/></td><td><input class="form-control w-100" type="text" value=""/></td><td><input class="form-control w-100" type="text" value=""/></td><td class="text-center"><input class="form-control w-100" type="text" value=""/></td><td><input class="form-control w-100" type="text" value=""/></td><td class="text-center"><button class="iconBtn copy-btn" type="button" data-tooltip="tooltip" data-placement="bottom" title="複製"><i class="icon-copy"></i></button><button class="iconBtn detele-btn" type="button" data-toggle="modal" data-target="#deleteModalCenter" data-tooltip="tooltip" data-placement="bottom" title="刪除"><i class="icon-delete"></i></button></td></tr>';
+            $('.add-self-row').on('click', function(){
+                $(this).next('table').find('tbody').append(selfRow);
+            }); 
+        });
+
 block content
     .top-bar.d-none.justify-content-between.align-items-center.d-xl-flex
         span 促進海外台商企業發展，會員交流，提昇台商社會地位
@@ -128,6 +174,8 @@ block content
                                 span(aria-hidden='true') ×
                 form#edit-detail
                     .modal-body.px-4.py-0
+
+
                         #info.cutover-in.show
                             .row.align-items-center.my-3
                                 .col-sm-12.col-md-3
@@ -209,18 +257,25 @@ block content
                                     label.d-flex.align-items-center.mb-0
                                         div(style='flex:0 0 80px;') 電子郵件
                                         input.form-control.w-100(type='email' inputmode='email' )
+
+
+
                         #price.cutover-in
+                            button.edit-detail-btn.mt-3.add-price-row.iconBtn(type='button')
+                                i.icon-add.mr-1
+                                span 新增一筆
                             table.table.table-bordered.dataTable.mt-3(width='100%' cellspacing='0' role='grid' aria-describedby='dataTable_info' style='width: 100%;')
                                 thead
                                     tr
                                         th(style='width:80px;') 項次
                                         th(style='width:120px') 科目代號
-                                        th(style='width:180px') 科目名稱
-                                        th(style='width:120px') 會員類別
+                                        th 科目名稱
+                                        th(style='width:140px') 會員類別
                                         th(style='width:120px') 本人金額
                                         th(style='width:120px') 直系眷屬
                                         th(style='width:120px') 非直系眷屬
-                                        th(style='width:60px;') 序
+                                        th.text-center(style='width:60px;') 序
+                                        th.text-center(style='width:120px;max-width:120px') 執行
                                 tbody
                                     tr
                                         td
@@ -231,6 +286,7 @@ block content
                                             input.form-control.w-100(type='text' value='個人出席費' )
                                         td
                                             select.custom-select.custom-select-sm.form-control.form-control-sm(name='' aria-controls='')
+                                                option(value='') 請選擇
                                                 option(value='0' selected='selected') 名譽總會長
                                                 option(value='1') 名譽監事長
                                                 option(value='2') 總會長
@@ -250,38 +306,21 @@ block content
                                             input.form-control.w-100(type='text' value='0')
                                         td
                                             input.form-control.w-100(type='text' value='2')
-                            .row.my-3
-                                .col-sm-12
-                                    label.d-flex.mb-0
-                                        div(style='flex:0 0 80px;') 費用說明
-                                        textarea.form-control.w-100(style='min-height:100px;')
-                        #air.cutover-in
-                            .row.my-3
-                                .col-sm-12
-                                    .form-check.form-check-inline
-                                        input#air-car.form-check-input(type='checkbox' value='air' name='air')
-                                        label.form-check-label(for='air-car') 無需接送班機
-                        #booking.cutover-in
-                            table.table.table-bordered.dataTable.mt-3(width='100%' cellspacing='0' role='grid' aria-describedby='dataTable_info' style='width: 100%;')
-                                thead
-                                    tr
-                                        th(style='width:80px;') 項次
-                                        th(style='width:240px') 飯店名稱
-                                        th(style='width:240px') 房型
-                                        th(style='width:180px') 價格
-                                        th 備註
-                                        th(style='width:120px') 飯店連結
-                                        th(style='width:60px;') 序
-                                tbody
+                                        td.text-center
+                                            button.iconBtn.copy-btn(type='button' data-tooltip='tooltip' data-placement='bottom' title='複製')
+                                                i.icon-copy
+                                            button.iconBtn.detele-btn(type='button' data-toggle='modal' data-target='#deleteModalCenter' data-tooltip='tooltip' data-placement='bottom' title='刪除')
+                                                i.icon-delete
                                     tr
                                         td
-                                            input.form-control.w-100(type='text' inputmode='numeric' value='1.0')
+                                            input.form-control.w-100(type='text' inputmode='numeric'  value='2.0')
                                         td
-                                            input.form-control.w-100(type='text' value='台北圓山飯店')
+                                            input.form-control.w-100(type='text' value='01' )
                                         td
-                                            input.form-control.w-100(type='text' value='個人出席費')
+                                            input.form-control.w-100(type='text' value='個人出席費' )
                                         td
                                             select.custom-select.custom-select-sm.form-control.form-control-sm(name='' aria-controls='')
+                                                option(value='') 請選擇
                                                 option(value='0' selected='selected') 名譽總會長
                                                 option(value='1') 名譽監事長
                                                 option(value='2') 總會長
@@ -294,17 +333,247 @@ block content
                                                 option(value='9') 理監事
                                                 option(value='10') 會員
                                         td
-                                            input.form-control.w-100(type='text' value='1,000')
-                                        td.text-center
+                                            input.form-control.w-100(type='text' value='600')
+                                        td
                                             input.form-control.w-100(type='text' value='0')
                                         td
                                             input.form-control.w-100(type='text' value='0')
+                                        td
+                                            input.form-control.w-100(type='text' value='3')
+                                        td.text-center
+                                            button.iconBtn.copy-btn(type='button' data-tooltip='tooltip' data-placement='bottom' title='複製')
+                                                i.icon-copy
+                                            button.iconBtn.detele-btn(type='button' data-toggle='modal' data-target='#deleteModalCenter' data-tooltip='tooltip' data-placement='bottom' title='刪除')
+                                                i.icon-delete
+                                    tr
+                                        td
+                                            input.form-control.w-100(type='text' inputmode='numeric'  value='3.0')
+                                        td
+                                            input.form-control.w-100(type='text' value='01' )
+                                        td
+                                            input.form-control.w-100(type='text' value='個人出席費' )
+                                        td
+                                            select.custom-select.custom-select-sm.form-control.form-control-sm(name='' aria-controls='')
+                                                option(value='') 請選擇
+                                                option(value='0') 名譽總會長
+                                                option(value='1') 名譽監事長
+                                                option(value='2') 總會長
+                                                option(value='3') 監事長
+                                                option(value='4' selected='selected') 副總會長
+                                                option(value='5') 副監事長
+                                                option(value='6') 諮詢委員
+                                                option(value='7') 資深顧問
+                                                option(value='8') 顧問
+                                                option(value='9') 理監事
+                                                option(value='10') 會員
+                                        td
+                                            input.form-control.w-100(type='text' value='2,000')
+                                        td
+                                            input.form-control.w-100(type='text' value='0')
+                                        td
+                                            input.form-control.w-100(type='text' value='0')
+                                        td
+                                            input.form-control.w-100(type='text' value='3')
+                                        td.text-center
+                                            button.iconBtn.copy-btn(type='button' data-tooltip='tooltip' data-placement='bottom' title='複製')
+                                                i.icon-copy
+                                            button.iconBtn.detele-btn(type='button' data-toggle='modal' data-target='#deleteModalCenter' data-tooltip='tooltip' data-placement='bottom' title='刪除')
+                                                i.icon-delete
+                                    tr
+                                        td
+                                            input.form-control.w-100(type='text' inputmode='numeric'  value='4.0')
+                                        td
+                                            input.form-control.w-100(type='text' value='01' )
+                                        td
+                                            input.form-control.w-100(type='text' value='個人出席費' )
+                                        td
+                                            select.custom-select.custom-select-sm.form-control.form-control-sm(name='' aria-controls='')
+                                                option(value='') 請選擇
+                                                option(value='0') 名譽總會長
+                                                option(value='1') 名譽監事長
+                                                option(value='2') 總會長
+                                                option(value='3') 監事長
+                                                option(value='4') 副總會長
+                                                option(value='5' selected='selected') 副監事長
+                                                option(value='6') 諮詢委員
+                                                option(value='7') 資深顧問
+                                                option(value='8') 顧問
+                                                option(value='9') 理監事
+                                                option(value='10') 會員
+                                        td
+                                            input.form-control.w-100(type='text' value='300')
+                                        td
+                                            input.form-control.w-100(type='text' value='0')
+                                        td
+                                            input.form-control.w-100(type='text' value='0')
+                                        td
+                                            input.form-control.w-100(type='text' value='5')
+                                        td.text-center
+                                            button.iconBtn.copy-btn(type='button' data-tooltip='tooltip' data-placement='bottom' title='複製')
+                                                i.icon-copy
+                                            button.iconBtn.detele-btn(type='button' data-toggle='modal' data-target='#deleteModalCenter' data-tooltip='tooltip' data-placement='bottom' title='刪除')
+                                                i.icon-delete
+                                    tr
+                                        td
+                                            input.form-control.w-100(type='text' inputmode='numeric'  value='5.0')
+                                        td
+                                            input.form-control.w-100(type='text' value='01' )
+                                        td
+                                            input.form-control.w-100(type='text' value='個人出席費' )
+                                        td
+                                            select.custom-select.custom-select-sm.form-control.form-control-sm(name='' aria-controls='')
+                                                option(value='') 請選擇
+                                                option(value='0') 名譽總會長
+                                                option(value='1') 名譽監事長
+                                                option(value='2') 總會長
+                                                option(value='3') 監事長
+                                                option(value='4') 副總會長
+                                                option(value='5') 副監事長
+                                                option(value='6' selected='selected') 諮詢委員
+                                                option(value='7') 資深顧問
+                                                option(value='8') 顧問
+                                                option(value='9') 理監事
+                                                option(value='10') 會員
+                                        td
+                                            input.form-control.w-100(type='text' value='400')
+                                        td
+                                            input.form-control.w-100(type='text' value='0')
+                                        td
+                                            input.form-control.w-100(type='text' value='0')
+                                        td
+                                            input.form-control.w-100(type='text' value='6')
+                                        td.text-center
+                                            button.iconBtn.copy-btn(type='button' data-tooltip='tooltip' data-placement='bottom' title='複製')
+                                                i.icon-copy
+                                            button.iconBtn.detele-btn(type='button' data-toggle='modal' data-target='#deleteModalCenter' data-tooltip='tooltip' data-placement='bottom' title='刪除')
+                                                i.icon-delete
+                            .row.my-3
+                                .col-sm-12
+                                    label.d-flex.mb-0
+                                        div(style='flex:0 0 80px;') 費用說明
+                                        textarea.form-control.w-100(style='min-height:100px;')
+
+
+
+                        #air.cutover-in
+                            .row.my-3
+                                .col-sm-12
+                                    .form-check.form-check-inline
+                                        input#air-car.form-check-input(type='checkbox' value='air' name='air')
+                                        label.form-check-label(for='air-car') 無需接送班機
+
+
+
+                        #booking.cutover-in
+                            button.edit-detail-btn.mt-3.add-booking-row.iconBtn(type='button')
+                                i.icon-add.mr-1
+                                span 新增一筆
+                            table.table.table-bordered.dataTable.mt-3(width='100%' cellspacing='0' role='grid' aria-describedby='dataTable_info' style='width: 100%;')
+                                thead
+                                    tr
+                                        th(style='width:80px;') 項次
+                                        th(style='width:240px') 飯店名稱
+                                        th(style='width:240px') 房型
+                                        th(style='width:180px') 價格
+                                        th 備註
+                                        th(style='width:120px') 飯店連結
+                                        th.text-center(style='width:80px;') 序
+                                        th.text-center(style='width:120px') 執行
+                                tbody
+                                    tr
+                                        td
+                                            input.form-control.w-100(type='text' inputmode='numeric' value='1.0')
+                                        td
+                                            input.form-control.w-100(type='text' value='台北圓山飯店')
+                                        td
+                                            input.form-control.w-100(type='text' value='精緻無窗客房(正館)')
+                                        td
+                                            input.form-control.w-100(type='text' value='3,400')
+                                        td
+                                            textarea.form-control.w-100(name="" cols="30" rows="1" value='單人NT3,400(含1早＋網路);雙人NT3,400(含1早＋網路)')
+                                        td.text-center
+                                            input.form-control.w-100(type='text' value='')
+                                        td
+                                            input.form-control.w-100(type='text' value='1')
+                                        td.text-center
+                                            button.iconBtn.copy-btn(type='button' data-tooltip='tooltip' data-placement='bottom' title='複製')
+                                                i.icon-copy
+                                            button.iconBtn.detele-btn(type='button' data-toggle='modal' data-target='#deleteModalCenter' data-tooltip='tooltip' data-placement='bottom' title='刪除')
+                                                i.icon-delete
+                                    tr
+                                        td
+                                            input.form-control.w-100(type='text' inputmode='numeric' value='2.0')
+                                        td
+                                            input.form-control.w-100(type='text' value='台北圓山飯店')
+                                        td
+                                            input.form-control.w-100(type='text' value='豪華客房(正館)')
+                                        td
+                                            input.form-control.w-100(type='text' value='4,500')
+                                        td
+                                            textarea.form-control.w-100(name="" cols="30" rows="1" value='單人NT4,500(含1早＋網路);雙人NT4,500(含1早＋網路)')
+                                        td.text-center
+                                            input.form-control.w-100(type='text' value='')
+                                        td
+                                            input.form-control.w-100(type='text' value='1')
+                                        td.text-center
+                                            button.iconBtn.copy-btn(type='button' data-tooltip='tooltip' data-placement='bottom' title='複製')
+                                                i.icon-copy
+                                            button.iconBtn.detele-btn(type='button' data-toggle='modal' data-target='#deleteModalCenter' data-tooltip='tooltip' data-placement='bottom' title='刪除')
+                                                i.icon-delete
+                                    tr
+                                        td
+                                            input.form-control.w-100(type='text' inputmode='numeric' value='3.0')
+                                        td
+                                            input.form-control.w-100(type='text' value='台北圓山飯店')
+                                        td
+                                            input.form-control.w-100(type='text' value='天際客房(正館)')
+                                        td
+                                            input.form-control.w-100(type='text' value='5,100')
+                                        td
+                                            textarea.form-control.w-100(name="" cols="30" rows="1" value='單人NT5,100(含1早＋網路);雙人NT5,100(含1早＋網路)')
+                                        td.text-center
+                                            input.form-control.w-100(type='text' value='')
+                                        td
+                                            input.form-control.w-100(type='text' value='1')
+                                        td.text-center
+                                            button.iconBtn.copy-btn(type='button' data-tooltip='tooltip' data-placement='bottom' title='複製')
+                                                i.icon-copy
+                                            button.iconBtn.detele-btn(type='button' data-toggle='modal' data-target='#deleteModalCenter' data-tooltip='tooltip' data-placement='bottom' title='刪除')
+                                                i.icon-delete
+                                    tr
+                                        td
+                                            input.form-control.w-100(type='text' inputmode='numeric' value='4.0')
+                                        td
+                                            input.form-control.w-100(type='text' value='台北圓山飯店')
+                                        td
+                                            input.form-control.w-100(type='text' value='菁英天際客房(正館)')
+                                        td
+                                            input.form-control.w-100(type='text' value='5,300')
+                                        td
+                                            textarea.form-control.w-100(name="" cols="30" rows="1" value='單人NT5,300(含1早＋網路);雙人NT5,300(含1早＋網路)')
+                                        td.text-center
+                                            input.form-control.w-100(type='text' value='')
+                                        td
+                                            input.form-control.w-100(type='text' value='1')
+                                        td.text-center
+                                            button.iconBtn.copy-btn(type='button' data-tooltip='tooltip' data-placement='bottom' title='複製')
+                                                i.icon-copy
+                                            button.iconBtn.detele-btn(type='button' data-toggle='modal' data-target='#deleteModalCenter' data-tooltip='tooltip' data-placement='bottom' title='刪除')
+                                                i.icon-delete
+                                        
+
                             .row.my-3
                                 .col-sm-12
                                     label.d-flex.mb-0
                                         div(style='flex:0 0 80px;') 訂房備註
                                         textarea.form-control.w-100(style='min-height:100px;')
+
+
+
                         #food.cutover-in
+                            button.edit-detail-btn.mt-3.add-food-row.iconBtn(type='button')
+                                i.icon-add.mr-1
+                                span 新增一筆
                             table.table.table-bordered.dataTable.mt-3(width='100%' cellspacing='0' role='grid' aria-describedby='dataTable_info' style='width: 100%;')
                                 thead
                                     tr
@@ -312,6 +581,7 @@ block content
                                         th(style='width:140px') 日期
                                         th(style='width:140px') 餐別
                                         th 餐宴備註
+                                        th.text-center(style='width:120px') 執行
                                 tbody
                                     tr
                                         td
@@ -320,16 +590,66 @@ block content
                                             input.date-input.form-control.w-100(type='text' value='2021-03-23')
                                         td
                                             select.custom-select.custom-select-sm.form-control.form-control-sm(name='' aria-controls='')
-                                                option(value='0' selected='selected') 晚宴
-                                                option(value='1') 午宴
+                                                option(value='0') 請選擇
+                                                option(value='1') 早宴
+                                                option(value='2') 午宴
+                                                option(value='3' selected='selected') 晚宴   
                                         td
                                             input.form-control.w-100(type='text' value='')
+                                        td.text-center
+                                            button.iconBtn.copy-btn(type='button' data-tooltip='tooltip' data-placement='bottom' title='複製')
+                                                i.icon-copy
+                                            button.iconBtn.detele-btn(type='button' data-toggle='modal' data-target='#deleteModalCenter' data-tooltip='tooltip' data-placement='bottom' title='刪除')
+                                                i.icon-delete
+                                    tr
+                                        td
+                                            input.form-control.w-100(type='text' inputmode='numeric' value='2.0')
+                                        td
+                                            input.date-input.form-control.w-100(type='text' value='2021-03-24')
+                                        td
+                                            select.custom-select.custom-select-sm.form-control.form-control-sm(name='' aria-controls='')
+                                                option(value='0') 請選擇
+                                                option(value='1') 早宴
+                                                option(value='2' selected='selected') 午宴
+                                                option(value='3') 晚宴   
+                                        td
+                                            input.form-control.w-100(type='text' value='')
+                                        td.text-center
+                                            button.iconBtn.copy-btn(type='button' data-tooltip='tooltip' data-placement='bottom' title='複製')
+                                                i.icon-copy
+                                            button.iconBtn.detele-btn(type='button' data-toggle='modal' data-target='#deleteModalCenter' data-tooltip='tooltip' data-placement='bottom' title='刪除')
+                                                i.icon-delete
+                                    tr
+                                        td
+                                            input.form-control.w-100(type='text' inputmode='numeric' value='2.0')
+                                        td
+                                            input.date-input.form-control.w-100(type='text' value='2021-03-24')
+                                        td
+                                            select.custom-select.custom-select-sm.form-control.form-control-sm(name='' aria-controls='')
+                                                option(value='0') 請選擇
+                                                option(value='1') 早宴
+                                                option(value='2') 午宴
+                                                option(value='3' selected='selected') 晚宴   
+                                        td
+                                            input.form-control.w-100(type='text' value='')
+                                        td.text-center
+                                            button.iconBtn.copy-btn(type='button' data-tooltip='tooltip' data-placement='bottom' title='複製')
+                                                i.icon-copy
+                                            button.iconBtn.detele-btn(type='button' data-toggle='modal' data-target='#deleteModalCenter' data-tooltip='tooltip' data-placement='bottom' title='刪除')
+                                                i.icon-delete
+
                             .row.my-3
                                 .col-sm-12
                                     label.d-flex.mb-0
                                         div(style='flex:0 0 80px;') 餐宴備註
                                         textarea.form-control.w-100(style='min-height:100px;')
+
+
+
                         #travel.cutover-in
+                            button.edit-detail-btn.mt-3.add-travel-row.iconBtn(type='button')
+                                i.icon-add.mr-1
+                                span 新增一筆
                             table.table.table-bordered.dataTable.mt-3(width='100%' cellspacing='0' role='grid' aria-describedby='dataTable_info' style='width: 100%;')
                                 thead
                                     tr
@@ -339,14 +659,16 @@ block content
                                         th.text-center(style='width:120px') 行程類型
                                         th.text-center(style='width:60px') 線上
                                         th(style='width:160px') 活動連結
+                                        th.text-center(style='width:120px') 執行
+
                                 tbody.travel-body
                                     tr
                                         td
                                             input.form-control.w-100(type='text' inputmode='numeric' value='1.0')
                                         td
-                                            input.date-input.form-control.w-100(type='text' value='2021-03-23')
+                                            input.date-input.form-control.w-100(type='text' value='2021-03-24')
                                         td
-                                            input.form-control.w-100(type='text' value='理監事聯席會議(限理監事以上人員勾選)')
+                                            input.form-control.w-100(type='text' value='出席理監事聯席會議(限理監事以上人員勾選)')
                                         td.text-center
                                             select.custom-select.custom-select-sm.form-control.form-control-sm(name='' aria-controls='' )
                                                 option(value='0' selected='selected') 會議
@@ -356,8 +678,13 @@ block content
                                                 input.form-check-input.mr-0(type='checkbox' name='online')
                                         td
                                             input.form-control.w-100(type='text' value='')
+                                        td.text-center
+                                            button.iconBtn.copy-travel-btn(type='button' data-tooltip='tooltip' data-placement='bottom' title='複製')
+                                                i.icon-copy
+                                            button.iconBtn.detele-btn(type='button' data-toggle='modal' data-target='#deleteModalCenter' data-tooltip='tooltip' data-placement='bottom' title='刪除')
+                                                i.icon-delete
                                     tr
-                                        td(colspan='6')
+                                        td(colspan='7')
                                             .row
                                                 .col-sm-12.col-md-4
                                                     label.d-flex.align-items-center.mb-0
@@ -375,20 +702,26 @@ block content
                                 tbody.travel-body
                                     tr
                                         td
-                                            input.form-control.w-100(type='text' inputmode='numeric' value='1.0')
+                                            input.form-control.w-100(type='text' inputmode='numeric' value='2.0')
                                         td
-                                            input.date-input.form-control.w-100(type='text' value='2021-03-23')
+                                            input.date-input.form-control.w-100(type='text' value='2021-03-24')
                                         td
-                                            input.form-control.w-100(type='text' value='理監事聯席會議(限理監事以上人員勾選)')
+                                            input.form-control.w-100(type='text' value='出席理監事聯席會議(限理監事以上人員勾選)')
                                         td.text-center
                                             select.custom-select.custom-select-sm.form-control.form-control-sm(name='' aria-controls='' )
                                                 option(value='0' selected='selected') 會議
                                                 option(value='1' ) 高爾夫
                                         td.text-center
                                             .form-check.form-check-inline.px-0.py-0.mx-0
-                                                input.form-check-input.mr-0(type='checkbox' name='online')
+                                                input.form-check-input.mr-0(type='checkbox' name='online' checked)
                                         td
                                             input.form-control.w-100(type='text' value='')
+                                        td.text-center
+                                            button.iconBtn.copy-travel-btn(type='button' data-tooltip='tooltip' data-placement='bottom' title='複製')
+                                                i.icon-copy
+                                            button.iconBtn.detele-btn(type='button' data-toggle='modal' data-target='#deleteModalCenter' data-tooltip='tooltip' data-placement='bottom' title='刪除')
+                                                i.icon-delete
+
                                     tr
                                         td(colspan='6')
                                             .row
@@ -404,12 +737,56 @@ block content
                                                     label.d-flex.align-items-center.mb-0
                                                         div(style='flex:0 0 80px;') 選項
                                                         input.form-control.w-100(type='text')
+                                tbody.travel-body
+                                    tr
+                                        td
+                                            input.form-control.w-100(type='text' inputmode='numeric' value='3.0')
+                                        td
+                                            input.date-input.form-control.w-100(type='text' value='2021-03-23')
+                                        td
+                                            input.form-control.w-100(type='text' value='高爾夫球賽')
+                                        td.text-center
+                                            select.custom-select.custom-select-sm.form-control.form-control-sm(name='' aria-controls='' )
+                                                option(value='0' selected='selected') 會議
+                                                option(value='1' ) 高爾夫
+                                        td.text-center
+                                            .form-check.form-check-inline.px-0.py-0.mx-0
+                                                input.form-check-input.mr-0(type='checkbox' name='online')
+                                        td
+                                            input.form-control.w-100(type='text' value='')
+                                        td.text-center
+                                            button.iconBtn.copy-travel-btn(type='button' data-tooltip='tooltip' data-placement='bottom' title='複製')
+                                                i.icon-copy
+                                            button.iconBtn.detele-btn(type='button' data-toggle='modal' data-target='#deleteModalCenter' data-tooltip='tooltip' data-placement='bottom' title='刪除')
+                                                i.icon-delete
+
+                                    tr
+                                        td(colspan='6')
+                                            .row
+                                                .col-sm-12.col-md-4
+                                                    label.d-flex.align-items-center.mb-0
+                                                        div(style='flex:0 0 80px;') 備註一
+                                                        input.form-control.w-100(type='text' value='差桿')
+                                                .col-sm-12.col-md-4
+                                                    label.d-flex.align-items-center.mb-0
+                                                        div(style='flex:0 0 80px;') 備註二
+                                                        input.form-control.w-100(type='text' value='交通方式')
+                                                .col-sm-12.col-md-4
+                                                    label.d-flex.align-items-center.mb-0
+                                                        div(style='flex:0 0 80px;') 選項
+                                                        input.form-control.w-100(type='text' value='07:AM 台北圓山飯店上車，自行前往球場')
                             .row.my-3
                                 .col-sm-12
                                     label.d-flex.mb-0
                                         div(style='flex:0 0 80px;') 行程備註
                                         textarea.form-control.w-100(style='min-height:100px;')
+
+
+
                         #self.cutover-in
+                            button.edit-detail-btn.mt-3.add-self-row.iconBtn(type='button')
+                                i.icon-add.mr-1
+                                span 新增一筆
                             table.table.table-bordered.dataTable.mt-3(width='100%' cellspacing='0' role='grid' aria-describedby='dataTable_info' style='width: 100%;')
                                 thead
                                     tr
@@ -420,6 +797,7 @@ block content
                                         th 備註
                                         th(style='width:120px') 活動表單
                                         th(style='width:60px;') 序
+                                        th.text-center(style='width:120px') 執行
                                 tbody
                                     tr
                                         td
@@ -432,16 +810,67 @@ block content
                                         td
                                             input.form-control.w-100(type='text' value='A.樂活台東雙島蘭嶼+綠島四日遊' )
                                         td
-                                            input.form-control.w-100(type='text' value='0' )
+                                            input.form-control.w-100(type='text' value='' )
                                         td.text-center
-                                            input.form-control.w-100(type='text' value='0')
+                                            input.form-control.w-100(type='text' value='')
                                         td
-                                            input.form-control.w-100(type='text' value='0' )
+                                            input.form-control.w-100(type='text' value='2' )
+                                        td.text-center
+                                            button.iconBtn.copy-btn(type='button' data-tooltip='tooltip' data-placement='bottom' title='複製')
+                                                i.icon-copy
+                                            button.iconBtn.detele-btn(type='button' data-toggle='modal' data-target='#deleteModalCenter' data-tooltip='tooltip' data-placement='bottom' title='刪除')
+                                                i.icon-delete
+                                    tr
+                                        td
+                                            input.form-control.w-100(type='text' inputmode='numeric' value='2.0')
+                                        td
+                                            select.custom-select.custom-select-sm.form-control.form-control-sm(name='' aria-controls='' )
+                                                option(value='0' selected='selected') 會後旅遊
+                                        td
+                                            input.form-control.w-100(type='text' value='海外台商旅行社' )
+                                        td
+                                            input.form-control.w-100(type='text' value='B.一生必看・藍眼淚馬祖行三日遊' )
+                                        td
+                                            input.form-control.w-100(type='text' value='' )
+                                        td.text-center
+                                            input.form-control.w-100(type='text' value='')
+                                        td
+                                            input.form-control.w-100(type='text' value='1' )
+                                        td.text-center
+                                            button.iconBtn.copy-btn(type='button' data-tooltip='tooltip' data-placement='bottom' title='複製')
+                                                i.icon-copy
+                                            button.iconBtn.detele-btn(type='button' data-toggle='modal' data-target='#deleteModalCenter' data-tooltip='tooltip' data-placement='bottom' title='刪除')
+                                                i.icon-delete
+                                    tr
+                                        td
+                                            input.form-control.w-100(type='text' inputmode='numeric' value='3.0')
+                                        td
+                                            select.custom-select.custom-select-sm.form-control.form-control-sm(name='' aria-controls='' )
+                                                option(value='0' selected='selected') 會後旅遊
+                                        td
+                                            input.form-control.w-100(type='text' value='海外台商旅行社' )
+                                        td
+                                            input.form-control.w-100(type='text' value='C.遺落人間的部落-司馬庫斯三日遊' )
+                                        td
+                                            input.form-control.w-100(type='text' value='' )
+                                        td.text-center
+                                            input.form-control.w-100(type='text' value='')
+                                        td
+                                            input.form-control.w-100(type='text' value='3' )
+                                        td.text-center
+                                            button.iconBtn.copy-btn(type='button' data-tooltip='tooltip' data-placement='bottom' title='複製')
+                                                i.icon-copy
+                                            button.iconBtn.detele-btn(type='button' data-toggle='modal' data-target='#deleteModalCenter' data-tooltip='tooltip' data-placement='bottom' title='刪除')
+                                                i.icon-delete
+
                             .row.my-3
                                 .col-sm-12
                                     label.d-flex.mb-0
                                         div(style='flex:0 0 80px;') 自費備註
                                         textarea.form-control.w-100(style='min-height:100px;' )
+
+
+
                         #note.cutover-in
                             .row.my-3
                                 .col-sm-12.col-md-8
@@ -457,7 +886,10 @@ block content
                                         input.form-control.w-100(type='text' value='27' )
                 .modal-footer
                     button.btn.btn-secondary.w-100.mr-2(type='button' data-dismiss='modal') 取消
-                    button.btn.btn-success.w-100.ml-2(type='button' disabled='') 確認
+                    button.btn.btn-success.w-100.ml-2(type='button') 確認
+
+
+
     #deleteModalCenter.modal.fade(tabindex='-1' role='dialog' aria-labelledby='deleteModalCenterTitle' aria-hidden='true')
         .modal-dialog.modal-dialog-centered(role='document')
             .modal-content
@@ -465,6 +897,9 @@ block content
                 .modal-footer
                     button.btn.btn-secondary.w-100.mr-2(type='button' data-dismiss='modal') 取消
                     button.btn.btn-success.w-100.ml-2(type='button') 確認
+
+
+                    
     #addModalCenter.meeting-dialog.modal.fade(tabindex='-1' role='dialog' aria-labelledby='addModalCenterTitle' aria-hidden='true')
         .modal-dialog.modal-dialog-centered(role='document')
             .modal-content
