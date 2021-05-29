@@ -1,0 +1,684 @@
+//- index.pug
+extends ./include/layout.pug
+block plugins-css
+    link(rel='stylesheet' type='text/css' href='styles/plugins/jquery-ui.min.css')
+    link(rel='stylesheet' type='text/css' href='styles/plugins/jquery-ui-timepicker-addon.css')
+block plugins-js
+    script(src='scripts/plugins/jquery-ui.min.js')
+    script(src='scripts/plugins/jquery-ui-timepicker-addon.js')
+    script.
+        $('#meeting-register').each(function(){
+            if($(window).width() < 991) {
+                $(this).prev('.header').hide();
+            }
+
+            if($(window).width() > 992) {
+                $('.date-input').datepicker({
+                    "dateFormat": "yy-mm-dd"
+                });
+            }
+        });
+
+        $('.add-family').on('click',function(){
+            var familyInner = $('.register-family')
+            var familyLen = $('.register-family .row').length;
+            var familyTemplateB = '<div class="row"><div class="col-12 col-md-auto d-flex align-items-center"><h5 class="mb-0">B</h5></div><div class="col-12 col-md-3"><div class="form-group"><label class="meeting-form_label mr-2">中文姓名<span class="t-red">*</span></label><input class="form-control" type="text"/></div></div><div class="col-6 col-md-3"><div class="form-group"><label class="meeting-form_label mr-2">英文姓名<span class="t-red">*</span></label><input class="form-control" type="text"/></div></div><div class="col-6 col-md-auto"><div class="form-group"><label class="meeting-form_label mr-2" style="min-width: 40px">關係</label><select class="custom-select form-control form-control-sm" name="" aria-controls=""><option value="">請選擇</option><option value="0">夫妻</option><option value="1">父母</option><option value="2">小孩</option></select></div></div><div class="col-6 col-md-auto d-flex align-items-center"><div class="form-group"><div class="meeting-form_label" style="min-width: 40px;">性別</div><div class="form-check form-check-inline mr-2"><input class="form-check-input" type="radio" name="gender" value="male"/><label class="form-check-label">男</label></div><div class="form-check form-check-inline"><input class="form-check-input" type="radio" name="gender" value="female"/><label class="form-check-label">女</label></div></div></div><div class="col-6 col-md-auto d-flex align-items-center"><div class="form-group"><div class="meeting-form_label" style="min-width: 40px;">飲食</div><div class="form-check form-check-inline mr-2"><input class="form-check-input" type="radio" name="food" value="meat"/><label class="form-check-label">葷</label></div><div class="form-check form-check-inline"><input class="form-check-input" type="radio" name="food" value="vegetarian"/><label class="form-check-label">素</label></div></div></div></div>'
+            var familyTemplateC = '<div class="row"><div class="col-12 col-md-auto d-flex align-items-center"><h5 class="mb-0">C</h5></div><div class="col-12 col-md-3"><div class="form-group"><label class="meeting-form_label mr-2">中文姓名<span class="t-red">*</span></label><input class="form-control" type="text"/></div></div><div class="col-6 col-md-3"><div class="form-group"><label class="meeting-form_label mr-2">英文姓名<span class="t-red">*</span></label><input class="form-control" type="text"/></div></div><div class="col-6 col-md-auto"><div class="form-group"><label class="meeting-form_label mr-2" style="min-width: 40px">關係</label><select class="custom-select form-control form-control-sm" name="" aria-controls=""><option value="">請選擇</option><option value="0">夫妻</option><option value="1">父母</option><option value="2">小孩</option></select></div></div><div class="col-6 col-md-auto d-flex align-items-center"><div class="form-group"><div class="meeting-form_label" style="min-width: 40px;">性別</div><div class="form-check form-check-inline mr-2"><input class="form-check-input" type="radio" name="gender" value="male"/><label class="form-check-label">男</label></div><div class="form-check form-check-inline"><input class="form-check-input" type="radio" name="gender" value="female"/><label class="form-check-label">女</label></div></div></div><div class="col-6 col-md-auto d-flex align-items-center"><div class="form-group"><div class="meeting-form_label" style="min-width: 40px;">飲食</div><div class="form-check form-check-inline mr-2"><input class="form-check-input" type="radio" name="food" value="meat"/><label class="form-check-label">葷</label></div><div class="form-check form-check-inline"><input class="form-check-input" type="radio" name="food" value="vegetarian"/><label class="form-check-label">素</label></div></div></div></div>'
+            var familyTemplateD = '<div class="row"><div class="col-12 col-md-auto d-flex align-items-center"><h5 class="mb-0">D</h5></div><div class="col-12 col-md-3"><div class="form-group"><label class="meeting-form_label mr-2">中文姓名<span class="t-red">*</span></label><input class="form-control" type="text"/></div></div><div class="col-6 col-md-3"><div class="form-group"><label class="meeting-form_label mr-2">英文姓名<span class="t-red">*</span></label><input class="form-control" type="text"/></div></div><div class="col-6 col-md-auto"><div class="form-group"><label class="meeting-form_label mr-2" style="min-width: 40px">關係</label><select class="custom-select form-control form-control-sm" name="" aria-controls=""><option value="">請選擇</option><option value="0">夫妻</option><option value="1">父母</option><option value="2">小孩</option></select></div></div><div class="col-6 col-md-auto d-flex align-items-center"><div class="form-group"><div class="meeting-form_label" style="min-width: 40px;">性別</div><div class="form-check form-check-inline mr-2"><input class="form-check-input" type="radio" name="gender" value="male"/><label class="form-check-label">男</label></div><div class="form-check form-check-inline"><input class="form-check-input" type="radio" name="gender" value="female"/><label class="form-check-label">女</label></div></div></div><div class="col-6 col-md-auto d-flex align-items-center"><div class="form-group"><div class="meeting-form_label" style="min-width: 40px;">飲食</div><div class="form-check form-check-inline mr-2"><input class="form-check-input" type="radio" name="food" value="meat"/><label class="form-check-label">葷</label></div><div class="form-check form-check-inline"><input class="form-check-input" type="radio" name="food" value="vegetarian"/><label class="form-check-label">素</label></div></div></div></div>'
+            console.log(familyLen);
+            if(familyLen == 1) {
+                $('.person-1').css('display','inline-flex');
+                familyInner.append(familyTemplateB);
+            }
+            if(familyLen == 2) {
+                $('.person-2').css('display','inline-flex');
+                familyInner.append(familyTemplateC);
+            }
+            if(familyLen == 3) {
+                $('.person-3').css('display','inline-flex');
+                familyInner.append(familyTemplateD);
+            }
+            if(familyLen >= 3) {
+                $(this).attr('disabled', true);
+            }
+        });
+
+        $('.person-check .person-all').on('change',function(){
+            if($(this).prop("checked")) {
+                $(this).parents('.person-check').find('input[type="checkbox"]').each(function() {
+                    $(this).prop("checked", true);
+                });
+            } else {
+                $(this).parents('.person-check').find('input[type="checkbox"]').each(function() {
+                    $(this).prop("checked", false);
+                });
+            }
+        });
+
+        
+block content
+    main.wrapper.meeting-wrapper#meeting-register
+        .inner
+            h3
+                i.icon-edit
+                span 報名資料填寫
+            form
+                .meeting-info
+                    .container
+                        section
+                            h4.mb-0 基本資料
+                            .row
+                                .col-6.col-md-4
+                                    .form-group
+                                        label.meeting-form_label.mr-3(for='member-name') 中文姓名#[span.t-red *]
+                                        input.form-control#member-name(type="text" )
+                                .col-6.col-md-4
+                                    .form-group
+                                        label.meeting-form_label.mr-3(for='member-name-en') 英文姓名#[span.t-red *]
+                                        input.form-control#member-name-en(type="text")
+                                .col-12.col-md-4.d-flex.align-items-center
+                                    .form-group.d-flex.align-items-center
+                                        span.meeting-form_label(style='min-width: auto;') 性別
+                                        .form-check.form-check-inline.mr-4
+                                            input#male.form-check-input(type='radio' name='gender' value='male')
+                                            label.form-check-label(for='male') 男
+                                        .form-check.form-check-inline
+                                            input#female.form-check-input(type='radio' name='gender' value='female')
+                                            label.form-check-label(for='female') 女
+                                .col-12.col-md-4
+                                    .form-group
+                                        label.meeting-form_label.mr-3(for='birth') 出生日期
+                                        input.form-control#birth.date-input(type="date" inputmode="none")
+                                .col-6.col-md-4
+                                    .form-group
+                                        label.meeting-form_label.mr-3(for='job') 世總職稱#[span.t-red *]
+                                        select#job.custom-select.form-control.form-control-sm(name='' aria-controls='')
+                                            option(value='') 請選擇
+                                            option(value='0' selected='selected') 名譽總會長
+                                            option(value='1') 名譽監事長
+                                            option(value='2') 總會長
+                                            option(value='3') 監事長
+                                            option(value='4') 副總會長
+                                            option(value='5') 副監事長
+                                            option(value='6') 諮詢委員
+                                            option(value='7') 資深顧問
+                                            option(value='8') 顧問
+                                            option(value='9') 理監事
+                                            option(value='10') 會員
+                                .col-6.col-md-4
+                                    .form-group
+                                        label.meeting-form_label.mr-3(for='wtcc-area' style='min-width: 130px;') 所屬地區商會#[span.t-red *]
+                                        input.form-control#wtcc-area(type="text" )
+                                .col-6.col-md-4
+                                    .form-group
+                                        label.meeting-form_label.mr-3(for='tel') 聯絡電話
+                                        input.form-control#tel(type="text" inputmode="tel")
+                                .col-6.col-md-4
+                                    .form-group
+                                        label.meeting-form_label.mr-3(for='fax') 傳真號碼
+                                        input.form-control#fax(type="text" inputmode="tel")
+                                .col-6.col-md-4
+                                    .form-group
+                                        label.meeting-form_label.mr-3(for='phone') 手機#[span.t-red *]
+                                        input.form-control#phone(type="text" inputmode="tel")
+                                .col-6.col-md-4
+                                    .form-group
+                                        label.meeting-form_label.mr-3(for='mail') E-mail#[span.t-red *]
+                                        input.form-control#mail(type="text" inputmode="email")
+                                .col-6.col-md-4.d-flex.align-items-center
+                                    .form-group
+                                        .meeting-form_label(style='min-width: auto;') 飲食
+                                        .form-check.form-check-inline.mr-4
+                                            input#meat.form-check-input(type='radio' name='food' value='meat')
+                                            label.form-check-label(for='meat') 葷
+                                        .form-check.form-check-inline
+                                            input#vegetarian.form-check-input(type='radio' name='food' value='vegetarian')
+                                            label.form-check-label(for='vegetarian') 素
+                                .col-6.col-md-4
+                                    .form-group
+                                        label.meeting-form_label.mr-3(for='area') 區別
+                                        select#area.custom-select.form-control.form-control-sm(name='' aria-controls='')
+                                            option(value='') 請選擇
+                                            option(value='0') 北美洲
+                                            option(value='1') 亞洲
+                                            option(value='2') 歐洲理
+                                            option(value='3') 非洲
+                                            option(value='4') 中南美洲
+                                            option(value='5') 大洋洲
+                                            option(value='6') 青商會
+                        section
+                            .d-flex.align-items-center.justify-content-between
+                                h4.mb-0 隨行眷屬
+                                button.add-family.iconBtn(type='button')
+                                    i.icon-add.mr-1
+                                    span 新增一筆
+                            .register-family
+                                .row
+                                    .col-12.col-md-auto.d-flex.align-items-center
+                                        h5.mb-0 A
+                                    .col-12.col-md-3
+                                        .form-group
+                                            label.meeting-form_label.mr-2 中文姓名#[span.t-red *]
+                                            input.form-control(type="text" )
+                                    .col-6.col-md-3
+                                        .form-group
+                                            label.meeting-form_label.mr-2 英文姓名#[span.t-red *]
+                                            input.form-control(type="text")
+                                    .col-6.col-md-auto
+                                        .form-group
+                                            label.meeting-form_label.mr-2(style='min-width: 40px') 關係
+                                            select.custom-select.form-control.form-control-sm(name='' aria-controls='')
+                                                option(value='') 請選擇
+                                                option(value='0') 夫妻
+                                                option(value='1') 父母
+                                                option(value='2') 小孩
+                                    .col-6.col-md-auto.d-flex.align-items-center
+                                        .form-group
+                                            .meeting-form_label(style='min-width: 40px;') 性別
+                                            .form-check.form-check-inline.mr-2
+                                                input.form-check-input(type='radio' name='gender' value='male')
+                                                label.form-check-label 男
+                                            .form-check.form-check-inline
+                                                input.form-check-input(type='radio' name='gender' value='female')
+                                                label.form-check-label 女
+                                    .col-6.col-md-auto.d-flex.align-items-center
+                                        .form-group
+                                            .meeting-form_label(style='min-width: 40px;') 飲食
+                                            .form-check.form-check-inline.mr-2
+                                                input.form-check-input(type='radio' name='food' value='meat')
+                                                label.form-check-label 葷
+                                            .form-check.form-check-inline
+                                                input.form-check-input(type='radio' name='food' value='vegetarian')
+                                                label.form-check-label 素
+                        section
+                            h4.mb-0 出席費
+                            .row
+                                .col-12
+                                    p.t-red
+                                        |會議出席費#[br] 
+                        section
+                            h4.mb-0 班機
+                            p.fz-16.t-red.mb-3 如須接送機者，務必請確認航班抵達、離開時間，若有變更，請即時通知。
+                            .air-inner
+                                .row
+                                    .air-item.col-12.col-md-6
+                                        h5.mb-0 入境資訊
+                                        .row.align-items-center
+                                            .col-6
+                                                .form-group
+                                                    label.meeting-form_label.mr-2(for='entry-route' style='min-width:40px;') 航線
+                                                    select.custom-select.form-control.form-control-sm#entry-route(name='' aria-controls='')
+                                                        option(value='') 請選擇
+                                                        option(value='0') 國內航線
+                                                        option(value='1') 國際航線
+                                            .col-6
+                                                .form-group
+                                                    label.meeting-form_label.mr-3(for='entry-no' style='min-width:50px;') 班機
+                                                    input.form-control#entry-no(type="text" placeholder='CX701')
+                                            .col-6
+                                                .form-group
+                                                    label.meeting-form_label.mr-3(for='entry-day') 抵達日期
+                                                    input.form-control#entry-day.date-input(type="date" inputmode="none")
+                                            .col-6
+                                                .form-group
+                                                    label.meeting-form_label.mr-3(for='entry-time') 抵達時間
+                                                    input.form-control#entry-time(type="time" min="00:00" max="24:59" value='' inputmode="none")
+                                            .col-12.d-flex.align-items-center
+                                                .form-group
+                                                    .meeting-form_label.mr-2.mr-md-4(style='min-width: 40px;') 抵達航廈
+                                                    .form-check.form-check-inline.mr-2
+                                                        input.form-check-input(type='radio' name='terminal' value='T1')
+                                                        label.form-check-label T1
+                                                    .form-check.form-check-inline
+                                                        input.form-check-input(type='radio' name='terminal' value='T2')
+                                                        label.form-check-label T2
+                                                    .form-check.form-check-inline.mr-2
+                                                        input.form-check-input(type='radio' name='terminal' value='T3')
+                                                        label.form-check-label T3
+                                                    .form-check.form-check-inline
+                                                        input.form-check-input(type='radio' name='terminal' value='T4')
+                                                        label.form-check-label T4
+                                            .col-12.d-flex.align-items-center
+                                                .form-group
+                                                    .meeting-form_label.mr-2.mr-md-4(style='min-width: 40px;') 接機
+                                                    .form-check.form-check-inline.mr-2
+                                                        input.form-check-input(type='radio' name='entry-bus' value='no')
+                                                        label.form-check-label 否
+                                                    .form-check.form-check-inline
+                                                        input.form-check-input(type='radio' name='entry-bus' value='yes')
+                                                        label.form-check-label 是
+                                            .col-12.d-flex.align-items-center
+                                                .form-group
+                                                    .meeting-form_label.mr-2.mr-md-4(style='min-width: 40px;') 人數
+                                                    .person-check
+                                                        .form-check.form-check-inline
+                                                            input.person-all.form-check-input(type='checkbox' name='entryBus' value='all')
+                                                            label.form-check-label 所有
+                                                        .form-check.form-check-inline
+                                                            input.person-self.form-check-input(type='checkbox' name='entryBus' value='self')
+                                                            label.form-check-label 自己
+                                                        .form-check.form-check-inline.person-0
+                                                            input.person-family.form-check-input(type='checkbox' name='entryBus' value='family-A')
+                                                            label.form-check-label 眷屬A
+                                                        .form-check.form-check-inline.person-1
+                                                            input.person-family.form-check-input(type='checkbox' name='entryBus' value='family-B')
+                                                            label.form-check-label 眷屬B
+                                                        .form-check.form-check-inline.person-2
+                                                            input.person-family.form-check-input(type='checkbox' name='entryBus' value='family-C')
+                                                            label.form-check-label 眷屬C
+                                                        .form-check.form-check-inline.person-3
+                                                            input.person-family.form-check-input(type='checkbox' name='entryBus' value='family-D')
+                                                            label.form-check-label 眷屬D
+                                    .air-item.col-12.col-md-6
+                                        h5.mb-0 出境資訊
+                                        .row.align-items-center
+                                            .col-6
+                                                .form-group
+                                                    label.meeting-form_label.mr-2(for='Outbound-route' style='min-width:40px;') 航線
+                                                    select.custom-select.form-control.form-control-sm#Outbound-route(name='' aria-controls='')
+                                                        option(value='') 請選擇
+                                                        option(value='0') 國內航線
+                                                        option(value='1') 國際航線
+                                            .col-6
+                                                .form-group
+                                                    label.meeting-form_label.mr-3(for='Outbound-no' style='min-width:50px;') 班機
+                                                    input.form-control#Outbound-no(type="text" placeholder='CX701')
+                                            .col-6
+                                                .form-group
+                                                    label.meeting-form_label.mr-3(for='Outbound-day') 抵達日期
+                                                    input.form-control#Outbound-day.date-input(type="date" inputmode="none")
+                                            .col-6
+                                                .form-group
+                                                    label.meeting-form_label.mr-3(for='Outbound-time') 抵達時間
+                                                    input.form-control#Outbound-time(type="time" min="00:00" max="24:59" value='' inputmode="none")
+                                            .col-12.d-flex.align-items-center
+                                                .form-group
+                                                    .meeting-form_label.mr-2.mr-md-4(style='min-width: 40px;') 抵達航廈
+                                                    .form-check.form-check-inline.mr-2
+                                                        input.form-check-input(type='radio' name='terminal' value='T1')
+                                                        label.form-check-label T1
+                                                    .form-check.form-check-inline
+                                                        input.form-check-input(type='radio' name='terminal' value='T2')
+                                                        label.form-check-label T2
+                                                    .form-check.form-check-inline.mr-2
+                                                        input.form-check-input(type='radio' name='terminal' value='T3')
+                                                        label.form-check-label T3
+                                                    .form-check.form-check-inline
+                                                        input.form-check-input(type='radio' name='terminal' value='T4')
+                                                        label.form-check-label T4
+                                            .col-12.d-flex.align-items-center
+                                                .form-group
+                                                    .meeting-form_label.mr-2.mr-md-4(style='min-width: 40px;') 接機
+                                                    .form-check.form-check-inline.mr-2
+                                                        input.form-check-input(type='radio' name='Outbound-bus' value='no')
+                                                        label.form-check-label 否
+                                                    .form-check.form-check-inline
+                                                        input.form-check-input(type='radio' name='Outbound-bus' value='yes')
+                                                        label.form-check-label 是
+                                            .col-12.d-flex.align-items-center
+                                                .form-group
+                                                    .meeting-form_label.mr-2.mr-md-4(style='min-width: 40px;') 人數
+                                                    .person-check
+                                                        .person-check
+                                                            .form-check.form-check-inline
+                                                                input.person-all.form-check-input(type='checkbox' name='OutboundBus' value='all')
+                                                                label.form-check-label 所有
+                                                            .form-check.form-check-inline
+                                                                input.person-self.form-check-input(type='checkbox' name='OutboundBus' value='self')
+                                                                label.form-check-label 自己
+                                                            .form-check.form-check-inline.person-0
+                                                                input.person-family.form-check-input(type='checkbox' name='OutboundBus' value='family-A')
+                                                                label.form-check-label 眷屬A
+                                                            .form-check.form-check-inline.person-1
+                                                                input.person-family.form-check-input(type='checkbox' name='OutboundBus' value='family-B')
+                                                                label.form-check-label 眷屬B
+                                                            .form-check.form-check-inline.person-2
+                                                                input.person-family.form-check-input(type='checkbox' name='OutboundBus' value='family-C')
+                                                                label.form-check-label 眷屬C
+                                                            .form-check.form-check-inline.person-3
+                                                                input.person-family.form-check-input(type='checkbox' name='OutboundBus' value='family-D')
+                                                                label.form-check-label 眷屬D
+                        section
+                            h4.mb-0 訂房資料
+                            .row
+                                .col-12.col-md-4
+                                    .form-group
+                                        label.meeting-form_label.mr-3(for='checkIn') 入住日期
+                                        input.form-control#checkIn.date-input(type="date" inputmode="none")
+                                .col-12.col-md-4
+                                    .form-group
+                                        label.meeting-form_label.mr-3(for='checkOut') 退房日期
+                                        input.form-control#checkOut.date-input(type="date" inputmode="none")
+                                
+                            p.my-2.t-red *出席
+                            .rooms-inner
+                                .room-item.row.align-items-center.border-bottom.py-2
+                                    .col-12.col-md-2
+                                        a.t-blue-dp(href='' target='_blank')
+                                            span 台北圓山飯店
+                                            i.icon-url
+                                    .col-12.col-md-3
+                                        p.fz-18.mb-0 精緻無窗客房(正館2-9樓/無景)
+                                    .col-12.col-md-1
+                                        p.mb-2.mb-md-0 NT$3,400
+                                    .col-12.col-md-4
+                                        p.fz-18.mb-0.t-gray 單人NT3,400(含1早+網路);雙人NT3,800(含2早+網路)
+                                    .col-12.col-md-2
+                                        .form-group.d-flex
+                                            label.meeting-form_label.mr-2(for='member-name' style='min-width:60px;') 房數#[span.t-red *]
+                                            input.form-control#member-name(type="text" )
+                                            span.ml-2 間
+                                .room-item.row.align-items-center.border-bottom.py-2
+                                    .col-12.col-md-2
+                                        a.t-blue-dp(href='' target='_blank')
+                                            span 台北圓山飯店
+                                            i.icon-url
+                                    .col-12.col-md-3
+                                        p.fz-18.mb-0 豪華(正館2-6樓/山景房)
+                                    .col-12.col-md-1
+                                        p.mb-2.mb-md-0 NT$4,500
+                                    .col-12.col-md-4
+                                        p.fz-18.mb-0.t-gray 單人NT4,500(含1早+網路);雙人NT4,900(含2早+網路)
+                                    .col-12.col-md-2
+                                        .form-group.d-flex
+                                            label.meeting-form_label.mr-2(for='member-name' style='min-width:60px;') 房數#[span.t-red *]
+                                            input.form-control#member-name(type="text" )
+                                            span.ml-2 間
+                                .room-item.row.align-items-center.border-bottom.py-2
+                                    .col-12.col-md-2
+                                        a.t-blue-dp(href='' target='_blank')
+                                            span 台北圓山飯店
+                                            i.icon-url
+                                    .col-12.col-md-3
+                                        p.fz-18.mb-0 精緻無窗客房(正館2-9樓/無景)
+                                    .col-12.col-md-1
+                                        p.mb-2.mb-md-0 NT$3,400
+                                    .col-12.col-md-4
+                                        p.fz-18.mb-0.t-gray 單人NT3,400(含1早+網路);雙人NT3,800(含2早+網路)
+                                    .col-12.col-md-2
+                                        .form-group.d-flex
+                                            label.meeting-form_label.mr-2(for='member-name' style='min-width:60px;') 房數#[span.t-red *]
+                                            input.form-control#member-name(type="text" )
+                                            span.ml-2 間
+                                .room-item.row.align-items-center.border-bottom.py-2
+                                    .col-12.col-md-2
+                                        a.t-blue-dp(href='' target='_blank')
+                                            span 台北圓山飯店
+                                            i.icon-url
+                                    .col-12.col-md-3
+                                        p.fz-18.mb-0 豪華(正館2-6樓/山景房)
+                                    .col-12.col-md-1
+                                        p.mb-2.mb-md-0 NT$4,500
+                                    .col-12.col-md-4
+                                        p.fz-18.mb-0.t-gray 單人NT4,500(含1早+網路);雙人NT4,900(含2早+網路)
+                                    .col-12.col-md-2
+                                        .form-group.d-flex
+                                            label.meeting-form_label.mr-2(for='member-name' style='min-width:60px;') 房數#[span.t-red *]
+                                            input.form-control#member-name(type="text" )
+                                            span.ml-2 間
+                        section
+                            h4.mb-0 餐宴
+                            p.fz-16.t-red.mb-3 *3月23日至24日餐宴，敬請確定可以參加才勾選，以避免浪費資源。凡勾選而未參加者，須自行負責餐費新台幣2000元／次。
+                            .food-inner
+                                .food-item.row.align-items-center.border-bottom.py-2
+                                    .col-12.col-md-2 2021/3/23 晚宴
+                                    .col-12.col-md-auto
+                                        .form-group
+                                            .meeting-form_label.mr-2.mr-md-4 參加人數
+                                            .person-check
+                                                .form-check.form-check-inline
+                                                    input.person-all.form-check-input(type='checkbox' name='dinner-1' value='all')
+                                                    label.form-check-label 所有
+                                                .form-check.form-check-inline
+                                                    input.person-self.form-check-input(type='checkbox' name='dinner-1' value='self')
+                                                    label.form-check-label 自己
+                                                .form-check.form-check-inline.person-0
+                                                    input.person-family.form-check-input(type='checkbox' name='dinner-1' value='family-A')
+                                                    label.form-check-label 眷屬A
+                                                .form-check.form-check-inline.person-1
+                                                    input.person-family.form-check-input(type='checkbox' name='dinner-1' value='family-B')
+                                                    label.form-check-label 眷屬B
+                                                .form-check.form-check-inline.person-2
+                                                    input.person-family.form-check-input(type='checkbox' name='dinner-1' value='family-C')
+                                                    label.form-check-label 眷屬C
+                                                .form-check.form-check-inline.person-3
+                                                    input.person-family.form-check-input(type='checkbox' name='dinner-1' value='family-D')
+                                                    label.form-check-label 眷屬D
+                                    .col-12.col-md-2
+                                        .form-group.d-flex
+                                            label.meeting-form_label.mr-2(style='min-width:60px;') 葷食#[span.t-red *]
+                                            input.form-control(type="text" )
+                                            span.ml-2 位
+                                .food-item.row.align-items-center.border-bottom.py-2
+                                    .col-12.col-md-2 2021/3/24 午宴
+                                    .col-12.col-md-auto
+                                        .form-group
+                                            .meeting-form_label.mr-2.mr-md-4 參加人數
+                                            .person-check
+                                                .form-check.form-check-inline
+                                                    input.person-all.form-check-input(type='checkbox' name='lunch-2' value='all')
+                                                    label.form-check-label 所有
+                                                .form-check.form-check-inline
+                                                    input.person-self.form-check-input(type='checkbox' name='lunch-2' value='self')
+                                                    label.form-check-label 自己
+                                                .form-check.form-check-inline.person-0
+                                                    input.person-family.form-check-input(type='checkbox' name='lunch-2' value='family-A')
+                                                    label.form-check-label 眷屬A
+                                                .form-check.form-check-inline.person-1
+                                                    input.person-family.form-check-input(type='checkbox' name='lunch-2' value='family-B')
+                                                    label.form-check-label 眷屬B
+                                                .form-check.form-check-inline.person-2
+                                                    input.person-family.form-check-input(type='checkbox' name='lunch-2' value='family-C')
+                                                    label.form-check-label 眷屬C
+                                                .form-check.form-check-inline.person-3
+                                                    input.person-family.form-check-input(type='checkbox' name='lunch-2' value='family-D')
+                                                    label.form-check-label 眷屬D
+                                    .col-12.col-md-2
+                                        .form-group.d-flex
+                                            label.meeting-form_label.mr-2(style='min-width:60px;') 葷食#[span.t-red *]
+                                            input.form-control(type="text" )
+                                            span.ml-2 位
+                                .food-item.row.align-items-center.border-bottom.py-2
+                                    .col-12.col-md-2 2021/3/24 晚宴
+                                    .col-12.col-md-auto
+                                        .form-group
+                                            .meeting-form_label.mr-2.mr-md-4 參加人數
+                                            .person-check
+                                                .form-check.form-check-inline
+                                                    input.person-all.form-check-input(type='checkbox' name='dinner-2' value='all')
+                                                    label.form-check-label 所有
+                                                .form-check.form-check-inline
+                                                    input.person-self.form-check-input(type='checkbox' name='dinner-2' value='self')
+                                                    label.form-check-label 自己
+                                                .form-check.form-check-inline.person-0
+                                                    input.person-family.form-check-input(type='checkbox' name='dinner-2' value='family-A')
+                                                    label.form-check-label 眷屬A
+                                                .form-check.form-check-inline.person-1
+                                                    input.person-family.form-check-input(type='checkbox' name='dinner-2' value='family-B')
+                                                    label.form-check-label 眷屬B
+                                                .form-check.form-check-inline.person-2
+                                                    input.person-family.form-check-input(type='checkbox' name='dinner-2' value='family-C')
+                                                    label.form-check-label 眷屬C
+                                                .form-check.form-check-inline.person-3
+                                                    input.person-family.form-check-input(type='checkbox' name='dinner-2' value='family-D')
+                                                    label.form-check-label 眷屬D
+                                    .col-12.col-md-2
+                                        .form-group.d-flex
+                                            label.meeting-form_label.mr-2(style='min-width:60px;') 葷食#[span.t-red *]
+                                            input.form-control(type="text" )
+                                            span.ml-2 位
+                        section
+                            h4.mb-0 會議行程
+                            p.fz-16.t-red.mb-3 *必填：理監事以上人員出席實體會議或線上會議，請擇一填選。
+                            .travel-inner
+                                .travel-item.row.align-items-center.border-bottom.py-2
+                                    .col-12.col-md-5
+                                        p.mb-0 2021/3/24 出席實體理監事聯席會議
+                                        .fz-16 (限理監事以上人員勾選)
+                                    .col-12.col-md-7
+                                        .form-group
+                                            .meeting-form_label.mr-2.mr-md-4 參加人數
+                                            .person-check
+                                                .form-check.form-check-inline
+                                                    input.person-all.form-check-input(type='checkbox' name='meeting-1' value='all')
+                                                    label.form-check-label 所有
+                                                .form-check.form-check-inline
+                                                    input.person-self.form-check-input(type='checkbox' name='meeting-1' value='self')
+                                                    label.form-check-label 自己
+                                                .form-check.form-check-inline.person-0
+                                                    input.person-family.form-check-input(type='checkbox' name='meeting-1' value='family-A')
+                                                    label.form-check-label 眷屬A
+                                                .form-check.form-check-inline.person-1
+                                                    input.person-family.form-check-input(type='checkbox' name='meeting-1' value='family-B')
+                                                    label.form-check-label 眷屬B
+                                                .form-check.form-check-inline.person-2
+                                                    input.person-family.form-check-input(type='checkbox' name='meeting-1' value='family-C')
+                                                    label.form-check-label 眷屬C
+                                                .form-check.form-check-inline.person-3
+                                                    input.person-family.form-check-input(type='checkbox' name='meeting-1' value='family-D')
+                                                    label.form-check-label 眷屬D
+                                .travel-item.row.align-items-center.border-bottom.py-2
+                                    .col-12.col-md-5
+                                        p.mb-0 2021/3/24 出席線上理監事聯席會議
+                                        .fz-16 (限理監事以上人員勾選)
+                                    .col-12.col-md-7
+                                        .form-group
+                                            .meeting-form_label.mr-2.mr-md-4 參加人數
+                                            .person-check
+                                                .form-check.form-check-inline
+                                                    input.person-all.form-check-input(type='checkbox' name='meeting-1' value='all')
+                                                    label.form-check-label 所有
+                                                .form-check.form-check-inline
+                                                    input.person-self.form-check-input(type='checkbox' name='meeting-1' value='self')
+                                                    label.form-check-label 自己
+                                                .form-check.form-check-inline.person-0
+                                                    input.person-family.form-check-input(type='checkbox' name='meeting-1' value='family-A')
+                                                    label.form-check-label 眷屬A
+                                                .form-check.form-check-inline.person-1
+                                                    input.person-family.form-check-input(type='checkbox' name='meeting-1' value='family-B')
+                                                    label.form-check-label 眷屬B
+                                                .form-check.form-check-inline.person-2
+                                                    input.person-family.form-check-input(type='checkbox' name='meeting-1' value='family-C')
+                                                    label.form-check-label 眷屬C
+                                                .form-check.form-check-inline.person-3
+                                                    input.person-family.form-check-input(type='checkbox' name='meeting-1' value='family-D')
+                                                    label.form-check-label 眷屬D
+                                .travel-item.row.align-items-center.border-bottom.py-2
+                                    .col-12.col-md-5 2021/3/23 高爾夫球賽
+                                    .col-12.col-md-4.d-flex.align-items-center
+                                        .form-group
+                                            .form-check.form-check-inline.mr-4
+                                                input.form-check-input(type='radio' name='join-golf' value='yes')
+                                                label.form-check-label 參加
+                                            .form-check.form-check-inline
+                                                input.form-check-input(type='radio' name='join-golf' value='no')
+                                                label.form-check-label 不參加
+                                    .col-12.col-md-3
+                                        a.t-blue-dp(href='' target='_blank')
+                                            span 參加前往填寫表單
+                                            i.icon-url
+                        section
+                            h4.mb-0 自費旅遊
+                            p.fz-16.t-red.mb-3 *欲參加旅遊者，請填妥旅遊報名表，務請逕自Email或Fax：+886-2-3322-2258至海外台商旅行社報名，並再以電話聯繫海外台商旅行社#[a(href='tel:+886-2-3322-4458') TEL:+886-2-3322-4458]確認。
+                            .self-inner
+                                .self-item.row.align-items-center.border-bottom.py-2
+                                    .col-12.col-md-5
+                                        p.mb-0 會後旅遊 A.樂活台東雙島蘭嶼+綠島四日遊
+                                    .col-12.col-md-auto
+                                        .form-group
+                                            .meeting-form_label.mr-2.mr-md-4 參加人數
+                                            .person-check
+                                                .form-check.form-check-inline
+                                                    input.person-all.form-check-input(type='checkbox' name='selfTravel-A' value='all')
+                                                    label.form-check-label 所有
+                                                .form-check.form-check-inline
+                                                    input.person-self.form-check-input(type='checkbox' name='selfTravel-A' value='self')
+                                                    label.form-check-label 自己
+                                                .form-check.form-check-inline.person-0
+                                                    input.person-family.form-check-input(type='checkbox' name='selfTravel-A' value='family-A')
+                                                    label.form-check-label 眷屬A
+                                                .form-check.form-check-inline.person-1
+                                                    input.person-family.form-check-input(type='checkbox' name='selfTravel-A' value='family-B')
+                                                    label.form-check-label 眷屬B
+                                                .form-check.form-check-inline.person-2
+                                                    input.person-family.form-check-input(type='checkbox' name='selfTravel-A' value='family-C')
+                                                    label.form-check-label 眷屬C
+                                                .form-check.form-check-inline.person-3
+                                                    input.person-family.form-check-input(type='checkbox' name='selfTravel-A' value='family-D')
+                                                    label.form-check-label 眷屬D
+                                    .col-12.col-md-3
+                                        a.t-blue-dp(href='' target='_blank')
+                                            span 海外台商旅行社承辦
+                                            i.icon-url
+                                .self-item.row.align-items-center.border-bottom.py-2
+                                    .col-12.col-md-5
+                                        p.mb-0 會後旅遊 B.一生必看-藍眼淚馬祖三日遊
+                                    .col-12.col-md-auto
+                                        .form-group
+                                            .meeting-form_label.mr-2.mr-md-4 參加人數
+                                            .person-check
+                                                .form-check.form-check-inline
+                                                    input.person-all.form-check-input(type='checkbox' name='selfTravel-B' value='all')
+                                                    label.form-check-label 所有
+                                                .form-check.form-check-inline
+                                                    input.person-self.form-check-input(type='checkbox' name='selfTravel-B' value='self')
+                                                    label.form-check-label 自己
+                                                .form-check.form-check-inline.person-0
+                                                    input.person-family.form-check-input(type='checkbox' name='selfTravel-B' value='family-A')
+                                                    label.form-check-label 眷屬A
+                                                .form-check.form-check-inline.person-1
+                                                    input.person-family.form-check-input(type='checkbox' name='selfTravel-B' value='family-B')
+                                                    label.form-check-label 眷屬B
+                                                .form-check.form-check-inline.person-2
+                                                    input.person-family.form-check-input(type='checkbox' name='selfTravel-B' value='family-C')
+                                                    label.form-check-label 眷屬C
+                                                .form-check.form-check-inline.person-3
+                                                    input.person-family.form-check-input(type='checkbox' name='selfTravel-B' value='family-D')
+                                                    label.form-check-label 眷屬D
+                                    .col-B2.col-md-3
+                                        a.t-blue-dp(href='' target='_blank')
+                                            span 海外台商旅行社承辦
+                                            i.icon-url
+                                .self-item.row.align-items-center.border-bottom.py-2
+                                    .col-12.col-md-5
+                                        p.mb-0 會後旅遊 C.遺落人間的部落-司馬庫斯三日遊
+                                    .col-12.col-md-auto
+                                        .form-group
+                                            .meeting-form_label.mr-2.mr-md-4 參加人數
+                                            .person-check
+                                                .form-check.form-check-inline
+                                                    input.person-all.form-check-input(type='checkbox' name='selfTravel-C' value='all')
+                                                    label.form-check-label 所有
+                                                .form-check.form-check-inline
+                                                    input.person-self.form-check-input(type='checkbox' name='selfTravel-C' value='self')
+                                                    label.form-check-label 自己
+                                                .form-check.form-check-inline.person-0
+                                                    input.person-family.form-check-input(type='checkbox' name='selfTravel-C' value='family-A')
+                                                    label.form-check-label 眷屬A
+                                                .form-check.form-check-inline.person-1
+                                                    input.person-family.form-check-input(type='checkbox' name='selfTravel-C' value='family-B')
+                                                    label.form-check-label 眷屬B
+                                                .form-check.form-check-inline.person-2
+                                                    input.person-family.form-check-input(type='checkbox' name='selfTravel-C' value='family-C')
+                                                    label.form-check-label 眷屬C
+                                                .form-check.form-check-inline.person-3
+                                                    input.person-family.form-check-input(type='checkbox' name='selfTravel-C' value='family-D')
+                                                    label.form-check-label 眷屬D
+                                    .col-B2.col-md-3
+                                        a.t-blue-dp(href='' target='_blank')
+                                            span 海外台商旅行社承辦
+                                            i.icon-url
+                        section
+                            h4.mb-0 備註
+                            .row
+                                .col-12
+                                    p.fz-18 備註內容
+
+                .meeting-btn-group.row.mx-auto.mt-3(style='max-width:780px;')
+                    .col-4
+                        a.w-100.btn.btn-light.form-item.row-rounded.justify-content-center(href='meeting-login.html') 回上一頁
+                    .col-4
+                        button.clear-btn.w-100.btn.btn-secondary.form-item.row-rounded.justify-content-center 重新填寫
+                    .col-4
+                        button.w-100.btn.btn-success.form-item.row-rounded.justify-content-center(type='submit') 送出資料
+

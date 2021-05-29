@@ -1,0 +1,927 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+  <head>
+    <meta charset="utf-8">
+    <title> </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="styles/images/web-icon.ico">
+    <link rel="stylesheet" type="text/css" href="styles/fonts/css/fontello.css">
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans+TC:300,400,500,700,900&amp;display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles/fonts/css/fontello.css">
+    <link rel="stylesheet" type="text/css" href="styles/plugins/bootstrap-reboot.min.css">
+    <link rel="stylesheet" type="text/css" href="styles/plugins/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="styles/plugins/jquery-ui.min.css">
+    <link rel="stylesheet" type="text/css" href="styles/plugins/jquery-ui-timepicker-addon.css">
+    <link rel="stylesheet" type="text/css" href="styles/common.css">
+  </head>
+  <body id="web">
+    <header class="header"><a class="d-flex align-items-center" href="index.html"><span class="logo"><img class="img-fluid" src="styles/images/logo.png" alt=""></span>
+        <div>
+          <h1>世界台灣商會聯合總會</h1>
+          <h2>World Taiwanese<br>Chambers of Commerce</h2>
+        </div></a></header>
+    <main class="wrapper meeting-wrapper" id="meeting-register">
+      <div class="inner">
+        <h3><i class="icon-edit"></i><span>報名資料填寫</span></h3>
+        <form>
+          <div class="meeting-info">
+            <div class="container">
+              <section>
+                <h4 class="mb-0">基本資料</h4>
+                <div class="row">
+                  <div class="col-6 col-md-4">
+                    <div class="form-group">
+                      <label class="meeting-form_label mr-3" for="member-name">中文姓名<span class="t-red">*</span></label>
+                      <input class="form-control" id="member-name" type="text">
+                    </div>
+                  </div>
+                  <div class="col-6 col-md-4">
+                    <div class="form-group">
+                      <label class="meeting-form_label mr-3" for="member-name-en">英文姓名<span class="t-red">*</span></label>
+                      <input class="form-control" id="member-name-en" type="text">
+                    </div>
+                  </div>
+                  <div class="col-12 col-md-4 d-flex align-items-center">
+                    <div class="form-group d-flex align-items-center"><span class="meeting-form_label" style="min-width: auto;">性別</span>
+                      <div class="form-check form-check-inline mr-4">
+                        <input class="form-check-input" id="male" type="radio" name="gender" value="male">
+                        <label class="form-check-label" for="male">男</label>
+                      </div>
+                      <div class="form-check form-check-inline">
+                        <input class="form-check-input" id="female" type="radio" name="gender" value="female">
+                        <label class="form-check-label" for="female">女</label>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-12 col-md-4">
+                    <div class="form-group">
+                      <label class="meeting-form_label mr-3" for="birth">出生日期</label>
+                      <input class="form-control date-input" id="birth" type="date" inputmode="none">
+                    </div>
+                  </div>
+                  <div class="col-6 col-md-4">
+                    <div class="form-group">
+                      <label class="meeting-form_label mr-3" for="job">世總職稱<span class="t-red">*</span></label>
+                      <select class="custom-select form-control form-control-sm" id="job" name="" aria-controls="">
+                        <option value="">請選擇</option>
+                        <option value="0" selected="selected">名譽總會長</option>
+                        <option value="1">名譽監事長</option>
+                        <option value="2">總會長</option>
+                        <option value="3">監事長</option>
+                        <option value="4">副總會長</option>
+                        <option value="5">副監事長</option>
+                        <option value="6">諮詢委員</option>
+                        <option value="7">資深顧問</option>
+                        <option value="8">顧問</option>
+                        <option value="9">理監事</option>
+                        <option value="10">會員</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col-6 col-md-4">
+                    <div class="form-group">
+                      <label class="meeting-form_label mr-3" for="wtcc-area" style="min-width: 130px;">所屬地區商會<span class="t-red">*</span></label>
+                      <input class="form-control" id="wtcc-area" type="text">
+                    </div>
+                  </div>
+                  <div class="col-6 col-md-4">
+                    <div class="form-group">
+                      <label class="meeting-form_label mr-3" for="tel">聯絡電話</label>
+                      <input class="form-control" id="tel" type="text" inputmode="tel">
+                    </div>
+                  </div>
+                  <div class="col-6 col-md-4">
+                    <div class="form-group">
+                      <label class="meeting-form_label mr-3" for="fax">傳真號碼</label>
+                      <input class="form-control" id="fax" type="text" inputmode="tel">
+                    </div>
+                  </div>
+                  <div class="col-6 col-md-4">
+                    <div class="form-group">
+                      <label class="meeting-form_label mr-3" for="phone">手機<span class="t-red">*</span></label>
+                      <input class="form-control" id="phone" type="text" inputmode="tel">
+                    </div>
+                  </div>
+                  <div class="col-6 col-md-4">
+                    <div class="form-group">
+                      <label class="meeting-form_label mr-3" for="mail">E-mail<span class="t-red">*</span></label>
+                      <input class="form-control" id="mail" type="text" inputmode="email">
+                    </div>
+                  </div>
+                  <div class="col-6 col-md-4 d-flex align-items-center">
+                    <div class="form-group">
+                      <div class="meeting-form_label" style="min-width: auto;">飲食</div>
+                      <div class="form-check form-check-inline mr-4">
+                        <input class="form-check-input" id="meat" type="radio" name="food" value="meat">
+                        <label class="form-check-label" for="meat">葷</label>
+                      </div>
+                      <div class="form-check form-check-inline">
+                        <input class="form-check-input" id="vegetarian" type="radio" name="food" value="vegetarian">
+                        <label class="form-check-label" for="vegetarian">素</label>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-6 col-md-4">
+                    <div class="form-group">
+                      <label class="meeting-form_label mr-3" for="area">區別</label>
+                      <select class="custom-select form-control form-control-sm" id="area" name="" aria-controls="">
+                        <option value="">請選擇</option>
+                        <option value="0">北美洲</option>
+                        <option value="1">亞洲</option>
+                        <option value="2">歐洲理</option>
+                        <option value="3">非洲</option>
+                        <option value="4">中南美洲</option>
+                        <option value="5">大洋洲</option>
+                        <option value="6">青商會</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+              </section>
+              <section>
+                <div class="d-flex align-items-center justify-content-between">
+                  <h4 class="mb-0">隨行眷屬</h4>
+                  <button class="add-family iconBtn" type="button"><i class="icon-add mr-1"></i><span>新增一筆</span></button>
+                </div>
+                <div class="register-family">
+                  <div class="row">
+                    <div class="col-12 col-md-auto d-flex align-items-center">
+                      <h5 class="mb-0">A</h5>
+                    </div>
+                    <div class="col-12 col-md-3">
+                      <div class="form-group">
+                        <label class="meeting-form_label mr-2">中文姓名<span class="t-red">*</span></label>
+                        <input class="form-control" type="text">
+                      </div>
+                    </div>
+                    <div class="col-6 col-md-3">
+                      <div class="form-group">
+                        <label class="meeting-form_label mr-2">英文姓名<span class="t-red">*</span></label>
+                        <input class="form-control" type="text">
+                      </div>
+                    </div>
+                    <div class="col-6 col-md-auto">
+                      <div class="form-group">
+                        <label class="meeting-form_label mr-2" style="min-width: 40px">關係</label>
+                        <select class="custom-select form-control form-control-sm" name="" aria-controls="">
+                          <option value="">請選擇</option>
+                          <option value="0">夫妻</option>
+                          <option value="1">父母</option>
+                          <option value="2">小孩</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="col-6 col-md-auto d-flex align-items-center">
+                      <div class="form-group">
+                        <div class="meeting-form_label" style="min-width: 40px;">性別</div>
+                        <div class="form-check form-check-inline mr-2">
+                          <input class="form-check-input" type="radio" name="gender" value="male">
+                          <label class="form-check-label">男</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                          <input class="form-check-input" type="radio" name="gender" value="female">
+                          <label class="form-check-label">女</label>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-6 col-md-auto d-flex align-items-center">
+                      <div class="form-group">
+                        <div class="meeting-form_label" style="min-width: 40px;">飲食</div>
+                        <div class="form-check form-check-inline mr-2">
+                          <input class="form-check-input" type="radio" name="food" value="meat">
+                          <label class="form-check-label">葷</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                          <input class="form-check-input" type="radio" name="food" value="vegetarian">
+                          <label class="form-check-label">素</label>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </section>
+              <section>
+                <h4 class="mb-0">出席費</h4>
+                <div class="row">
+                  <div class="col-12">
+                    <p class="t-red">會議出席費<br> </p>
+                  </div>
+                </div>
+              </section>
+              <section>
+                <h4 class="mb-0">班機</h4>
+                <p class="fz-16 t-red mb-3">如須接送機者，務必請確認航班抵達、離開時間，若有變更，請即時通知。</p>
+                <div class="air-inner">
+                  <div class="row">
+                    <div class="air-item col-12 col-md-6">
+                      <h5 class="mb-0">入境資訊</h5>
+                      <div class="row align-items-center">
+                        <div class="col-6">
+                          <div class="form-group">
+                            <label class="meeting-form_label mr-2" for="entry-route" style="min-width:40px;">航線</label>
+                            <select class="custom-select form-control form-control-sm" id="entry-route" name="" aria-controls="">
+                              <option value="">請選擇</option>
+                              <option value="0">國內航線</option>
+                              <option value="1">國際航線</option>
+                            </select>
+                          </div>
+                        </div>
+                        <div class="col-6">
+                          <div class="form-group">
+                            <label class="meeting-form_label mr-3" for="entry-no" style="min-width:50px;">班機</label>
+                            <input class="form-control" id="entry-no" type="text" placeholder="CX701">
+                          </div>
+                        </div>
+                        <div class="col-6">
+                          <div class="form-group">
+                            <label class="meeting-form_label mr-3" for="entry-day">抵達日期</label>
+                            <input class="form-control date-input" id="entry-day" type="date" inputmode="none">
+                          </div>
+                        </div>
+                        <div class="col-6">
+                          <div class="form-group">
+                            <label class="meeting-form_label mr-3" for="entry-time">抵達時間</label>
+                            <input class="form-control" id="entry-time" type="time" min="00:00" max="24:59" value="" inputmode="none">
+                          </div>
+                        </div>
+                        <div class="col-12 d-flex align-items-center">
+                          <div class="form-group">
+                            <div class="meeting-form_label mr-2 mr-md-4" style="min-width: 40px;">抵達航廈</div>
+                            <div class="form-check form-check-inline mr-2">
+                              <input class="form-check-input" type="radio" name="terminal" value="T1">
+                              <label class="form-check-label">T1</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                              <input class="form-check-input" type="radio" name="terminal" value="T2">
+                              <label class="form-check-label">T2</label>
+                            </div>
+                            <div class="form-check form-check-inline mr-2">
+                              <input class="form-check-input" type="radio" name="terminal" value="T3">
+                              <label class="form-check-label">T3</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                              <input class="form-check-input" type="radio" name="terminal" value="T4">
+                              <label class="form-check-label">T4</label>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-12 d-flex align-items-center">
+                          <div class="form-group">
+                            <div class="meeting-form_label mr-2 mr-md-4" style="min-width: 40px;">接機</div>
+                            <div class="form-check form-check-inline mr-2">
+                              <input class="form-check-input" type="radio" name="entry-bus" value="no">
+                              <label class="form-check-label">否</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                              <input class="form-check-input" type="radio" name="entry-bus" value="yes">
+                              <label class="form-check-label">是</label>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-12 d-flex align-items-center">
+                          <div class="form-group">
+                            <div class="meeting-form_label mr-2 mr-md-4" style="min-width: 40px;">人數</div>
+                            <div class="person-check">
+                              <div class="form-check form-check-inline">
+                                <input class="person-all form-check-input" type="checkbox" name="entryBus" value="all">
+                                <label class="form-check-label">所有</label>
+                              </div>
+                              <div class="form-check form-check-inline">
+                                <input class="person-self form-check-input" type="checkbox" name="entryBus" value="self">
+                                <label class="form-check-label">自己</label>
+                              </div>
+                              <div class="form-check form-check-inline person-0">
+                                <input class="person-family form-check-input" type="checkbox" name="entryBus" value="family-A">
+                                <label class="form-check-label">眷屬A</label>
+                              </div>
+                              <div class="form-check form-check-inline person-1">
+                                <input class="person-family form-check-input" type="checkbox" name="entryBus" value="family-B">
+                                <label class="form-check-label">眷屬B</label>
+                              </div>
+                              <div class="form-check form-check-inline person-2">
+                                <input class="person-family form-check-input" type="checkbox" name="entryBus" value="family-C">
+                                <label class="form-check-label">眷屬C</label>
+                              </div>
+                              <div class="form-check form-check-inline person-3">
+                                <input class="person-family form-check-input" type="checkbox" name="entryBus" value="family-D">
+                                <label class="form-check-label">眷屬D</label>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="air-item col-12 col-md-6">
+                      <h5 class="mb-0">出境資訊</h5>
+                      <div class="row align-items-center">
+                        <div class="col-6">
+                          <div class="form-group">
+                            <label class="meeting-form_label mr-2" for="Outbound-route" style="min-width:40px;">航線</label>
+                            <select class="custom-select form-control form-control-sm" id="Outbound-route" name="" aria-controls="">
+                              <option value="">請選擇</option>
+                              <option value="0">國內航線</option>
+                              <option value="1">國際航線</option>
+                            </select>
+                          </div>
+                        </div>
+                        <div class="col-6">
+                          <div class="form-group">
+                            <label class="meeting-form_label mr-3" for="Outbound-no" style="min-width:50px;">班機</label>
+                            <input class="form-control" id="Outbound-no" type="text" placeholder="CX701">
+                          </div>
+                        </div>
+                        <div class="col-6">
+                          <div class="form-group">
+                            <label class="meeting-form_label mr-3" for="Outbound-day">抵達日期</label>
+                            <input class="form-control date-input" id="Outbound-day" type="date" inputmode="none">
+                          </div>
+                        </div>
+                        <div class="col-6">
+                          <div class="form-group">
+                            <label class="meeting-form_label mr-3" for="Outbound-time">抵達時間</label>
+                            <input class="form-control" id="Outbound-time" type="time" min="00:00" max="24:59" value="" inputmode="none">
+                          </div>
+                        </div>
+                        <div class="col-12 d-flex align-items-center">
+                          <div class="form-group">
+                            <div class="meeting-form_label mr-2 mr-md-4" style="min-width: 40px;">抵達航廈</div>
+                            <div class="form-check form-check-inline mr-2">
+                              <input class="form-check-input" type="radio" name="terminal" value="T1">
+                              <label class="form-check-label">T1</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                              <input class="form-check-input" type="radio" name="terminal" value="T2">
+                              <label class="form-check-label">T2</label>
+                            </div>
+                            <div class="form-check form-check-inline mr-2">
+                              <input class="form-check-input" type="radio" name="terminal" value="T3">
+                              <label class="form-check-label">T3</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                              <input class="form-check-input" type="radio" name="terminal" value="T4">
+                              <label class="form-check-label">T4</label>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-12 d-flex align-items-center">
+                          <div class="form-group">
+                            <div class="meeting-form_label mr-2 mr-md-4" style="min-width: 40px;">接機</div>
+                            <div class="form-check form-check-inline mr-2">
+                              <input class="form-check-input" type="radio" name="Outbound-bus" value="no">
+                              <label class="form-check-label">否</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                              <input class="form-check-input" type="radio" name="Outbound-bus" value="yes">
+                              <label class="form-check-label">是</label>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-12 d-flex align-items-center">
+                          <div class="form-group">
+                            <div class="meeting-form_label mr-2 mr-md-4" style="min-width: 40px;">人數</div>
+                            <div class="person-check">
+                              <div class="person-check">
+                                <div class="form-check form-check-inline">
+                                  <input class="person-all form-check-input" type="checkbox" name="OutboundBus" value="all">
+                                  <label class="form-check-label">所有</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                  <input class="person-self form-check-input" type="checkbox" name="OutboundBus" value="self">
+                                  <label class="form-check-label">自己</label>
+                                </div>
+                                <div class="form-check form-check-inline person-0">
+                                  <input class="person-family form-check-input" type="checkbox" name="OutboundBus" value="family-A">
+                                  <label class="form-check-label">眷屬A</label>
+                                </div>
+                                <div class="form-check form-check-inline person-1">
+                                  <input class="person-family form-check-input" type="checkbox" name="OutboundBus" value="family-B">
+                                  <label class="form-check-label">眷屬B</label>
+                                </div>
+                                <div class="form-check form-check-inline person-2">
+                                  <input class="person-family form-check-input" type="checkbox" name="OutboundBus" value="family-C">
+                                  <label class="form-check-label">眷屬C</label>
+                                </div>
+                                <div class="form-check form-check-inline person-3">
+                                  <input class="person-family form-check-input" type="checkbox" name="OutboundBus" value="family-D">
+                                  <label class="form-check-label">眷屬D</label>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </section>
+              <section>
+                <h4 class="mb-0">訂房資料</h4>
+                <div class="row">
+                  <div class="col-12 col-md-4">
+                    <div class="form-group">
+                      <label class="meeting-form_label mr-3" for="checkIn">入住日期</label>
+                      <input class="form-control date-input" id="checkIn" type="date" inputmode="none">
+                    </div>
+                  </div>
+                  <div class="col-12 col-md-4">
+                    <div class="form-group">
+                      <label class="meeting-form_label mr-3" for="checkOut">退房日期</label>
+                      <input class="form-control date-input" id="checkOut" type="date" inputmode="none">
+                    </div>
+                  </div>
+                </div>
+                <p class="my-2 t-red">*出席</p>
+                <div class="rooms-inner">
+                  <div class="room-item row align-items-center border-bottom py-2">
+                    <div class="col-12 col-md-2"><a class="t-blue-dp" href="" target="_blank"><span>台北圓山飯店</span><i class="icon-url"></i></a></div>
+                    <div class="col-12 col-md-3">
+                      <p class="fz-18 mb-0">精緻無窗客房(正館2-9樓/無景)</p>
+                    </div>
+                    <div class="col-12 col-md-1">
+                      <p class="mb-2 mb-md-0">NT$3,400</p>
+                    </div>
+                    <div class="col-12 col-md-4">
+                      <p class="fz-18 mb-0 t-gray">單人NT3,400(含1早+網路);雙人NT3,800(含2早+網路)</p>
+                    </div>
+                    <div class="col-12 col-md-2">
+                      <div class="form-group d-flex">
+                        <label class="meeting-form_label mr-2" for="member-name" style="min-width:60px;">房數<span class="t-red">*</span></label>
+                        <input class="form-control" id="member-name" type="text"><span class="ml-2">間</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="room-item row align-items-center border-bottom py-2">
+                    <div class="col-12 col-md-2"><a class="t-blue-dp" href="" target="_blank"><span>台北圓山飯店</span><i class="icon-url"></i></a></div>
+                    <div class="col-12 col-md-3">
+                      <p class="fz-18 mb-0">豪華(正館2-6樓/山景房)</p>
+                    </div>
+                    <div class="col-12 col-md-1">
+                      <p class="mb-2 mb-md-0">NT$4,500</p>
+                    </div>
+                    <div class="col-12 col-md-4">
+                      <p class="fz-18 mb-0 t-gray">單人NT4,500(含1早+網路);雙人NT4,900(含2早+網路)</p>
+                    </div>
+                    <div class="col-12 col-md-2">
+                      <div class="form-group d-flex">
+                        <label class="meeting-form_label mr-2" for="member-name" style="min-width:60px;">房數<span class="t-red">*</span></label>
+                        <input class="form-control" id="member-name" type="text"><span class="ml-2">間</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="room-item row align-items-center border-bottom py-2">
+                    <div class="col-12 col-md-2"><a class="t-blue-dp" href="" target="_blank"><span>台北圓山飯店</span><i class="icon-url"></i></a></div>
+                    <div class="col-12 col-md-3">
+                      <p class="fz-18 mb-0">精緻無窗客房(正館2-9樓/無景)</p>
+                    </div>
+                    <div class="col-12 col-md-1">
+                      <p class="mb-2 mb-md-0">NT$3,400</p>
+                    </div>
+                    <div class="col-12 col-md-4">
+                      <p class="fz-18 mb-0 t-gray">單人NT3,400(含1早+網路);雙人NT3,800(含2早+網路)</p>
+                    </div>
+                    <div class="col-12 col-md-2">
+                      <div class="form-group d-flex">
+                        <label class="meeting-form_label mr-2" for="member-name" style="min-width:60px;">房數<span class="t-red">*</span></label>
+                        <input class="form-control" id="member-name" type="text"><span class="ml-2">間</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="room-item row align-items-center border-bottom py-2">
+                    <div class="col-12 col-md-2"><a class="t-blue-dp" href="" target="_blank"><span>台北圓山飯店</span><i class="icon-url"></i></a></div>
+                    <div class="col-12 col-md-3">
+                      <p class="fz-18 mb-0">豪華(正館2-6樓/山景房)</p>
+                    </div>
+                    <div class="col-12 col-md-1">
+                      <p class="mb-2 mb-md-0">NT$4,500</p>
+                    </div>
+                    <div class="col-12 col-md-4">
+                      <p class="fz-18 mb-0 t-gray">單人NT4,500(含1早+網路);雙人NT4,900(含2早+網路)</p>
+                    </div>
+                    <div class="col-12 col-md-2">
+                      <div class="form-group d-flex">
+                        <label class="meeting-form_label mr-2" for="member-name" style="min-width:60px;">房數<span class="t-red">*</span></label>
+                        <input class="form-control" id="member-name" type="text"><span class="ml-2">間</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </section>
+              <section>
+                <h4 class="mb-0">餐宴</h4>
+                <p class="fz-16 t-red mb-3">*3月23日至24日餐宴，敬請確定可以參加才勾選，以避免浪費資源。凡勾選而未參加者，須自行負責餐費新台幣2000元／次。</p>
+                <div class="food-inner">
+                  <div class="food-item row align-items-center border-bottom py-2">
+                    <div class="col-12 col-md-2">2021/3/23 晚宴</div>
+                    <div class="col-12 col-md-auto">
+                      <div class="form-group">
+                        <div class="meeting-form_label mr-2 mr-md-4">參加人數</div>
+                        <div class="person-check">
+                          <div class="form-check form-check-inline">
+                            <input class="person-all form-check-input" type="checkbox" name="dinner-1" value="all">
+                            <label class="form-check-label">所有</label>
+                          </div>
+                          <div class="form-check form-check-inline">
+                            <input class="person-self form-check-input" type="checkbox" name="dinner-1" value="self">
+                            <label class="form-check-label">自己</label>
+                          </div>
+                          <div class="form-check form-check-inline person-0">
+                            <input class="person-family form-check-input" type="checkbox" name="dinner-1" value="family-A">
+                            <label class="form-check-label">眷屬A</label>
+                          </div>
+                          <div class="form-check form-check-inline person-1">
+                            <input class="person-family form-check-input" type="checkbox" name="dinner-1" value="family-B">
+                            <label class="form-check-label">眷屬B</label>
+                          </div>
+                          <div class="form-check form-check-inline person-2">
+                            <input class="person-family form-check-input" type="checkbox" name="dinner-1" value="family-C">
+                            <label class="form-check-label">眷屬C</label>
+                          </div>
+                          <div class="form-check form-check-inline person-3">
+                            <input class="person-family form-check-input" type="checkbox" name="dinner-1" value="family-D">
+                            <label class="form-check-label">眷屬D</label>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-12 col-md-2">
+                      <div class="form-group d-flex">
+                        <label class="meeting-form_label mr-2" style="min-width:60px;">葷食<span class="t-red">*</span></label>
+                        <input class="form-control" type="text"><span class="ml-2">位</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="food-item row align-items-center border-bottom py-2">
+                    <div class="col-12 col-md-2">2021/3/24 午宴</div>
+                    <div class="col-12 col-md-auto">
+                      <div class="form-group">
+                        <div class="meeting-form_label mr-2 mr-md-4">參加人數</div>
+                        <div class="person-check">
+                          <div class="form-check form-check-inline">
+                            <input class="person-all form-check-input" type="checkbox" name="lunch-2" value="all">
+                            <label class="form-check-label">所有</label>
+                          </div>
+                          <div class="form-check form-check-inline">
+                            <input class="person-self form-check-input" type="checkbox" name="lunch-2" value="self">
+                            <label class="form-check-label">自己</label>
+                          </div>
+                          <div class="form-check form-check-inline person-0">
+                            <input class="person-family form-check-input" type="checkbox" name="lunch-2" value="family-A">
+                            <label class="form-check-label">眷屬A</label>
+                          </div>
+                          <div class="form-check form-check-inline person-1">
+                            <input class="person-family form-check-input" type="checkbox" name="lunch-2" value="family-B">
+                            <label class="form-check-label">眷屬B</label>
+                          </div>
+                          <div class="form-check form-check-inline person-2">
+                            <input class="person-family form-check-input" type="checkbox" name="lunch-2" value="family-C">
+                            <label class="form-check-label">眷屬C</label>
+                          </div>
+                          <div class="form-check form-check-inline person-3">
+                            <input class="person-family form-check-input" type="checkbox" name="lunch-2" value="family-D">
+                            <label class="form-check-label">眷屬D</label>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-12 col-md-2">
+                      <div class="form-group d-flex">
+                        <label class="meeting-form_label mr-2" style="min-width:60px;">葷食<span class="t-red">*</span></label>
+                        <input class="form-control" type="text"><span class="ml-2">位</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="food-item row align-items-center border-bottom py-2">
+                    <div class="col-12 col-md-2">2021/3/24 晚宴</div>
+                    <div class="col-12 col-md-auto">
+                      <div class="form-group">
+                        <div class="meeting-form_label mr-2 mr-md-4">參加人數</div>
+                        <div class="person-check">
+                          <div class="form-check form-check-inline">
+                            <input class="person-all form-check-input" type="checkbox" name="dinner-2" value="all">
+                            <label class="form-check-label">所有</label>
+                          </div>
+                          <div class="form-check form-check-inline">
+                            <input class="person-self form-check-input" type="checkbox" name="dinner-2" value="self">
+                            <label class="form-check-label">自己</label>
+                          </div>
+                          <div class="form-check form-check-inline person-0">
+                            <input class="person-family form-check-input" type="checkbox" name="dinner-2" value="family-A">
+                            <label class="form-check-label">眷屬A</label>
+                          </div>
+                          <div class="form-check form-check-inline person-1">
+                            <input class="person-family form-check-input" type="checkbox" name="dinner-2" value="family-B">
+                            <label class="form-check-label">眷屬B</label>
+                          </div>
+                          <div class="form-check form-check-inline person-2">
+                            <input class="person-family form-check-input" type="checkbox" name="dinner-2" value="family-C">
+                            <label class="form-check-label">眷屬C</label>
+                          </div>
+                          <div class="form-check form-check-inline person-3">
+                            <input class="person-family form-check-input" type="checkbox" name="dinner-2" value="family-D">
+                            <label class="form-check-label">眷屬D</label>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-12 col-md-2">
+                      <div class="form-group d-flex">
+                        <label class="meeting-form_label mr-2" style="min-width:60px;">葷食<span class="t-red">*</span></label>
+                        <input class="form-control" type="text"><span class="ml-2">位</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </section>
+              <section>
+                <h4 class="mb-0">會議行程</h4>
+                <p class="fz-16 t-red mb-3">*必填：理監事以上人員出席實體會議或線上會議，請擇一填選。</p>
+                <div class="travel-inner">
+                  <div class="travel-item row align-items-center border-bottom py-2">
+                    <div class="col-12 col-md-5">
+                      <p class="mb-0">2021/3/24 出席實體理監事聯席會議</p>
+                      <div class="fz-16">(限理監事以上人員勾選)</div>
+                    </div>
+                    <div class="col-12 col-md-7">
+                      <div class="form-group">
+                        <div class="meeting-form_label mr-2 mr-md-4">參加人數</div>
+                        <div class="person-check">
+                          <div class="form-check form-check-inline">
+                            <input class="person-all form-check-input" type="checkbox" name="meeting-1" value="all">
+                            <label class="form-check-label">所有</label>
+                          </div>
+                          <div class="form-check form-check-inline">
+                            <input class="person-self form-check-input" type="checkbox" name="meeting-1" value="self">
+                            <label class="form-check-label">自己</label>
+                          </div>
+                          <div class="form-check form-check-inline person-0">
+                            <input class="person-family form-check-input" type="checkbox" name="meeting-1" value="family-A">
+                            <label class="form-check-label">眷屬A</label>
+                          </div>
+                          <div class="form-check form-check-inline person-1">
+                            <input class="person-family form-check-input" type="checkbox" name="meeting-1" value="family-B">
+                            <label class="form-check-label">眷屬B</label>
+                          </div>
+                          <div class="form-check form-check-inline person-2">
+                            <input class="person-family form-check-input" type="checkbox" name="meeting-1" value="family-C">
+                            <label class="form-check-label">眷屬C</label>
+                          </div>
+                          <div class="form-check form-check-inline person-3">
+                            <input class="person-family form-check-input" type="checkbox" name="meeting-1" value="family-D">
+                            <label class="form-check-label">眷屬D</label>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="travel-item row align-items-center border-bottom py-2">
+                    <div class="col-12 col-md-5">
+                      <p class="mb-0">2021/3/24 出席線上理監事聯席會議</p>
+                      <div class="fz-16">(限理監事以上人員勾選)</div>
+                    </div>
+                    <div class="col-12 col-md-7">
+                      <div class="form-group">
+                        <div class="meeting-form_label mr-2 mr-md-4">參加人數</div>
+                        <div class="person-check">
+                          <div class="form-check form-check-inline">
+                            <input class="person-all form-check-input" type="checkbox" name="meeting-1" value="all">
+                            <label class="form-check-label">所有</label>
+                          </div>
+                          <div class="form-check form-check-inline">
+                            <input class="person-self form-check-input" type="checkbox" name="meeting-1" value="self">
+                            <label class="form-check-label">自己</label>
+                          </div>
+                          <div class="form-check form-check-inline person-0">
+                            <input class="person-family form-check-input" type="checkbox" name="meeting-1" value="family-A">
+                            <label class="form-check-label">眷屬A</label>
+                          </div>
+                          <div class="form-check form-check-inline person-1">
+                            <input class="person-family form-check-input" type="checkbox" name="meeting-1" value="family-B">
+                            <label class="form-check-label">眷屬B</label>
+                          </div>
+                          <div class="form-check form-check-inline person-2">
+                            <input class="person-family form-check-input" type="checkbox" name="meeting-1" value="family-C">
+                            <label class="form-check-label">眷屬C</label>
+                          </div>
+                          <div class="form-check form-check-inline person-3">
+                            <input class="person-family form-check-input" type="checkbox" name="meeting-1" value="family-D">
+                            <label class="form-check-label">眷屬D</label>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="travel-item row align-items-center border-bottom py-2">
+                    <div class="col-12 col-md-5">2021/3/23 高爾夫球賽</div>
+                    <div class="col-12 col-md-4 d-flex align-items-center">
+                      <div class="form-group">
+                        <div class="form-check form-check-inline mr-4">
+                          <input class="form-check-input" type="radio" name="join-golf" value="yes">
+                          <label class="form-check-label">參加</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                          <input class="form-check-input" type="radio" name="join-golf" value="no">
+                          <label class="form-check-label">不參加</label>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-12 col-md-3"><a class="t-blue-dp" href="" target="_blank"><span>參加前往填寫表單</span><i class="icon-url"></i></a></div>
+                  </div>
+                </div>
+              </section>
+              <section>
+                <h4 class="mb-0">自費旅遊</h4>
+                <p class="fz-16 t-red mb-3">*欲參加旅遊者，請填妥旅遊報名表，務請逕自Email或Fax：+886-2-3322-2258至海外台商旅行社報名，並再以電話聯繫海外台商旅行社<a href="tel:+886-2-3322-4458">TEL:+886-2-3322-4458</a>確認。</p>
+                <div class="self-inner">
+                  <div class="self-item row align-items-center border-bottom py-2">
+                    <div class="col-12 col-md-5">
+                      <p class="mb-0">會後旅遊 A.樂活台東雙島蘭嶼+綠島四日遊</p>
+                    </div>
+                    <div class="col-12 col-md-auto">
+                      <div class="form-group">
+                        <div class="meeting-form_label mr-2 mr-md-4">參加人數</div>
+                        <div class="person-check">
+                          <div class="form-check form-check-inline">
+                            <input class="person-all form-check-input" type="checkbox" name="selfTravel-A" value="all">
+                            <label class="form-check-label">所有</label>
+                          </div>
+                          <div class="form-check form-check-inline">
+                            <input class="person-self form-check-input" type="checkbox" name="selfTravel-A" value="self">
+                            <label class="form-check-label">自己</label>
+                          </div>
+                          <div class="form-check form-check-inline person-0">
+                            <input class="person-family form-check-input" type="checkbox" name="selfTravel-A" value="family-A">
+                            <label class="form-check-label">眷屬A</label>
+                          </div>
+                          <div class="form-check form-check-inline person-1">
+                            <input class="person-family form-check-input" type="checkbox" name="selfTravel-A" value="family-B">
+                            <label class="form-check-label">眷屬B</label>
+                          </div>
+                          <div class="form-check form-check-inline person-2">
+                            <input class="person-family form-check-input" type="checkbox" name="selfTravel-A" value="family-C">
+                            <label class="form-check-label">眷屬C</label>
+                          </div>
+                          <div class="form-check form-check-inline person-3">
+                            <input class="person-family form-check-input" type="checkbox" name="selfTravel-A" value="family-D">
+                            <label class="form-check-label">眷屬D</label>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-12 col-md-3"><a class="t-blue-dp" href="" target="_blank"><span>海外台商旅行社承辦</span><i class="icon-url"></i></a></div>
+                  </div>
+                  <div class="self-item row align-items-center border-bottom py-2">
+                    <div class="col-12 col-md-5">
+                      <p class="mb-0">會後旅遊 B.一生必看-藍眼淚馬祖三日遊</p>
+                    </div>
+                    <div class="col-12 col-md-auto">
+                      <div class="form-group">
+                        <div class="meeting-form_label mr-2 mr-md-4">參加人數</div>
+                        <div class="person-check">
+                          <div class="form-check form-check-inline">
+                            <input class="person-all form-check-input" type="checkbox" name="selfTravel-B" value="all">
+                            <label class="form-check-label">所有</label>
+                          </div>
+                          <div class="form-check form-check-inline">
+                            <input class="person-self form-check-input" type="checkbox" name="selfTravel-B" value="self">
+                            <label class="form-check-label">自己</label>
+                          </div>
+                          <div class="form-check form-check-inline person-0">
+                            <input class="person-family form-check-input" type="checkbox" name="selfTravel-B" value="family-A">
+                            <label class="form-check-label">眷屬A</label>
+                          </div>
+                          <div class="form-check form-check-inline person-1">
+                            <input class="person-family form-check-input" type="checkbox" name="selfTravel-B" value="family-B">
+                            <label class="form-check-label">眷屬B</label>
+                          </div>
+                          <div class="form-check form-check-inline person-2">
+                            <input class="person-family form-check-input" type="checkbox" name="selfTravel-B" value="family-C">
+                            <label class="form-check-label">眷屬C</label>
+                          </div>
+                          <div class="form-check form-check-inline person-3">
+                            <input class="person-family form-check-input" type="checkbox" name="selfTravel-B" value="family-D">
+                            <label class="form-check-label">眷屬D</label>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-B2 col-md-3"><a class="t-blue-dp" href="" target="_blank"><span>海外台商旅行社承辦</span><i class="icon-url"></i></a></div>
+                  </div>
+                  <div class="self-item row align-items-center border-bottom py-2">
+                    <div class="col-12 col-md-5">
+                      <p class="mb-0">會後旅遊 C.遺落人間的部落-司馬庫斯三日遊</p>
+                    </div>
+                    <div class="col-12 col-md-auto">
+                      <div class="form-group">
+                        <div class="meeting-form_label mr-2 mr-md-4">參加人數</div>
+                        <div class="person-check">
+                          <div class="form-check form-check-inline">
+                            <input class="person-all form-check-input" type="checkbox" name="selfTravel-C" value="all">
+                            <label class="form-check-label">所有</label>
+                          </div>
+                          <div class="form-check form-check-inline">
+                            <input class="person-self form-check-input" type="checkbox" name="selfTravel-C" value="self">
+                            <label class="form-check-label">自己</label>
+                          </div>
+                          <div class="form-check form-check-inline person-0">
+                            <input class="person-family form-check-input" type="checkbox" name="selfTravel-C" value="family-A">
+                            <label class="form-check-label">眷屬A</label>
+                          </div>
+                          <div class="form-check form-check-inline person-1">
+                            <input class="person-family form-check-input" type="checkbox" name="selfTravel-C" value="family-B">
+                            <label class="form-check-label">眷屬B</label>
+                          </div>
+                          <div class="form-check form-check-inline person-2">
+                            <input class="person-family form-check-input" type="checkbox" name="selfTravel-C" value="family-C">
+                            <label class="form-check-label">眷屬C</label>
+                          </div>
+                          <div class="form-check form-check-inline person-3">
+                            <input class="person-family form-check-input" type="checkbox" name="selfTravel-C" value="family-D">
+                            <label class="form-check-label">眷屬D</label>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-B2 col-md-3"><a class="t-blue-dp" href="" target="_blank"><span>海外台商旅行社承辦</span><i class="icon-url"></i></a></div>
+                  </div>
+                </div>
+              </section>
+              <section>
+                <h4 class="mb-0">備註</h4>
+                <div class="row">
+                  <div class="col-12">
+                    <p class="fz-18">備註內容</p>
+                  </div>
+                </div>
+              </section>
+            </div>
+          </div>
+          <div class="meeting-btn-group row mx-auto mt-3" style="max-width:780px;">
+            <div class="col-4"><a class="w-100 btn btn-light form-item row-rounded justify-content-center" href="meeting-login.html">回上一頁</a></div>
+            <div class="col-4">
+              <button class="clear-btn w-100 btn btn-secondary form-item row-rounded justify-content-center">重新填寫</button>
+            </div>
+            <div class="col-4">
+              <button class="w-100 btn btn-success form-item row-rounded justify-content-center" type="submit">送出資料</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </main>
+    <script src="scripts/default/jquery.min.js"></script>
+    <script src="scripts/default/bootstrap.min.js"></script>
+    <script src="scripts/plugins/jquery-ui.min.js"></script>
+    <script src="scripts/plugins/jquery-ui-timepicker-addon.js"></script>
+    <script>
+      $('#meeting-register').each(function(){
+          if($(window).width() < 991) {
+              $(this).prev('.header').hide();
+          }
+      
+          if($(window).width() > 992) {
+              $('.date-input').datepicker({
+                  "dateFormat": "yy-mm-dd"
+              });
+          }
+      });
+      
+      $('.add-family').on('click',function(){
+          var familyInner = $('.register-family')
+          var familyLen = $('.register-family .row').length;
+          var familyTemplateB = '<div class="row"><div class="col-12 col-md-auto d-flex align-items-center"><h5 class="mb-0">B</h5></div><div class="col-12 col-md-3"><div class="form-group"><label class="meeting-form_label mr-2">中文姓名<span class="t-red">*</span></label><input class="form-control" type="text"/></div></div><div class="col-6 col-md-3"><div class="form-group"><label class="meeting-form_label mr-2">英文姓名<span class="t-red">*</span></label><input class="form-control" type="text"/></div></div><div class="col-6 col-md-auto"><div class="form-group"><label class="meeting-form_label mr-2" style="min-width: 40px">關係</label><select class="custom-select form-control form-control-sm" name="" aria-controls=""><option value="">請選擇</option><option value="0">夫妻</option><option value="1">父母</option><option value="2">小孩</option></select></div></div><div class="col-6 col-md-auto d-flex align-items-center"><div class="form-group"><div class="meeting-form_label" style="min-width: 40px;">性別</div><div class="form-check form-check-inline mr-2"><input class="form-check-input" type="radio" name="gender" value="male"/><label class="form-check-label">男</label></div><div class="form-check form-check-inline"><input class="form-check-input" type="radio" name="gender" value="female"/><label class="form-check-label">女</label></div></div></div><div class="col-6 col-md-auto d-flex align-items-center"><div class="form-group"><div class="meeting-form_label" style="min-width: 40px;">飲食</div><div class="form-check form-check-inline mr-2"><input class="form-check-input" type="radio" name="food" value="meat"/><label class="form-check-label">葷</label></div><div class="form-check form-check-inline"><input class="form-check-input" type="radio" name="food" value="vegetarian"/><label class="form-check-label">素</label></div></div></div></div>'
+          var familyTemplateC = '<div class="row"><div class="col-12 col-md-auto d-flex align-items-center"><h5 class="mb-0">C</h5></div><div class="col-12 col-md-3"><div class="form-group"><label class="meeting-form_label mr-2">中文姓名<span class="t-red">*</span></label><input class="form-control" type="text"/></div></div><div class="col-6 col-md-3"><div class="form-group"><label class="meeting-form_label mr-2">英文姓名<span class="t-red">*</span></label><input class="form-control" type="text"/></div></div><div class="col-6 col-md-auto"><div class="form-group"><label class="meeting-form_label mr-2" style="min-width: 40px">關係</label><select class="custom-select form-control form-control-sm" name="" aria-controls=""><option value="">請選擇</option><option value="0">夫妻</option><option value="1">父母</option><option value="2">小孩</option></select></div></div><div class="col-6 col-md-auto d-flex align-items-center"><div class="form-group"><div class="meeting-form_label" style="min-width: 40px;">性別</div><div class="form-check form-check-inline mr-2"><input class="form-check-input" type="radio" name="gender" value="male"/><label class="form-check-label">男</label></div><div class="form-check form-check-inline"><input class="form-check-input" type="radio" name="gender" value="female"/><label class="form-check-label">女</label></div></div></div><div class="col-6 col-md-auto d-flex align-items-center"><div class="form-group"><div class="meeting-form_label" style="min-width: 40px;">飲食</div><div class="form-check form-check-inline mr-2"><input class="form-check-input" type="radio" name="food" value="meat"/><label class="form-check-label">葷</label></div><div class="form-check form-check-inline"><input class="form-check-input" type="radio" name="food" value="vegetarian"/><label class="form-check-label">素</label></div></div></div></div>'
+          var familyTemplateD = '<div class="row"><div class="col-12 col-md-auto d-flex align-items-center"><h5 class="mb-0">D</h5></div><div class="col-12 col-md-3"><div class="form-group"><label class="meeting-form_label mr-2">中文姓名<span class="t-red">*</span></label><input class="form-control" type="text"/></div></div><div class="col-6 col-md-3"><div class="form-group"><label class="meeting-form_label mr-2">英文姓名<span class="t-red">*</span></label><input class="form-control" type="text"/></div></div><div class="col-6 col-md-auto"><div class="form-group"><label class="meeting-form_label mr-2" style="min-width: 40px">關係</label><select class="custom-select form-control form-control-sm" name="" aria-controls=""><option value="">請選擇</option><option value="0">夫妻</option><option value="1">父母</option><option value="2">小孩</option></select></div></div><div class="col-6 col-md-auto d-flex align-items-center"><div class="form-group"><div class="meeting-form_label" style="min-width: 40px;">性別</div><div class="form-check form-check-inline mr-2"><input class="form-check-input" type="radio" name="gender" value="male"/><label class="form-check-label">男</label></div><div class="form-check form-check-inline"><input class="form-check-input" type="radio" name="gender" value="female"/><label class="form-check-label">女</label></div></div></div><div class="col-6 col-md-auto d-flex align-items-center"><div class="form-group"><div class="meeting-form_label" style="min-width: 40px;">飲食</div><div class="form-check form-check-inline mr-2"><input class="form-check-input" type="radio" name="food" value="meat"/><label class="form-check-label">葷</label></div><div class="form-check form-check-inline"><input class="form-check-input" type="radio" name="food" value="vegetarian"/><label class="form-check-label">素</label></div></div></div></div>'
+          console.log(familyLen);
+          if(familyLen == 1) {
+              $('.person-1').css('display','inline-flex');
+              familyInner.append(familyTemplateB);
+          }
+          if(familyLen == 2) {
+              $('.person-2').css('display','inline-flex');
+              familyInner.append(familyTemplateC);
+          }
+          if(familyLen == 3) {
+              $('.person-3').css('display','inline-flex');
+              familyInner.append(familyTemplateD);
+          }
+          if(familyLen >= 3) {
+              $(this).attr('disabled', true);
+          }
+      });
+      
+      $('.person-check .person-all').on('change',function(){
+          if($(this).prop("checked")) {
+              $(this).parents('.person-check').find('input[type="checkbox"]').each(function() {
+                  $(this).prop("checked", true);
+              });
+          } else {
+              $(this).parents('.person-check').find('input[type="checkbox"]').each(function() {
+                  $(this).prop("checked", false);
+              });
+          }
+      });
+      
+      
+    </script>
+    <script src="scripts/default/ui.js"></script>
+  </body>
+</html>

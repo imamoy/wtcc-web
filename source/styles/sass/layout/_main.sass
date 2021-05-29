@@ -199,6 +199,8 @@ a
 
 .t-white
     color: $white !important
+.t-gray
+    color: #606060!important
 
 .bg-white-8
     background-color: rgba($white,.8)
@@ -344,52 +346,53 @@ a
         padding: 0
 
 #web
-    .form-check
-        padding: 0 25px
-        input[type="radio"]
-            display: none
-            & + label
-                span
-                    background-color: rgba($white,.65)
-                    color: $dark
-                    display: inline-flex
-                    width: 150px
-                    height: 150px
-                    border-radius: 50%
-                    font-size: 1.6rem
-                    font-weight: 600
-                    align-items: center
-                    justify-content: center
-                    cursor: pointer
-                    transition: background .25s
-                    &:hover
-                        background-color: rgba($white,.9)
-        &:first-child
+    .vote-wrapper,
+        .form-check
+            padding: 0 25px
             input[type="radio"]
-                &:checked
-                    & + label
-                        span
-                            background-color: $green !important
-        &:nth-child(2)
-            input[type="radio"]
-                &:checked
-                    & + label
-                        span
-                            background-color: $four-color !important
-        &:nth-child(3)
-            input[type="radio"]
-                &:checked
-                    & + label
-                        span
-                            background-color: $three-color !important
-        +max-pad
-            padding: 10px
-            input[type="radio"]
+                display: none
                 & + label
                     span
-                        width: 80px
-                        height: 80px
-                        font-size: 1.2rem
+                        background-color: rgba($white,.65)
+                        color: $dark
+                        display: inline-flex
+                        width: 150px
+                        height: 150px
+                        border-radius: 50%
+                        font-size: 1.6rem
+                        font-weight: 600
+                        align-items: center
+                        justify-content: center
+                        cursor: pointer
+                        transition: background .25s
+                        &:hover
+                            background-color: rgba($white,.9)
+            &:first-child
+                input[type="radio"]
+                    &:checked
+                        & + label
+                            span
+                                background-color: $green !important
+            &:nth-child(2)
+                input[type="radio"]
+                    &:checked
+                        & + label
+                            span
+                                background-color: $four-color !important
+            &:nth-child(3)
+                input[type="radio"]
+                    &:checked
+                        & + label
+                            span
+                                background-color: $three-color !important
+            +max-pad
+                padding: 10px
+                input[type="radio"]
+                    & + label
+                        span
+                            width: 80px
+                            height: 80px
+                            font-size: 1.2rem
     .modal-dialog
         +min-phone
             max-width: 350px
@@ -606,3 +609,165 @@ hr
         visibility: visible
         -webkit-transition: opacity 0.5s 0.1s
         transition: opacity 0.5s 0.1s
+
+.meeting-wrapper
+    .inner
+        max-width: 1280px
+        margin: 20px auto
+    .meeting-info
+        background-color: rgba($white,.8)
+        font-size: 20px
+        border-radius: 5px
+        color: $text
+        padding: 20px 0
+        margin-top: 20px
+        &::-webkit-scrollbar
+            width: 5px
+        &::-webkit-scrollbar-track
+            -webkit-box-shadow: 0 0 0 0
+            -webkit-border-radius: 5px
+            border-radius: 5px
+        &::-webkit-scrollbar-thumb
+            -webkit-border-radius: 5px
+            border-radius: 5px
+            background: $yellow
+            -webkit-box-shadow: 0 0 0 0
+            &:window-inactive
+                background: $yellow
+        .form-group
+            margin: 4px 0
+        input,select
+            font-size: 18px
+    
+    .meeting-form_label
+        color: $primary-dp-color
+        font-weight: 500
+        min-width: 90px
+        margin-right: 14px
+    +min-notebook
+        .container
+            max-width: none
+    +min-padpro
+        overflow-y: hidden
+        .meeting-info
+            max-height: 60vh
+            overflow-y: auto
+            .form-group
+                display: flex
+                margin: 10px 0
+    +max-pad
+        padding: 0 14px 180px
+    +max-pad
+        .meeting-info
+            &.no-register
+                .border-bottom
+                    border: none !important
+                .form-group
+                    margin: 0
+                    padding: 10px 0
+                    border-bottom: 1px solid rgba($white,.5)
+
+.meeting-btn-group
+    .btn
+        border-radius: 50px
+        height: 50px
+        font-size: 20px
+    +max-pad
+        width: 100%
+        position: fixed
+        z-index: 50
+        bottom: 0
+        left: 0
+        margin-top: 0
+        .col-6,.col-4
+            padding: 0
+            border-right: 1px solid rgba($white,.5)
+            &:last-child
+                border-right: none
+        .btn
+            font-size: 18px
+            border-radius: 0 0 0 0
+            margin: 0
+
+#meeting-register
+    .fz-16
+        font-size: 16px
+    .fz-18
+        font-size: 18px
+    .meeting-info
+        padding: 0 
+        .form-group
+            align-items: center
+            .meeting-form_label
+                margin-bottom: 0 !important
+        section
+            padding: 10px 0
+            border-bottom: 1px solid $white
+    .form-check-input
+        width: 24px
+        height: 24px
+        border-radius: 50%
+        border: none
+    .iconBtn
+        color: $primary-color
+    .add-family
+        &:disabled
+            opacity: 0
+    .register-family
+        .row
+            border-bottom: 1px solid rgba($white,.5)
+            &:last-child
+                border: none
+    .person-check
+        .person-1,.person-2,.person-3
+            display: none
+    +min-padpro
+        .air-item
+            &:first-child
+                border-right: 1px solid rgba($white,.5)
+    +max-pad
+        margin-top: 0
+        height: 100vh
+        padding-bottom: 160px
+        .meeting-info
+            input,select
+                padding: 4px 6px
+            .form-group
+                padding: 6px 0
+                margin: 0
+        .air-item
+            padding-top: 10px
+            padding-bottom: 10px
+            &:first-child
+                border-bottom: 1px solid rgba($white,.5)
+
+.meeting-login
+    +min-padpro
+        display: flex
+        flex-direction: column
+        justify-content: center
+
+.meeting-form_box
+    border-radius: 10px
+    overflow: hidden
+    background-color: #dedede
+    .meeting-form_title
+        background-color: $primary-color
+        color: $white
+        font-size: 20px
+        font-weight: 600
+
+.meeting-form
+    width: 340px
+    margin: 0 auto
+    .form-inline
+        width: 100%
+    .form-group
+        width: 100%
+    .meeting-form_inner
+        color: $text
+        font-size: 20px
+        padding: 10px 14px
+    .meeting-form_label
+        min-width: 100px
+        text-align: left

@@ -1,0 +1,84 @@
+//- index.pug
+extends ./include/layout.pug
+block plugins-css
+block plugins-js
+        
+block content
+    main.wrapper.meeting-wrapper
+        .inner
+            h3
+                i.icon-edit
+                span 會議資訊
+            .meeting-info.no-register
+                .container
+                    .row.border-bottom.no-gutters
+                        .col-12.col-md-4
+                            .form-group
+                                .meeting-form_label 會議編號
+                                .meeting-form_value 0272
+                        .col-12.col-md-8
+                            .form-group
+                                .meeting-form_label 會議名稱
+                                .meeting-form_value 台灣商會世界聯合總會第二十七屆第二次理事聯席會議
+                    .row.border-bottom.no-gutters
+                        .col-12
+                            .form-group
+                                .meeting-form_label 報名豈止日
+                                .meeting-form_value 2021/01/19 至 2021/02/16
+                    .row.border-bottom.no-gutters
+                        .col-12.col-md-6
+                            .form-group
+                                .meeting-form_label 會議期間
+                                .meeting-form_value 2021/01/19 至 2021/02/16
+                        .col-12.col-md-6
+                            .form-group
+                                .meeting-form_label 會議地點
+                                .meeting-form_value 台北圓山飯店
+                    .row.border-bottom.no-gutters
+                        .col-12
+                            .form-group
+                                .meeting-form_label 會議期間
+                                .meeting-form_value 
+                                    p 發文字號：世紀27字號 第082號
+                                    p 主旨：本總訂於110年3月23日至24日於台北圓山飯店召開第27屆第2次理監事聯席會議：另安排會後國內旅遊活動，敬請踴躍報名參加，並事依說明配合辦理。
+                                    p 說明#[br]
+                                    p 一、說明事項說明事項說明事項說明事項說明事項說明事項說明事項說明事項說明事項說明事項說明事項說明事項說明事項
+                                    p 二、說明事項說明事項說明事項說明事項說明事項說明事項說明事項說明事項說明事項說明事項說明事項說明事項說明事項
+                                    p 三、說明事項說明事項說明事項說明事項說明事項說明事項說明事項說明事項說明事項說明事項說明事項說明事項說明事項
+                                    p 四、說明事項說明事項說明事項說明事項說明事項說明事項說明事項說明事項說明事項說明事項說明事項說明事項說明事項
+                                    p 五、說明事項說明事項說明事項說明事項說明事項說明事項說明事項說明事項說明事項說明事項說明事項說明事項說明事項
+                                    p 六、說明事項說明事項說明事項說明事項說明事項說明事項說明事項說明事項說明事項說明事項說明事項說明事項說明事項
+                                    p 七、說明事項說明事項說明事項說明事項說明事項說明事項說明事項說明事項說明事項說明事項說明事項說明事項說明事項
+                                    p 一、說明事項說明事項說明事項說明事項說明事項說明事項說明事項說明事項說明事項說明事項說明事項說明事項說明事項
+                                    p 二、說明事項說明事項說明事項說明事項說明事項說明事項說明事項說明事項說明事項說明事項說明事項說明事項說明事項
+                                    p 三、說明事項說明事項說明事項說明事項說明事項說明事項說明事項說明事項說明事項說明事項說明事項說明事項說明事項
+                                    p 四、說明事項說明事項說明事項說明事項說明事項說明事項說明事項說明事項說明事項說明事項說明事項說明事項說明事項
+                                    p 五、說明事項說明事項說明事項說明事項說明事項說明事項說明事項說明事項說明事項說明事項說明事項說明事項說明事項
+                                    p 六、說明事項說明事項說明事項說明事項說明事項說明事項說明事項說明事項說明事項說明事項說明事項說明事項說明事項
+                                    p 七、說明事項說明事項說明事項說明事項說明事項說明事項說明事項說明事項說明事項說明事項說明事項說明事項說明事項
+                    .row.border-bottom.no-gutters
+                        .col-12.col-md-6
+                            .form-group
+                                .meeting-form_label 會議聯絡人
+                                .meeting-form_value 世界台灣商會聯合總會秘書處
+                        .col-12.col-md-6
+                            .form-group
+                                .meeting-form_label 電話
+                                .meeting-form_value 
+                                    a(href='tel:+886-2-2321-1822') +886-2-2321-1822
+                    .row.no-gutters
+                        .col-12.col-md-6
+                            .form-group
+                                .meeting-form_label 傳真
+                                .meeting-form_value +886-2-2321-1823
+                        .col-12.col-md-6
+                            .form-group
+                                .meeting-form_label 電子郵件
+                                .meeting-form_value 
+                                    a(href='mailto:wtcc@wtcc.org.tw' target="_blank") wtcc@wtcc.org.tw
+            .meeting-btn-group.fixed.row.mx-auto.mt-4(style='max-width:780px;')
+                .col-6
+                    a.w-100.btn.btn-danger.form-item.row-rounded.justify-content-center(href='meeting-login.html') 理監事報名
+                .col-6
+                    a.w-100.btn.btn-danger.form-item.row-rounded.justify-content-center(href='meeting-register.html') 非理監事報名
+
