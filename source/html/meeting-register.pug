@@ -8,24 +8,32 @@ block plugins-js
     script(src='scripts/plugins/jquery-ui-timepicker-addon.js')
     script.
         $('#meeting-register').each(function(){
-            if($(window).width() < 991) {
-                $(this).prev('.header').hide();
-            }
+            $(this).prev('.header').hide();
 
             if($(window).width() > 992) {
                 $('.date-input').datepicker({
                     "dateFormat": "yy-mm-dd"
                 });
             }
+
+            $('.datetime-input').datetimepicker({
+                "dateFormat": "yy-mm-dd",
+                "timeFormat": "HH:mm"
+            });
         });
 
         $('.add-family').on('click',function(){
             var familyInner = $('.register-family')
             var familyLen = $('.register-family .row').length;
-            var familyTemplateB = '<div class="row"><div class="col-12 col-md-auto d-flex align-items-center"><h5 class="mb-0">B</h5></div><div class="col-12 col-md-3"><div class="form-group"><label class="meeting-form_label mr-2">中文姓名<span class="t-red">*</span></label><input class="form-control" type="text"/></div></div><div class="col-6 col-md-3"><div class="form-group"><label class="meeting-form_label mr-2">英文姓名<span class="t-red">*</span></label><input class="form-control" type="text"/></div></div><div class="col-6 col-md-auto"><div class="form-group"><label class="meeting-form_label mr-2" style="min-width: 40px">關係</label><select class="custom-select form-control form-control-sm" name="" aria-controls=""><option value="">請選擇</option><option value="0">夫妻</option><option value="1">父母</option><option value="2">小孩</option></select></div></div><div class="col-6 col-md-auto d-flex align-items-center"><div class="form-group"><div class="meeting-form_label" style="min-width: 40px;">性別</div><div class="form-check form-check-inline mr-2"><input class="form-check-input" type="radio" name="gender" value="male"/><label class="form-check-label">男</label></div><div class="form-check form-check-inline"><input class="form-check-input" type="radio" name="gender" value="female"/><label class="form-check-label">女</label></div></div></div><div class="col-6 col-md-auto d-flex align-items-center"><div class="form-group"><div class="meeting-form_label" style="min-width: 40px;">飲食</div><div class="form-check form-check-inline mr-2"><input class="form-check-input" type="radio" name="food" value="meat"/><label class="form-check-label">葷</label></div><div class="form-check form-check-inline"><input class="form-check-input" type="radio" name="food" value="vegetarian"/><label class="form-check-label">素</label></div></div></div></div>'
-            var familyTemplateC = '<div class="row"><div class="col-12 col-md-auto d-flex align-items-center"><h5 class="mb-0">C</h5></div><div class="col-12 col-md-3"><div class="form-group"><label class="meeting-form_label mr-2">中文姓名<span class="t-red">*</span></label><input class="form-control" type="text"/></div></div><div class="col-6 col-md-3"><div class="form-group"><label class="meeting-form_label mr-2">英文姓名<span class="t-red">*</span></label><input class="form-control" type="text"/></div></div><div class="col-6 col-md-auto"><div class="form-group"><label class="meeting-form_label mr-2" style="min-width: 40px">關係</label><select class="custom-select form-control form-control-sm" name="" aria-controls=""><option value="">請選擇</option><option value="0">夫妻</option><option value="1">父母</option><option value="2">小孩</option></select></div></div><div class="col-6 col-md-auto d-flex align-items-center"><div class="form-group"><div class="meeting-form_label" style="min-width: 40px;">性別</div><div class="form-check form-check-inline mr-2"><input class="form-check-input" type="radio" name="gender" value="male"/><label class="form-check-label">男</label></div><div class="form-check form-check-inline"><input class="form-check-input" type="radio" name="gender" value="female"/><label class="form-check-label">女</label></div></div></div><div class="col-6 col-md-auto d-flex align-items-center"><div class="form-group"><div class="meeting-form_label" style="min-width: 40px;">飲食</div><div class="form-check form-check-inline mr-2"><input class="form-check-input" type="radio" name="food" value="meat"/><label class="form-check-label">葷</label></div><div class="form-check form-check-inline"><input class="form-check-input" type="radio" name="food" value="vegetarian"/><label class="form-check-label">素</label></div></div></div></div>'
-            var familyTemplateD = '<div class="row"><div class="col-12 col-md-auto d-flex align-items-center"><h5 class="mb-0">D</h5></div><div class="col-12 col-md-3"><div class="form-group"><label class="meeting-form_label mr-2">中文姓名<span class="t-red">*</span></label><input class="form-control" type="text"/></div></div><div class="col-6 col-md-3"><div class="form-group"><label class="meeting-form_label mr-2">英文姓名<span class="t-red">*</span></label><input class="form-control" type="text"/></div></div><div class="col-6 col-md-auto"><div class="form-group"><label class="meeting-form_label mr-2" style="min-width: 40px">關係</label><select class="custom-select form-control form-control-sm" name="" aria-controls=""><option value="">請選擇</option><option value="0">夫妻</option><option value="1">父母</option><option value="2">小孩</option></select></div></div><div class="col-6 col-md-auto d-flex align-items-center"><div class="form-group"><div class="meeting-form_label" style="min-width: 40px;">性別</div><div class="form-check form-check-inline mr-2"><input class="form-check-input" type="radio" name="gender" value="male"/><label class="form-check-label">男</label></div><div class="form-check form-check-inline"><input class="form-check-input" type="radio" name="gender" value="female"/><label class="form-check-label">女</label></div></div></div><div class="col-6 col-md-auto d-flex align-items-center"><div class="form-group"><div class="meeting-form_label" style="min-width: 40px;">飲食</div><div class="form-check form-check-inline mr-2"><input class="form-check-input" type="radio" name="food" value="meat"/><label class="form-check-label">葷</label></div><div class="form-check form-check-inline"><input class="form-check-input" type="radio" name="food" value="vegetarian"/><label class="form-check-label">素</label></div></div></div></div>'
+            var familyTemplateA = '<div class="row" family="person-0"><div class="col-12 col-md-auto d-flex align-items-center" style="max-width:50px;"><h5 class="mb-0">A</h5></div><div class="col-12 col-md-3"><div class="form-group"><label class="meeting-form_label mr-2">中文姓名<span class="t-red">*</span></label><input class="form-control" type="text"/></div></div><div class="col-6 col-md-3"><div class="form-group"><label class="meeting-form_label mr-2">英文姓名<span class="t-red">*</span></label><input class="form-control" type="text"/></div></div><div class="col-6 col-md-auto"><div class="form-group"><label class="meeting-form_label mr-2" style="min-width: 40px">關係</label><select class="custom-select form-control form-control-sm" name="" aria-controls=""><option value="">請選擇</option><option value="0">夫妻</option><option value="1">父母</option><option value="2">小孩</option></select></div></div><div class="col-6 col-md-auto d-flex align-items-center"><div class="form-group"><div class="meeting-form_label" style="min-width: 40px;">性別</div><div class="form-check form-check-inline mr-2"><input class="form-check-input" type="radio" name="family-a-gender" value="male"/><label class="form-check-label">男</label></div><div class="form-check form-check-inline mr-0"><input class="form-check-input" type="radio" name="family-a-gender" value="female"/><label class="form-check-label">女</label></div></div></div><div class="col-6 col-md-auto d-flex align-items-center"><div class="form-group"><div class="meeting-form_label" style="min-width: 40px;">飲食</div><div class="form-check form-check-inline mr-2"><input class="form-check-input" type="radio" name="family-a-food" value="meat" checked="checked"/><label class="form-check-label">葷</label></div><div class="form-check form-check-inline mr-0"><input class="form-check-input" type="radio" name="family-a-food" value="vegetarian"/><label class="form-check-label">素</label></div></div></div><div class="col-12 col-md-auto d-flex align-items-center"><button class="less-family iconBtn d-flex align-items-center w-100" type="button"><i class="icon-less mr-2 mr-md-0"></i><span class="d-md-none">刪除此筆</span></button></div></div>'
+            var familyTemplateB = '<div class="row" family="person-1"><div class="col-12 col-md-auto d-flex align-items-center" style="max-width:50px;"><h5 class="mb-0">B</h5></div><div class="col-12 col-md-3"><div class="form-group"><label class="meeting-form_label mr-2">中文姓名<span class="t-red">*</span></label><input class="form-control" type="text"/></div></div><div class="col-6 col-md-3"><div class="form-group"><label class="meeting-form_label mr-2">英文姓名<span class="t-red">*</span></label><input class="form-control" type="text"/></div></div><div class="col-6 col-md-auto"><div class="form-group"><label class="meeting-form_label mr-2" style="min-width: 40px">關係</label><select class="custom-select form-control form-control-sm" name="" aria-controls=""><option value="">請選擇</option><option value="0">夫妻</option><option value="1">父母</option><option value="2">小孩</option></select></div></div><div class="col-6 col-md-auto d-flex align-items-center"><div class="form-group"><div class="meeting-form_label" style="min-width: 40px;">性別</div><div class="form-check form-check-inline mr-2"><input class="form-check-input" type="radio" name="family-b-gender" value="male"/><label class="form-check-label">男</label></div><div class="form-check form-check-inline mr-0"><input class="form-check-input" type="radio" name="family-b-gender" value="female"/><label class="form-check-label">女</label></div></div></div><div class="col-6 col-md-auto d-flex align-items-center"><div class="form-group"><div class="meeting-form_label" style="min-width: 40px;">飲食</div><div class="form-check form-check-inline mr-2"><input class="form-check-input" type="radio" name="family-b-food" value="meat" checked="checked"/><label class="form-check-label">葷</label></div><div class="form-check form-check-inline mr-0"><input class="form-check-input" type="radio" name="family-b-food" value="vegetarian"/><label class="form-check-label">素</label></div></div></div><div class="col-12 col-md-auto d-flex align-items-center"><button class="less-family iconBtn d-flex align-items-center w-100" type="button"><i class="icon-less mr-2 mr-md-0"></i><span class="d-md-none">刪除此筆</span></button></div></div>'
+            var familyTemplateC = '<div class="row" family="person-2"><div class="col-12 col-md-auto d-flex align-items-center" style="max-width:50px;"><h5 class="mb-0">C</h5></div><div class="col-12 col-md-3"><div class="form-group"><label class="meeting-form_label mr-2">中文姓名<span class="t-red">*</span></label><input class="form-control" type="text"/></div></div><div class="col-6 col-md-3"><div class="form-group"><label class="meeting-form_label mr-2">英文姓名<span class="t-red">*</span></label><input class="form-control" type="text"/></div></div><div class="col-6 col-md-auto"><div class="form-group"><label class="meeting-form_label mr-2" style="min-width: 40px">關係</label><select class="custom-select form-control form-control-sm" name="" aria-controls=""><option value="">請選擇</option><option value="0">夫妻</option><option value="1">父母</option><option value="2">小孩</option></select></div></div><div class="col-6 col-md-auto d-flex align-items-center"><div class="form-group"><div class="meeting-form_label" style="min-width: 40px;">性別</div><div class="form-check form-check-inline mr-2"><input class="form-check-input" type="radio" name="family-c-gender" value="male"/><label class="form-check-label">男</label></div><div class="form-check form-check-inline mr-0"><input class="form-check-input" type="radio" name="family-c-gender" value="female"/><label class="form-check-label">女</label></div></div></div><div class="col-6 col-md-auto d-flex align-items-center"><div class="form-group"><div class="meeting-form_label" style="min-width: 40px;">飲食</div><div class="form-check form-check-inline mr-2"><input class="form-check-input" type="radio" name="family-c-food" value="meat" checked="checked"/><label class="form-check-label">葷</label></div><div class="form-check form-check-inline mr-0"><input class="form-check-input" type="radio" name="family-c-food" value="vegetarian"/><label class="form-check-label">素</label></div></div></div><div class="col-12 col-md-auto d-flex align-items-center"><button class="less-family iconBtn d-flex align-items-center w-100" type="button"><i class="icon-less mr-2 mr-md-0"></i><span class="d-md-none">刪除此筆</span></button></div></div>'
+            var familyTemplateD = '<div class="row" family="person-3"><div class="col-12 col-md-auto d-flex align-items-center" style="max-width:50px;"><h5 class="mb-0">D</h5></div><div class="col-12 col-md-3"><div class="form-group"><label class="meeting-form_label mr-2">中文姓名<span class="t-red">*</span></label><input class="form-control" type="text"/></div></div><div class="col-6 col-md-3"><div class="form-group"><label class="meeting-form_label mr-2">英文姓名<span class="t-red">*</span></label><input class="form-control" type="text"/></div></div><div class="col-6 col-md-auto"><div class="form-group"><label class="meeting-form_label mr-2" style="min-width: 40px">關係</label><select class="custom-select form-control form-control-sm" name="" aria-controls=""><option value="">請選擇</option><option value="0">夫妻</option><option value="1">父母</option><option value="2">小孩</option></select></div></div><div class="col-6 col-md-auto d-flex align-items-center"><div class="form-group"><div class="meeting-form_label" style="min-width: 40px;">性別</div><div class="form-check form-check-inline mr-2"><input class="form-check-input" type="radio" name="family-d-gender" value="male"/><label class="form-check-label">男</label></div><div class="form-check form-check-inline mr-0"><input class="form-check-input" type="radio" name="family-d-gender" value="female"/><label class="form-check-label">女</label></div></div></div><div class="col-6 col-md-auto d-flex align-items-center"><div class="form-group"><div class="meeting-form_label" style="min-width: 40px;">飲食</div><div class="form-check form-check-inline mr-2"><input class="form-check-input" type="radio" name="family-d-food" value="meat" checked="checked"/><label class="form-check-label">葷</label></div><div class="form-check form-check-inline mr-0"><input class="form-check-input" type="radio" name="family-d-food" value="vegetarian"/><label class="form-check-label">素</label></div></div></div><div class="col-12 col-md-auto d-flex align-items-center"><button class="less-family iconBtn d-flex align-items-center w-100" type="button"><i class="icon-less mr-2 mr-md-0"></i><span class="d-md-none">刪除此筆</span></button></div></div>'
             console.log(familyLen);
+            if(familyLen == 0) {
+                $('.person-0').css('display','inline-flex');
+                familyInner.append(familyTemplateA);
+            }
             if(familyLen == 1) {
                 $('.person-1').css('display','inline-flex');
                 familyInner.append(familyTemplateB);
@@ -41,6 +49,17 @@ block plugins-js
             if(familyLen >= 3) {
                 $(this).attr('disabled', true);
             }
+        });
+        $('.register-family').on('click','.less-family', function(){
+            var familyInner = $('.register-family')
+            var familyLen = $('.register-family .row').length;
+            $(this).parents('.row').remove();
+            if(familyLen <= 1) { 
+                $('.add-family').attr('disabled', false);
+            }
+            var deleteFamily = $(this).parents('.row').attr('family');
+            var thisFamily = $('.'+ deleteFamily);
+            thisFamily.hide();
         });
 
         $('.person-check .person-all').on('change',function(){
@@ -62,7 +81,7 @@ block content
             h3
                 i.icon-edit
                 span 報名資料填寫
-            form
+            div
                 .meeting-info
                     .container
                         section
@@ -129,7 +148,7 @@ block content
                                     .form-group
                                         .meeting-form_label(style='min-width: auto;') 飲食
                                         .form-check.form-check-inline.mr-4
-                                            input#meat.form-check-input(type='radio' name='food' value='meat')
+                                            input#meat.form-check-input(type='radio' name='food' value='meat' checked)
                                             label.form-check-label(for='meat') 葷
                                         .form-check.form-check-inline
                                             input#vegetarian.form-check-input(type='radio' name='food' value='vegetarian')
@@ -153,8 +172,8 @@ block content
                                     i.icon-add.mr-1
                                     span 新增一筆
                             .register-family
-                                .row
-                                    .col-12.col-md-auto.d-flex.align-items-center
+                                .row(family="person-0")
+                                    .col-12.col-md-auto.d-flex.align-items-center(style='max-width:50px;')
                                         h5.mb-0 A
                                     .col-12.col-md-3
                                         .form-group
@@ -176,20 +195,24 @@ block content
                                         .form-group
                                             .meeting-form_label(style='min-width: 40px;') 性別
                                             .form-check.form-check-inline.mr-2
-                                                input.form-check-input(type='radio' name='gender' value='male')
+                                                input.form-check-input(type='radio' name='family-a-gender' value='male')
                                                 label.form-check-label 男
-                                            .form-check.form-check-inline
-                                                input.form-check-input(type='radio' name='gender' value='female')
+                                            .form-check.form-check-inline.mr-0
+                                                input.form-check-input(type='radio' name='family-a-gender' value='female')
                                                 label.form-check-label 女
                                     .col-6.col-md-auto.d-flex.align-items-center
                                         .form-group
                                             .meeting-form_label(style='min-width: 40px;') 飲食
                                             .form-check.form-check-inline.mr-2
-                                                input.form-check-input(type='radio' name='food' value='meat')
+                                                input.form-check-input(type='radio' name='family-a-food' value='meat' checked)
                                                 label.form-check-label 葷
-                                            .form-check.form-check-inline
-                                                input.form-check-input(type='radio' name='food' value='vegetarian')
+                                            .form-check.form-check-inline.mr-0
+                                                input.form-check-input(type='radio' name='family-a-food' value='vegetarian')
                                                 label.form-check-label 素
+                                    .col-12.col-md-auto.d-flex.align-items-center
+                                        button.less-family.iconBtn.d-flex.align-items.center.w-100(type='button')
+                                            i.icon-less.mr-2.mr-md-0
+                                            span.d-md-none 刪除此筆
                         section
                             h4.mb-0 出席費
                             .row
@@ -213,19 +236,15 @@ block content
                                                         option(value='1') 國際航線
                                             .col-6
                                                 .form-group
-                                                    label.meeting-form_label.mr-3(for='entry-no' style='min-width:50px;') 班機
-                                                    input.form-control#entry-no(type="text" placeholder='CX701')
+                                                    label.meeting-form_label.mr-2(for='entry-no' style='min-width:40px;') 班機
+                                                    input.form-control#entry-no(type="text" placeholder='Ex: CX701')
                                             .col-6
                                                 .form-group
-                                                    label.meeting-form_label.mr-3(for='entry-day') 抵達日期
-                                                    input.form-control#entry-day.date-input(type="date" inputmode="none")
-                                            .col-6
+                                                    label.meeting-form_label.mr-2(for='entry-time' style='min-width:40px;') 時間
+                                                    input.form-control#entry-time.datetime-input(type="none" inputmode="none")
+                                            .col-12.col-md-6.d-flex.align-items-center
                                                 .form-group
-                                                    label.meeting-form_label.mr-3(for='entry-time') 抵達時間
-                                                    input.form-control#entry-time(type="time" min="00:00" max="24:59" value='' inputmode="none")
-                                            .col-12.d-flex.align-items-center
-                                                .form-group
-                                                    .meeting-form_label.mr-2.mr-md-4(style='min-width: 40px;') 抵達航廈
+                                                    .meeting-form_label.mr-2.mr-md-4(style='min-width: 40px;') 航廈
                                                     .form-check.form-check-inline.mr-2
                                                         input.form-check-input(type='radio' name='terminal' value='T1')
                                                         label.form-check-label T1
@@ -274,26 +293,22 @@ block content
                                         .row.align-items-center
                                             .col-6
                                                 .form-group
-                                                    label.meeting-form_label.mr-2(for='Outbound-route' style='min-width:40px;') 航線
+                                                    label.meeting-form_label.mr-2(for='entry-route' style='min-width:40px;') 航線
                                                     select.custom-select.form-control.form-control-sm#Outbound-route(name='' aria-controls='')
                                                         option(value='') 請選擇
                                                         option(value='0') 國內航線
                                                         option(value='1') 國際航線
                                             .col-6
                                                 .form-group
-                                                    label.meeting-form_label.mr-3(for='Outbound-no' style='min-width:50px;') 班機
+                                                    label.meeting-form_label.mr-2(for='entry-no' style='min-width:40px;') 班機
                                                     input.form-control#Outbound-no(type="text" placeholder='CX701')
                                             .col-6
                                                 .form-group
-                                                    label.meeting-form_label.mr-3(for='Outbound-day') 抵達日期
-                                                    input.form-control#Outbound-day.date-input(type="date" inputmode="none")
-                                            .col-6
+                                                    label.meeting-form_label.mr-2(for='entry-time' style='min-width:40px;') 時間
+                                                    input.form-control#Outbound-time.datetime-input(type="none" inputmode="none")
+                                            .col-12.col-md-6.d-flex.align-items-center
                                                 .form-group
-                                                    label.meeting-form_label.mr-3(for='Outbound-time') 抵達時間
-                                                    input.form-control#Outbound-time(type="time" min="00:00" max="24:59" value='' inputmode="none")
-                                            .col-12.d-flex.align-items-center
-                                                .form-group
-                                                    .meeting-form_label.mr-2.mr-md-4(style='min-width: 40px;') 抵達航廈
+                                                    .meeting-form_label.mr-2.mr-md-4(style='min-width: 40px;') 航廈
                                                     .form-check.form-check-inline.mr-2
                                                         input.form-check-input(type='radio' name='terminal' value='T1')
                                                         label.form-check-label T1
@@ -352,7 +367,7 @@ block content
                                 
                             p.my-2.t-red *出席
                             .rooms-inner
-                                .room-item.row.align-items-center.border-bottom.py-2
+                                .room-item.row.align-items-center.py-2
                                     .col-12.col-md-2
                                         a.t-blue-dp(href='' target='_blank')
                                             span 台北圓山飯店
@@ -368,7 +383,7 @@ block content
                                             label.meeting-form_label.mr-2(for='member-name' style='min-width:60px;') 房數#[span.t-red *]
                                             input.form-control#member-name(type="text" )
                                             span.ml-2 間
-                                .room-item.row.align-items-center.border-bottom.py-2
+                                .room-item.row.align-items-center.py-2
                                     .col-12.col-md-2
                                         a.t-blue-dp(href='' target='_blank')
                                             span 台北圓山飯店
@@ -384,7 +399,7 @@ block content
                                             label.meeting-form_label.mr-2(for='member-name' style='min-width:60px;') 房數#[span.t-red *]
                                             input.form-control#member-name(type="text" )
                                             span.ml-2 間
-                                .room-item.row.align-items-center.border-bottom.py-2
+                                .room-item.row.align-items-center.py-2
                                     .col-12.col-md-2
                                         a.t-blue-dp(href='' target='_blank')
                                             span 台北圓山飯店
@@ -400,7 +415,7 @@ block content
                                             label.meeting-form_label.mr-2(for='member-name' style='min-width:60px;') 房數#[span.t-red *]
                                             input.form-control#member-name(type="text" )
                                             span.ml-2 間
-                                .room-item.row.align-items-center.border-bottom.py-2
+                                .room-item.row.align-items-center.py-2
                                     .col-12.col-md-2
                                         a.t-blue-dp(href='' target='_blank')
                                             span 台北圓山飯店
@@ -420,8 +435,8 @@ block content
                             h4.mb-0 餐宴
                             p.fz-16.t-red.mb-3 *3月23日至24日餐宴，敬請確定可以參加才勾選，以避免浪費資源。凡勾選而未參加者，須自行負責餐費新台幣2000元／次。
                             .food-inner
-                                .food-item.row.align-items-center.border-bottom.py-2
-                                    .col-12.col-md-2 2021/3/23 晚宴
+                                .food-item.row.align-items-center.py-2
+                                    .col-12.col-md-3 2021/3/23 晚宴
                                     .col-12.col-md-auto
                                         .form-group
                                             .meeting-form_label.mr-2.mr-md-4 參加人數
@@ -444,13 +459,8 @@ block content
                                                 .form-check.form-check-inline.person-3
                                                     input.person-family.form-check-input(type='checkbox' name='dinner-1' value='family-D')
                                                     label.form-check-label 眷屬D
-                                    .col-12.col-md-2
-                                        .form-group.d-flex
-                                            label.meeting-form_label.mr-2(style='min-width:60px;') 葷食#[span.t-red *]
-                                            input.form-control(type="text" )
-                                            span.ml-2 位
-                                .food-item.row.align-items-center.border-bottom.py-2
-                                    .col-12.col-md-2 2021/3/24 午宴
+                                .food-item.row.align-items-center.py-2
+                                    .col-12.col-md-3 2021/3/24 午宴
                                     .col-12.col-md-auto
                                         .form-group
                                             .meeting-form_label.mr-2.mr-md-4 參加人數
@@ -473,13 +483,8 @@ block content
                                                 .form-check.form-check-inline.person-3
                                                     input.person-family.form-check-input(type='checkbox' name='lunch-2' value='family-D')
                                                     label.form-check-label 眷屬D
-                                    .col-12.col-md-2
-                                        .form-group.d-flex
-                                            label.meeting-form_label.mr-2(style='min-width:60px;') 葷食#[span.t-red *]
-                                            input.form-control(type="text" )
-                                            span.ml-2 位
-                                .food-item.row.align-items-center.border-bottom.py-2
-                                    .col-12.col-md-2 2021/3/24 晚宴
+                                .food-item.row.align-items-center.py-2
+                                    .col-12.col-md-3 2021/3/24 晚宴
                                     .col-12.col-md-auto
                                         .form-group
                                             .meeting-form_label.mr-2.mr-md-4 參加人數
@@ -502,20 +507,23 @@ block content
                                                 .form-check.form-check-inline.person-3
                                                     input.person-family.form-check-input(type='checkbox' name='dinner-2' value='family-D')
                                                     label.form-check-label 眷屬D
-                                    .col-12.col-md-2
-                                        .form-group.d-flex
-                                            label.meeting-form_label.mr-2(style='min-width:60px;') 葷食#[span.t-red *]
-                                            input.form-control(type="text" )
-                                            span.ml-2 位
                         section
                             h4.mb-0 會議行程
                             p.fz-16.t-red.mb-3 *必填：理監事以上人員出席實體會議或線上會議，請擇一填選。
                             .travel-inner
-                                .travel-item.row.align-items-center.border-bottom.py-2
-                                    .col-12.col-md-5
+                                .travel-item.row.align-items-center.py-2
+                                    .col-12.col-md-4
                                         p.mb-0 2021/3/24 出席實體理監事聯席會議
                                         .fz-16 (限理監事以上人員勾選)
-                                    .col-12.col-md-7
+                                    .col-12.col-md-2.d-flex.align-items-center
+                                        .form-group
+                                            .form-check.form-check-inline.mr-4
+                                                input.form-check-input(type='radio' name='online' value='yes')
+                                                label.form-check-label 線上
+                                            .form-check.form-check-inline
+                                                input.form-check-input(type='radio' name='online' value='no' checked)
+                                                label.form-check-label 實體
+                                    .col-12.col-md-auto
                                         .form-group
                                             .meeting-form_label.mr-2.mr-md-4 參加人數
                                             .person-check
@@ -537,7 +545,7 @@ block content
                                                 .form-check.form-check-inline.person-3
                                                     input.person-family.form-check-input(type='checkbox' name='meeting-1' value='family-D')
                                                     label.form-check-label 眷屬D
-                                .travel-item.row.align-items-center.border-bottom.py-2
+                                .travel-item.row.align-items-center.py-2
                                     .col-12.col-md-5
                                         p.mb-0 2021/3/24 出席線上理監事聯席會議
                                         .fz-16 (限理監事以上人員勾選)
@@ -563,7 +571,7 @@ block content
                                                 .form-check.form-check-inline.person-3
                                                     input.person-family.form-check-input(type='checkbox' name='meeting-1' value='family-D')
                                                     label.form-check-label 眷屬D
-                                .travel-item.row.align-items-center.border-bottom.py-2
+                                .travel-item.row.align-items-center.py-2
                                     .col-12.col-md-5 2021/3/23 高爾夫球賽
                                     .col-12.col-md-4.d-flex.align-items-center
                                         .form-group
@@ -571,7 +579,7 @@ block content
                                                 input.form-check-input(type='radio' name='join-golf' value='yes')
                                                 label.form-check-label 參加
                                             .form-check.form-check-inline
-                                                input.form-check-input(type='radio' name='join-golf' value='no')
+                                                input.form-check-input(type='radio' name='join-golf' value='no' checked)
                                                 label.form-check-label 不參加
                                     .col-12.col-md-3
                                         a.t-blue-dp(href='' target='_blank')
@@ -581,7 +589,7 @@ block content
                             h4.mb-0 自費旅遊
                             p.fz-16.t-red.mb-3 *欲參加旅遊者，請填妥旅遊報名表，務請逕自Email或Fax：+886-2-3322-2258至海外台商旅行社報名，並再以電話聯繫海外台商旅行社#[a(href='tel:+886-2-3322-4458') TEL:+886-2-3322-4458]確認。
                             .self-inner
-                                .self-item.row.align-items-center.border-bottom.py-2
+                                .self-item.row.align-items-center.py-2
                                     .col-12.col-md-5
                                         p.mb-0 會後旅遊 A.樂活台東雙島蘭嶼+綠島四日遊
                                     .col-12.col-md-auto
@@ -610,7 +618,7 @@ block content
                                         a.t-blue-dp(href='' target='_blank')
                                             span 海外台商旅行社承辦
                                             i.icon-url
-                                .self-item.row.align-items-center.border-bottom.py-2
+                                .self-item.row.align-items-center.py-2
                                     .col-12.col-md-5
                                         p.mb-0 會後旅遊 B.一生必看-藍眼淚馬祖三日遊
                                     .col-12.col-md-auto
@@ -639,7 +647,7 @@ block content
                                         a.t-blue-dp(href='' target='_blank')
                                             span 海外台商旅行社承辦
                                             i.icon-url
-                                .self-item.row.align-items-center.border-bottom.py-2
+                                .self-item.row.align-items-center.py-2
                                     .col-12.col-md-5
                                         p.mb-0 會後旅遊 C.遺落人間的部落-司馬庫斯三日遊
                                     .col-12.col-md-auto
@@ -674,11 +682,16 @@ block content
                                 .col-12
                                     p.fz-18 備註內容
 
-                .meeting-btn-group.row.mx-auto.mt-3(style='max-width:780px;')
-                    .col-4
+                .meeting-btn-group.row.mx-auto.mt-3
+                    .col-6
                         a.w-100.btn.btn-light.form-item.row-rounded.justify-content-center(href='meeting-login.html') 回上一頁
-                    .col-4
-                        button.clear-btn.w-100.btn.btn-secondary.form-item.row-rounded.justify-content-center 重新填寫
-                    .col-4
-                        button.w-100.btn.btn-success.form-item.row-rounded.justify-content-center(type='submit') 送出資料
+                    .col-6
+                        button.w-100.btn.btn-success.form-item.row-rounded.justify-content-center(data-toggle="modal" data-target="#meetingRegisterModal") 送出資料
+
+    #meetingRegisterModal.modal.fade(tabindex="-1" role="dialog" aria-labelledby="meetingRegisterModalCenterTitle" aria-hidden="true")
+        .modal-dialog.modal-dialog-centered(role="document")
+            .modal-content
+                .modal-body.py-5.text-center 您已送出報名資料
+                .modal-footer
+                    a.btn.btn-success.w-100.ml-2(href='meeting.html') 關閉
 

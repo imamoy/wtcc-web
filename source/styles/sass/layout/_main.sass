@@ -612,7 +612,7 @@ hr
 
 .meeting-wrapper
     .inner
-        max-width: 1280px
+        max-width: 1366px
         margin: 20px auto
     .meeting-info
         background-color: rgba($white,.8)
@@ -638,15 +638,14 @@ hr
             margin: 4px 0
         input,select
             font-size: 18px
+            &::placeholder
+                color: #DEDEDE !important
     
     .meeting-form_label
         color: $primary-dp-color
         font-weight: 500
         min-width: 90px
         margin-right: 14px
-    +min-notebook
-        .container
-            max-width: none
     +min-padpro
         overflow-y: hidden
         .meeting-info
@@ -666,12 +665,17 @@ hr
                     margin: 0
                     padding: 10px 0
                     border-bottom: 1px solid rgba($white,.5)
+    +min-phone
+        .container
+            max-width: none !important
 
 .meeting-btn-group
     .btn
         border-radius: 50px
         height: 50px
         font-size: 20px
+    +min-padpro
+        max-width: 780px;
     +max-pad
         width: 100%
         position: fixed
@@ -679,6 +683,7 @@ hr
         bottom: 0
         left: 0
         margin-top: 0
+        max-width: auto !important
         .col-6,.col-4
             padding: 0
             border-right: 1px solid rgba($white,.5)
@@ -722,6 +727,14 @@ hr
         .person-1,.person-2,.person-3
             display: none
     +min-padpro
+        margin-top: 0
+        height: 100vh
+        padding-bottom: 0
+        .inner
+            height: calc(100% - 60px)
+            margin: 30px auto
+        .meeting-info
+            max-height: 76vh
         .air-item
             &:first-child
                 border-right: 1px solid rgba($white,.5)
@@ -771,3 +784,15 @@ hr
     .meeting-form_label
         min-width: 100px
         text-align: left
+
+.less-family
+    i
+        font-size: 22px
+    +max-phone
+        margin: 4px 0
+        margin-right: 6%
+        justify-content: flex-end !important
+.travel-item, .food-item, .self-item, .room-item
+    border-bottom: 1px solid rgba($white,.5)
+    &:last-child
+        border: none

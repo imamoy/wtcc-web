@@ -684,7 +684,7 @@ hr {
     transition: opacity 0.5s 0.1s; }
 
 .meeting-wrapper .inner {
-  max-width: 1280px;
+  max-width: 1366px;
   margin: 20px auto; }
 
 .meeting-wrapper .meeting-info {
@@ -709,16 +709,20 @@ hr {
     margin: 4px 0; }
   .meeting-wrapper .meeting-info input, .meeting-wrapper .meeting-info select {
     font-size: 18px; }
+    .meeting-wrapper .meeting-info input::-webkit-input-placeholder, .meeting-wrapper .meeting-info select::-webkit-input-placeholder {
+      color: #DEDEDE !important; }
+    .meeting-wrapper .meeting-info input:-ms-input-placeholder, .meeting-wrapper .meeting-info select:-ms-input-placeholder {
+      color: #DEDEDE !important; }
+    .meeting-wrapper .meeting-info input::-ms-input-placeholder, .meeting-wrapper .meeting-info select::-ms-input-placeholder {
+      color: #DEDEDE !important; }
+    .meeting-wrapper .meeting-info input::placeholder, .meeting-wrapper .meeting-info select::placeholder {
+      color: #DEDEDE !important; }
 
 .meeting-wrapper .meeting-form_label {
   color: #173459;
   font-weight: 500;
   min-width: 90px;
   margin-right: 14px; }
-
-@media screen and (min-width: 1200px) {
-  .meeting-wrapper .container {
-    max-width: none; } }
 
 @media screen and (min-width: 992px) {
   .meeting-wrapper {
@@ -744,10 +748,18 @@ hr {
     padding: 10px 0;
     border-bottom: 1px solid rgba(255, 255, 255, 0.5); } }
 
+@media screen and (min-width: 480px) {
+  .meeting-wrapper .container {
+    max-width: none !important; } }
+
 .meeting-btn-group .btn {
   border-radius: 50px;
   height: 50px;
   font-size: 20px; }
+
+@media screen and (min-width: 992px) {
+  .meeting-btn-group {
+    max-width: 780px; } }
 
 @media screen and (max-width: 991px) {
   .meeting-btn-group {
@@ -756,7 +768,8 @@ hr {
     z-index: 50;
     bottom: 0;
     left: 0;
-    margin-top: 0; }
+    margin-top: 0;
+    max-width: auto !important; }
     .meeting-btn-group .col-6, .meeting-btn-group .col-4 {
       padding: 0;
       border-right: 1px solid rgba(255, 255, 255, 0.5); }
@@ -806,8 +819,17 @@ hr {
   display: none; }
 
 @media screen and (min-width: 992px) {
-  #meeting-register .air-item:first-child {
-    border-right: 1px solid rgba(255, 255, 255, 0.5); } }
+  #meeting-register {
+    margin-top: 0;
+    height: 100vh;
+    padding-bottom: 0; }
+    #meeting-register .inner {
+      height: calc(100% - 60px);
+      margin: 30px auto; }
+    #meeting-register .meeting-info {
+      max-height: 76vh; }
+    #meeting-register .air-item:first-child {
+      border-right: 1px solid rgba(255, 255, 255, 0.5); } }
 
 @media screen and (max-width: 991px) {
   #meeting-register {
@@ -862,6 +884,22 @@ hr {
   .meeting-form .meeting-form_label {
     min-width: 100px;
     text-align: left; }
+
+.less-family i {
+  font-size: 22px; }
+
+@media screen and (max-width: 767px) {
+  .less-family {
+    margin: 4px 0;
+    margin-right: 6%;
+    -webkit-box-pack: end !important;
+        -ms-flex-pack: end !important;
+            justify-content: flex-end !important; } }
+
+.travel-item, .food-item, .self-item, .room-item {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.5); }
+  .travel-item:last-child, .food-item:last-child, .self-item:last-child, .room-item:last-child {
+    border: none; }
 
 /* ==========================================================================
 		header

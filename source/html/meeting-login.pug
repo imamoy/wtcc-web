@@ -20,11 +20,11 @@ block content
                         span.meeting-form_value 0272
                     .form-group.d-flex.py-2.mb-0
                         label.meeting-form_label.mr-3(for='member-name') 會員代碼
-                        input.form-control#member-name.mr-2(type="text" style='max-width:97px;')
-                        button.btn.btn-primary.mb-2(type='button') 發送OTP
+                        input.form-control#member-name(type="text")
                     .form-group.d-flex.py-2.mb-0
                         label.meeting-form_label.mr-3(for='otp') OTP驗證碼
-                        input.form-control#otp(type="text")
+                        input.form-control#otp.mr-2(type="text" style='max-width:97px;')
+                        button.btn.btn-primary.mb-2(type='button') 發送OTP
             .form-group.mt-4
                 .row
                     .col-6
